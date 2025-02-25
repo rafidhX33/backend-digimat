@@ -1,40 +1,40 @@
 // src/services/doc.service.ts
 
-import { PrismaClient } from '../../prisma/generated/digimat' 
-// sesuaikan path-nya. Misal jika "digimat" ada di "prisma/generated/digimat"
+import { PrismaClient, mst_doc } from '../../prisma/generated/digimat'; 
+// Pastikan path ini sesuai dengan struktur proyek Anda
 
-const digimatPrisma = new PrismaClient()
+const digimatPrisma = new PrismaClient();
 
 export class DocService {
-  // CREATE
-  static async createDoc(data: any) {
-    return digimatPrisma.mst_doc.create({ data })
+  // CREATE: Membuat dokumen baru
+  static async createDoc(data: Partial<mst_doc>): Promise<mst_doc> {
+    return await digimatPrisma.mst_doc.create({ data });
   }
 
-  // READ - All
-  static async getAllDocs() {
-    return digimatPrisma.mst_doc.findMany()
+  // READ - All: Mengambil semua dokumen
+  static async getAllDocs(): Promise<mst_doc[]> {
+    return await digimatPrisma.mst_doc.findMany();
   }
 
-  // READ - By ID
-  static async getDocById(id: number) {
-    return digimatPrisma.mst_doc.findUnique({
+  // READ - By ID: Mengambil dokumen berdasarkan ID
+  static async getDocById(id: number): Promise<mst_doc | null> {
+    return await digimatPrisma.mst_doc.findUnique({
       where: { id },
-    })
+    });
   }
 
-  // UPDATE
-  static async updateDoc(id: number, data: any) {
-    return digimatPrisma.mst_doc.update({
+  // UPDATE: Memperbarui dokumen berdasarkan ID
+  static async updateDoc(id: number, data: Partial<mst_doc>): Promise<mst_doc> {
+    return await digimatPrisma.mst_doc.update({
       where: { id },
       data,
-    })
+    });
   }
 
-  // DELETE
-  static async deleteDoc(id: number) {
-    return digimatPrisma.mst_doc.delete({
+  // DELETE: Menghapus dokumen berdasarkan ID
+  static async deleteDoc(id: number): Promise<mst_doc> {
+    return await digimatPrisma.mst_doc.delete({
       where: { id },
-    })
+    });
   }
 }
