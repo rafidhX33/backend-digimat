@@ -1,0 +1,24 @@
+datasource digimat {
+  provider = "mysql"
+  url      = env("DIGIMAT_DATABASE_URL")
+}
+
+generator digimatClient {
+  provider = "prisma-client-js"
+  // Output ke folder berbeda, agar tidak bentrok dengan klien utama
+  output   = "./generated/digimat"
+}
+
+model mst_doc {
+  id             Int     @id @default(autoincrement())
+  kode_vendor    String?
+  material_code  String?
+  doc_name_qs    String?
+  doc_url_qs     String?
+  doc_name_ss    String?
+  doc_url_ss     String?
+  doc_name_aios  String?
+  doc_url_aios   String?
+
+  @@map("mst_doc")
+}
