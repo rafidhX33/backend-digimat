@@ -32,11 +32,11 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.4.0
+ * Prisma Client JS version: 6.4.1
  * Query Engine version: a9055b89e58b4b5bfb59600785423b1db3d0e75d
  */
 Prisma.prismaVersion = {
-  client: "6.4.0",
+  client: "6.4.1",
   engine: "a9055b89e58b4b5bfb59600785423b1db3d0e75d"
 }
 
@@ -160,12 +160,13 @@ const config = {
     "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../..",
-  "clientVersion": "6.4.0",
+  "clientVersion": "6.4.1",
   "engineVersion": "a9055b89e58b4b5bfb59600785423b1db3d0e75d",
   "datasourceNames": [
     "digimat"
   ],
   "activeProvider": "mysql",
+  "postinstall": false,
   "inlineDatasources": {
     "digimat": {
       "url": {
@@ -174,8 +175,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "datasource digimat {\n  provider = \"mysql\"\n  url      = env(\"DIGIMAT_DATABASE_URL\")\n}\n\ngenerator digimatClient {\n  provider = \"prisma-client-js\"\n  // Output ke folder berbeda, agar tidak bentrok dengan klien utama\n  output   = \"./generated/digimat\"\n}\n\nmodel mst_doc {\n  id            Int     @id @default(autoincrement())\n  kode_vendor   String?\n  material_code String?\n  doc_name_qs   String?\n  doc_url_qs    String?\n  doc_name_ss   String?\n  doc_url_ss    String?\n  doc_name_aios String?\n  doc_url_aios  String?\n\n  @@map(\"mst_doc\")\n}\n",
-  "inlineSchemaHash": "259ba49236c0ac360e1ad850fd17919b182197388cd4bc136d688d4414795e68",
+  "inlineSchema": "generator digimatClient {\n  provider = \"prisma-client-js\"\n  output   = \"./generated/digimat\" // Output Prisma Client ke folder khusus\n}\n\ndatasource digimat {\n  provider = \"mysql\"\n  url      = env(\"DIGIMAT_DATABASE_URL\") // Database kedua\n}\n\nmodel mst_doc {\n  id            Int     @id @default(autoincrement())\n  kode_vendor   String?\n  material_code String?\n  doc_name_qs   String?\n  doc_url_qs    String?\n  doc_name_ss   String?\n  doc_url_ss    String?\n  doc_name_aios String?\n  doc_url_aios  String?\n\n  @@map(\"mst_doc\")\n}\n",
+  "inlineSchemaHash": "ca3868a82dbca795feecee462b36f419c0e9679b45f3039916c0a8cc76380ff2",
   "copyEngine": true
 }
 

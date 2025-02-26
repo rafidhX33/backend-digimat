@@ -1,12 +1,11 @@
-datasource digimat {
-  provider = "mysql"
-  url      = env("DIGIMAT_DATABASE_URL")
-}
-
 generator digimatClient {
   provider = "prisma-client-js"
-  // Output ke folder berbeda, agar tidak bentrok dengan klien utama
-  output   = "./generated/digimat"
+  output   = "./generated/digimat" // Output Prisma Client ke folder khusus
+}
+
+datasource digimat {
+  provider = "mysql"
+  url      = env("DIGIMAT_DATABASE_URL") // Database kedua
 }
 
 model mst_doc {

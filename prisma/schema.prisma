@@ -1,10 +1,11 @@
 generator client {
   provider = "prisma-client-js"
+  output   = "./generated/qa_tracking_suplier" // Output Prisma Client ke folder khusus
 }
 
 datasource db {
   provider = "mysql"
-  url      = env("DATABASE_URL")
+  url      = env("DATABASE_URL") // Database utama
 }
 
 model MstMaterialCapa {
@@ -15,4 +16,40 @@ model MstMaterialCapa {
   nama_material String? @map("nama_material") @db.VarChar(100)
 
   @@map("mst_material_capa")
+}
+
+model SupplierScore {
+  id                  Int     @id @default(autoincrement())
+  tahun               String? @db.VarChar(4)
+  bulan               String? @db.VarChar(20)
+  tgl                 DateTime?
+  category            String? @db.VarChar(50)
+  suplier_name        String? @db.VarChar(100)
+  kode_vendor         String  @db.VarChar(50)
+  area_to             String? @db.VarChar(50)
+  plan                String? @db.VarChar(50)
+  abnormal            Float?  
+  total_incoming      Int?    
+  total_abnormal      Int?    
+  persen_abnormal     Float?  
+  feedback            Float?  
+  acceptance_improvement Float?
+  downtime            Float?  
+  cc                  Float?  
+  issue               Float?  
+  value_material      Float?  
+  Grade_Material      String? @db.VarChar(2)
+
+  @@map("v_suplier_value") // Pastikan model ini mengacu ke VIEW di database
+}
+
+
+model ComplaintStatus {
+  id           Int     @id @default(autoincrement())
+  kode_vendor  String  @db.VarChar(50)
+  name_vendor  String? @db.VarChar(100)
+  tgl_complain DateTime?
+  status       String? @db.VarChar(50)
+
+  @@map("v_tr_complan_approve")
 }

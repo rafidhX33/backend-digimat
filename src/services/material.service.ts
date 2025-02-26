@@ -1,8 +1,8 @@
-import prisma from "../config/db";
+import { prismaMain } from "../config/db"; // Menggunakan named import dari db.ts
 
 // Get all materials
 export const getAllMaterials = async () => {
-  return await prisma.mstMaterialCapa.findMany({
+  return await prismaMain.mstMaterialCapa.findMany({
     select: {
       material_code: true,
       nama_material: true,
@@ -14,7 +14,7 @@ export const getAllMaterials = async () => {
 
 // Get materials by vendor (kode_vendor)
 export const getMaterialsByVendor = async (kode_vendor: string) => {
-  return await prisma.mstMaterialCapa.findMany({
+  return await prismaMain.mstMaterialCapa.findMany({
     where: { kode_vendor },
     select: {
       material_code: true,
@@ -25,7 +25,7 @@ export const getMaterialsByVendor = async (kode_vendor: string) => {
 
 // Create a new material entry
 export const createMaterial = async (data: { material_code: string; nama_material: string; kode_vendor: string }) => {
-  return await prisma.mstMaterialCapa.create({
+  return await prismaMain.mstMaterialCapa.create({
     data,
   });
 };

@@ -1,5 +1,8 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient as PrismaMainClient } from "../../prisma/generated/qa_tracking_suplier"; 
+import { PrismaClient as PrismaDigimatClient } from "../../prisma/generated/digimat"; 
 
-const prisma = new PrismaClient();
+// Database utama (qa_tracking_suplier)
+export const prismaMain = new PrismaMainClient();
 
-export default prisma;
+// Database kedua (digimat)
+export const prismaDigimat = new PrismaDigimatClient();
