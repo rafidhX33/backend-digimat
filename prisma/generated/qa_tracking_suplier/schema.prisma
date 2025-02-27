@@ -1,11 +1,11 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "./generated/qa_tracking_suplier" // Output Prisma Client ke folder khusus
+  output   = "./generated/qa_tracking_suplier"
 }
 
 datasource db {
   provider = "mysql"
-  url      = env("DATABASE_URL") // Database utama
+  url      = env("DATABASE_URL") // Pastikan DATABASE_URL sudah diatur untuk database utama Anda.
 }
 
 model MstMaterialCapa {
@@ -40,7 +40,7 @@ model SupplierScore {
   value_material         Float?
   Grade_Material         String?   @db.VarChar(2)
 
-  @@map("v_suplier_value") // Pastikan model ini mengacu ke VIEW di database
+  @@map("v_suplier_value")
 }
 
 model ComplaintStatus {
@@ -51,4 +51,26 @@ model ComplaintStatus {
   status       String?   @db.VarChar(50)
 
   @@map("v_tr_complan_approve")
+}
+
+model TrSupplierAudit {
+  id              Int       @id @default(autoincrement()) @map("id")
+  plan_type       String?   @map("plan_type") @db.VarChar(100)
+  plant           String?   @map("plant") @db.VarChar(100)
+  date_plan       DateTime? @map("date_plan")
+  id_supplier     Int?      @map("id_supplier")
+  code_supplier   String?   @map("code_supplier") @db.VarChar(100)
+  city            String?   @map("city") @db.VarChar(100)
+  id_material     Int?      @map("id_material")
+  date_complete   DateTime? @map("date_complete")
+  score           Int?      @map("score")
+  status          Int?      @map("status")
+  evidence        String?   @map("evidence") @db.VarChar(100)
+  evidence_type   String?   @map("evidence_type") @db.Char(50)
+  evidence_size   Int?      @map("evidence_size")
+  evidence_widht  Int?      @map("evidence_widht")
+  evidence_height Int?      @map("evidence_height")
+  improvment      String?   @map("improvment") @db.Text
+
+  @@map("tr_supplier_audit")
 }

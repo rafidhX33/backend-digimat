@@ -156,6 +156,26 @@ exports.Prisma.ComplaintStatusScalarFieldEnum = {
   status: 'status'
 };
 
+exports.Prisma.TrSupplierAuditScalarFieldEnum = {
+  id: 'id',
+  plan_type: 'plan_type',
+  plant: 'plant',
+  date_plan: 'date_plan',
+  id_supplier: 'id_supplier',
+  code_supplier: 'code_supplier',
+  city: 'city',
+  id_material: 'id_material',
+  date_complete: 'date_complete',
+  score: 'score',
+  status: 'status',
+  evidence: 'evidence',
+  evidence_type: 'evidence_type',
+  evidence_size: 'evidence_size',
+  evidence_widht: 'evidence_widht',
+  evidence_height: 'evidence_height',
+  improvment: 'improvment'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -190,11 +210,22 @@ exports.Prisma.ComplaintStatusOrderByRelevanceFieldEnum = {
   status: 'status'
 };
 
+exports.Prisma.TrSupplierAuditOrderByRelevanceFieldEnum = {
+  plan_type: 'plan_type',
+  plant: 'plant',
+  code_supplier: 'code_supplier',
+  city: 'city',
+  evidence: 'evidence',
+  evidence_type: 'evidence_type',
+  improvment: 'improvment'
+};
+
 
 exports.Prisma.ModelName = {
   MstMaterialCapa: 'MstMaterialCapa',
   SupplierScore: 'SupplierScore',
-  ComplaintStatus: 'ComplaintStatus'
+  ComplaintStatus: 'ComplaintStatus',
+  TrSupplierAudit: 'TrSupplierAudit'
 };
 
 /**

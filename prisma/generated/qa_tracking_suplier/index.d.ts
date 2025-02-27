@@ -28,6 +28,11 @@ export type SupplierScore = $Result.DefaultSelection<Prisma.$SupplierScorePayloa
  * 
  */
 export type ComplaintStatus = $Result.DefaultSelection<Prisma.$ComplaintStatusPayload>
+/**
+ * Model TrSupplierAudit
+ * 
+ */
+export type TrSupplierAudit = $Result.DefaultSelection<Prisma.$TrSupplierAuditPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -183,6 +188,16 @@ export class PrismaClient<
     * ```
     */
   get complaintStatus(): Prisma.ComplaintStatusDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.trSupplierAudit`: Exposes CRUD operations for the **TrSupplierAudit** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TrSupplierAudits
+    * const trSupplierAudits = await prisma.trSupplierAudit.findMany()
+    * ```
+    */
+  get trSupplierAudit(): Prisma.TrSupplierAuditDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -625,7 +640,8 @@ export namespace Prisma {
   export const ModelName: {
     MstMaterialCapa: 'MstMaterialCapa',
     SupplierScore: 'SupplierScore',
-    ComplaintStatus: 'ComplaintStatus'
+    ComplaintStatus: 'ComplaintStatus',
+    TrSupplierAudit: 'TrSupplierAudit'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -641,7 +657,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "mstMaterialCapa" | "supplierScore" | "complaintStatus"
+      modelProps: "mstMaterialCapa" | "supplierScore" | "complaintStatus" | "trSupplierAudit"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -843,6 +859,72 @@ export namespace Prisma {
           }
         }
       }
+      TrSupplierAudit: {
+        payload: Prisma.$TrSupplierAuditPayload<ExtArgs>
+        fields: Prisma.TrSupplierAuditFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TrSupplierAuditFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrSupplierAuditPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TrSupplierAuditFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrSupplierAuditPayload>
+          }
+          findFirst: {
+            args: Prisma.TrSupplierAuditFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrSupplierAuditPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TrSupplierAuditFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrSupplierAuditPayload>
+          }
+          findMany: {
+            args: Prisma.TrSupplierAuditFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrSupplierAuditPayload>[]
+          }
+          create: {
+            args: Prisma.TrSupplierAuditCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrSupplierAuditPayload>
+          }
+          createMany: {
+            args: Prisma.TrSupplierAuditCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.TrSupplierAuditDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrSupplierAuditPayload>
+          }
+          update: {
+            args: Prisma.TrSupplierAuditUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrSupplierAuditPayload>
+          }
+          deleteMany: {
+            args: Prisma.TrSupplierAuditDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TrSupplierAuditUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.TrSupplierAuditUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrSupplierAuditPayload>
+          }
+          aggregate: {
+            args: Prisma.TrSupplierAuditAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTrSupplierAudit>
+          }
+          groupBy: {
+            args: Prisma.TrSupplierAuditGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TrSupplierAuditGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TrSupplierAuditCountArgs<ExtArgs>
+            result: $Utils.Optional<TrSupplierAuditCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -930,6 +1012,7 @@ export namespace Prisma {
     mstMaterialCapa?: MstMaterialCapaOmit
     supplierScore?: SupplierScoreOmit
     complaintStatus?: ComplaintStatusOmit
+    trSupplierAudit?: TrSupplierAuditOmit
   }
 
   /* Types for Logging */
@@ -3978,6 +4061,1082 @@ export namespace Prisma {
 
 
   /**
+   * Model TrSupplierAudit
+   */
+
+  export type AggregateTrSupplierAudit = {
+    _count: TrSupplierAuditCountAggregateOutputType | null
+    _avg: TrSupplierAuditAvgAggregateOutputType | null
+    _sum: TrSupplierAuditSumAggregateOutputType | null
+    _min: TrSupplierAuditMinAggregateOutputType | null
+    _max: TrSupplierAuditMaxAggregateOutputType | null
+  }
+
+  export type TrSupplierAuditAvgAggregateOutputType = {
+    id: number | null
+    id_supplier: number | null
+    id_material: number | null
+    score: number | null
+    status: number | null
+    evidence_size: number | null
+    evidence_widht: number | null
+    evidence_height: number | null
+  }
+
+  export type TrSupplierAuditSumAggregateOutputType = {
+    id: number | null
+    id_supplier: number | null
+    id_material: number | null
+    score: number | null
+    status: number | null
+    evidence_size: number | null
+    evidence_widht: number | null
+    evidence_height: number | null
+  }
+
+  export type TrSupplierAuditMinAggregateOutputType = {
+    id: number | null
+    plan_type: string | null
+    plant: string | null
+    date_plan: Date | null
+    id_supplier: number | null
+    code_supplier: string | null
+    city: string | null
+    id_material: number | null
+    date_complete: Date | null
+    score: number | null
+    status: number | null
+    evidence: string | null
+    evidence_type: string | null
+    evidence_size: number | null
+    evidence_widht: number | null
+    evidence_height: number | null
+    improvment: string | null
+  }
+
+  export type TrSupplierAuditMaxAggregateOutputType = {
+    id: number | null
+    plan_type: string | null
+    plant: string | null
+    date_plan: Date | null
+    id_supplier: number | null
+    code_supplier: string | null
+    city: string | null
+    id_material: number | null
+    date_complete: Date | null
+    score: number | null
+    status: number | null
+    evidence: string | null
+    evidence_type: string | null
+    evidence_size: number | null
+    evidence_widht: number | null
+    evidence_height: number | null
+    improvment: string | null
+  }
+
+  export type TrSupplierAuditCountAggregateOutputType = {
+    id: number
+    plan_type: number
+    plant: number
+    date_plan: number
+    id_supplier: number
+    code_supplier: number
+    city: number
+    id_material: number
+    date_complete: number
+    score: number
+    status: number
+    evidence: number
+    evidence_type: number
+    evidence_size: number
+    evidence_widht: number
+    evidence_height: number
+    improvment: number
+    _all: number
+  }
+
+
+  export type TrSupplierAuditAvgAggregateInputType = {
+    id?: true
+    id_supplier?: true
+    id_material?: true
+    score?: true
+    status?: true
+    evidence_size?: true
+    evidence_widht?: true
+    evidence_height?: true
+  }
+
+  export type TrSupplierAuditSumAggregateInputType = {
+    id?: true
+    id_supplier?: true
+    id_material?: true
+    score?: true
+    status?: true
+    evidence_size?: true
+    evidence_widht?: true
+    evidence_height?: true
+  }
+
+  export type TrSupplierAuditMinAggregateInputType = {
+    id?: true
+    plan_type?: true
+    plant?: true
+    date_plan?: true
+    id_supplier?: true
+    code_supplier?: true
+    city?: true
+    id_material?: true
+    date_complete?: true
+    score?: true
+    status?: true
+    evidence?: true
+    evidence_type?: true
+    evidence_size?: true
+    evidence_widht?: true
+    evidence_height?: true
+    improvment?: true
+  }
+
+  export type TrSupplierAuditMaxAggregateInputType = {
+    id?: true
+    plan_type?: true
+    plant?: true
+    date_plan?: true
+    id_supplier?: true
+    code_supplier?: true
+    city?: true
+    id_material?: true
+    date_complete?: true
+    score?: true
+    status?: true
+    evidence?: true
+    evidence_type?: true
+    evidence_size?: true
+    evidence_widht?: true
+    evidence_height?: true
+    improvment?: true
+  }
+
+  export type TrSupplierAuditCountAggregateInputType = {
+    id?: true
+    plan_type?: true
+    plant?: true
+    date_plan?: true
+    id_supplier?: true
+    code_supplier?: true
+    city?: true
+    id_material?: true
+    date_complete?: true
+    score?: true
+    status?: true
+    evidence?: true
+    evidence_type?: true
+    evidence_size?: true
+    evidence_widht?: true
+    evidence_height?: true
+    improvment?: true
+    _all?: true
+  }
+
+  export type TrSupplierAuditAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TrSupplierAudit to aggregate.
+     */
+    where?: TrSupplierAuditWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrSupplierAudits to fetch.
+     */
+    orderBy?: TrSupplierAuditOrderByWithRelationInput | TrSupplierAuditOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TrSupplierAuditWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrSupplierAudits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrSupplierAudits.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TrSupplierAudits
+    **/
+    _count?: true | TrSupplierAuditCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TrSupplierAuditAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TrSupplierAuditSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TrSupplierAuditMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TrSupplierAuditMaxAggregateInputType
+  }
+
+  export type GetTrSupplierAuditAggregateType<T extends TrSupplierAuditAggregateArgs> = {
+        [P in keyof T & keyof AggregateTrSupplierAudit]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTrSupplierAudit[P]>
+      : GetScalarType<T[P], AggregateTrSupplierAudit[P]>
+  }
+
+
+
+
+  export type TrSupplierAuditGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TrSupplierAuditWhereInput
+    orderBy?: TrSupplierAuditOrderByWithAggregationInput | TrSupplierAuditOrderByWithAggregationInput[]
+    by: TrSupplierAuditScalarFieldEnum[] | TrSupplierAuditScalarFieldEnum
+    having?: TrSupplierAuditScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TrSupplierAuditCountAggregateInputType | true
+    _avg?: TrSupplierAuditAvgAggregateInputType
+    _sum?: TrSupplierAuditSumAggregateInputType
+    _min?: TrSupplierAuditMinAggregateInputType
+    _max?: TrSupplierAuditMaxAggregateInputType
+  }
+
+  export type TrSupplierAuditGroupByOutputType = {
+    id: number
+    plan_type: string | null
+    plant: string | null
+    date_plan: Date | null
+    id_supplier: number | null
+    code_supplier: string | null
+    city: string | null
+    id_material: number | null
+    date_complete: Date | null
+    score: number | null
+    status: number | null
+    evidence: string | null
+    evidence_type: string | null
+    evidence_size: number | null
+    evidence_widht: number | null
+    evidence_height: number | null
+    improvment: string | null
+    _count: TrSupplierAuditCountAggregateOutputType | null
+    _avg: TrSupplierAuditAvgAggregateOutputType | null
+    _sum: TrSupplierAuditSumAggregateOutputType | null
+    _min: TrSupplierAuditMinAggregateOutputType | null
+    _max: TrSupplierAuditMaxAggregateOutputType | null
+  }
+
+  type GetTrSupplierAuditGroupByPayload<T extends TrSupplierAuditGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TrSupplierAuditGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TrSupplierAuditGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TrSupplierAuditGroupByOutputType[P]>
+            : GetScalarType<T[P], TrSupplierAuditGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TrSupplierAuditSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    plan_type?: boolean
+    plant?: boolean
+    date_plan?: boolean
+    id_supplier?: boolean
+    code_supplier?: boolean
+    city?: boolean
+    id_material?: boolean
+    date_complete?: boolean
+    score?: boolean
+    status?: boolean
+    evidence?: boolean
+    evidence_type?: boolean
+    evidence_size?: boolean
+    evidence_widht?: boolean
+    evidence_height?: boolean
+    improvment?: boolean
+  }, ExtArgs["result"]["trSupplierAudit"]>
+
+
+
+  export type TrSupplierAuditSelectScalar = {
+    id?: boolean
+    plan_type?: boolean
+    plant?: boolean
+    date_plan?: boolean
+    id_supplier?: boolean
+    code_supplier?: boolean
+    city?: boolean
+    id_material?: boolean
+    date_complete?: boolean
+    score?: boolean
+    status?: boolean
+    evidence?: boolean
+    evidence_type?: boolean
+    evidence_size?: boolean
+    evidence_widht?: boolean
+    evidence_height?: boolean
+    improvment?: boolean
+  }
+
+  export type TrSupplierAuditOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "plan_type" | "plant" | "date_plan" | "id_supplier" | "code_supplier" | "city" | "id_material" | "date_complete" | "score" | "status" | "evidence" | "evidence_type" | "evidence_size" | "evidence_widht" | "evidence_height" | "improvment", ExtArgs["result"]["trSupplierAudit"]>
+
+  export type $TrSupplierAuditPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TrSupplierAudit"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      plan_type: string | null
+      plant: string | null
+      date_plan: Date | null
+      id_supplier: number | null
+      code_supplier: string | null
+      city: string | null
+      id_material: number | null
+      date_complete: Date | null
+      score: number | null
+      status: number | null
+      evidence: string | null
+      evidence_type: string | null
+      evidence_size: number | null
+      evidence_widht: number | null
+      evidence_height: number | null
+      improvment: string | null
+    }, ExtArgs["result"]["trSupplierAudit"]>
+    composites: {}
+  }
+
+  type TrSupplierAuditGetPayload<S extends boolean | null | undefined | TrSupplierAuditDefaultArgs> = $Result.GetResult<Prisma.$TrSupplierAuditPayload, S>
+
+  type TrSupplierAuditCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TrSupplierAuditFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TrSupplierAuditCountAggregateInputType | true
+    }
+
+  export interface TrSupplierAuditDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TrSupplierAudit'], meta: { name: 'TrSupplierAudit' } }
+    /**
+     * Find zero or one TrSupplierAudit that matches the filter.
+     * @param {TrSupplierAuditFindUniqueArgs} args - Arguments to find a TrSupplierAudit
+     * @example
+     * // Get one TrSupplierAudit
+     * const trSupplierAudit = await prisma.trSupplierAudit.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TrSupplierAuditFindUniqueArgs>(args: SelectSubset<T, TrSupplierAuditFindUniqueArgs<ExtArgs>>): Prisma__TrSupplierAuditClient<$Result.GetResult<Prisma.$TrSupplierAuditPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find one TrSupplierAudit that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TrSupplierAuditFindUniqueOrThrowArgs} args - Arguments to find a TrSupplierAudit
+     * @example
+     * // Get one TrSupplierAudit
+     * const trSupplierAudit = await prisma.trSupplierAudit.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TrSupplierAuditFindUniqueOrThrowArgs>(args: SelectSubset<T, TrSupplierAuditFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TrSupplierAuditClient<$Result.GetResult<Prisma.$TrSupplierAuditPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first TrSupplierAudit that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrSupplierAuditFindFirstArgs} args - Arguments to find a TrSupplierAudit
+     * @example
+     * // Get one TrSupplierAudit
+     * const trSupplierAudit = await prisma.trSupplierAudit.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TrSupplierAuditFindFirstArgs>(args?: SelectSubset<T, TrSupplierAuditFindFirstArgs<ExtArgs>>): Prisma__TrSupplierAuditClient<$Result.GetResult<Prisma.$TrSupplierAuditPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first TrSupplierAudit that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrSupplierAuditFindFirstOrThrowArgs} args - Arguments to find a TrSupplierAudit
+     * @example
+     * // Get one TrSupplierAudit
+     * const trSupplierAudit = await prisma.trSupplierAudit.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TrSupplierAuditFindFirstOrThrowArgs>(args?: SelectSubset<T, TrSupplierAuditFindFirstOrThrowArgs<ExtArgs>>): Prisma__TrSupplierAuditClient<$Result.GetResult<Prisma.$TrSupplierAuditPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find zero or more TrSupplierAudits that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrSupplierAuditFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TrSupplierAudits
+     * const trSupplierAudits = await prisma.trSupplierAudit.findMany()
+     * 
+     * // Get first 10 TrSupplierAudits
+     * const trSupplierAudits = await prisma.trSupplierAudit.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const trSupplierAuditWithIdOnly = await prisma.trSupplierAudit.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TrSupplierAuditFindManyArgs>(args?: SelectSubset<T, TrSupplierAuditFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrSupplierAuditPayload<ExtArgs>, T, "findMany", ClientOptions>>
+
+    /**
+     * Create a TrSupplierAudit.
+     * @param {TrSupplierAuditCreateArgs} args - Arguments to create a TrSupplierAudit.
+     * @example
+     * // Create one TrSupplierAudit
+     * const TrSupplierAudit = await prisma.trSupplierAudit.create({
+     *   data: {
+     *     // ... data to create a TrSupplierAudit
+     *   }
+     * })
+     * 
+     */
+    create<T extends TrSupplierAuditCreateArgs>(args: SelectSubset<T, TrSupplierAuditCreateArgs<ExtArgs>>): Prisma__TrSupplierAuditClient<$Result.GetResult<Prisma.$TrSupplierAuditPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Create many TrSupplierAudits.
+     * @param {TrSupplierAuditCreateManyArgs} args - Arguments to create many TrSupplierAudits.
+     * @example
+     * // Create many TrSupplierAudits
+     * const trSupplierAudit = await prisma.trSupplierAudit.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TrSupplierAuditCreateManyArgs>(args?: SelectSubset<T, TrSupplierAuditCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a TrSupplierAudit.
+     * @param {TrSupplierAuditDeleteArgs} args - Arguments to delete one TrSupplierAudit.
+     * @example
+     * // Delete one TrSupplierAudit
+     * const TrSupplierAudit = await prisma.trSupplierAudit.delete({
+     *   where: {
+     *     // ... filter to delete one TrSupplierAudit
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TrSupplierAuditDeleteArgs>(args: SelectSubset<T, TrSupplierAuditDeleteArgs<ExtArgs>>): Prisma__TrSupplierAuditClient<$Result.GetResult<Prisma.$TrSupplierAuditPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Update one TrSupplierAudit.
+     * @param {TrSupplierAuditUpdateArgs} args - Arguments to update one TrSupplierAudit.
+     * @example
+     * // Update one TrSupplierAudit
+     * const trSupplierAudit = await prisma.trSupplierAudit.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TrSupplierAuditUpdateArgs>(args: SelectSubset<T, TrSupplierAuditUpdateArgs<ExtArgs>>): Prisma__TrSupplierAuditClient<$Result.GetResult<Prisma.$TrSupplierAuditPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Delete zero or more TrSupplierAudits.
+     * @param {TrSupplierAuditDeleteManyArgs} args - Arguments to filter TrSupplierAudits to delete.
+     * @example
+     * // Delete a few TrSupplierAudits
+     * const { count } = await prisma.trSupplierAudit.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TrSupplierAuditDeleteManyArgs>(args?: SelectSubset<T, TrSupplierAuditDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TrSupplierAudits.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrSupplierAuditUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TrSupplierAudits
+     * const trSupplierAudit = await prisma.trSupplierAudit.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TrSupplierAuditUpdateManyArgs>(args: SelectSubset<T, TrSupplierAuditUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one TrSupplierAudit.
+     * @param {TrSupplierAuditUpsertArgs} args - Arguments to update or create a TrSupplierAudit.
+     * @example
+     * // Update or create a TrSupplierAudit
+     * const trSupplierAudit = await prisma.trSupplierAudit.upsert({
+     *   create: {
+     *     // ... data to create a TrSupplierAudit
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TrSupplierAudit we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TrSupplierAuditUpsertArgs>(args: SelectSubset<T, TrSupplierAuditUpsertArgs<ExtArgs>>): Prisma__TrSupplierAuditClient<$Result.GetResult<Prisma.$TrSupplierAuditPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+
+
+    /**
+     * Count the number of TrSupplierAudits.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrSupplierAuditCountArgs} args - Arguments to filter TrSupplierAudits to count.
+     * @example
+     * // Count the number of TrSupplierAudits
+     * const count = await prisma.trSupplierAudit.count({
+     *   where: {
+     *     // ... the filter for the TrSupplierAudits we want to count
+     *   }
+     * })
+    **/
+    count<T extends TrSupplierAuditCountArgs>(
+      args?: Subset<T, TrSupplierAuditCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TrSupplierAuditCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TrSupplierAudit.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrSupplierAuditAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TrSupplierAuditAggregateArgs>(args: Subset<T, TrSupplierAuditAggregateArgs>): Prisma.PrismaPromise<GetTrSupplierAuditAggregateType<T>>
+
+    /**
+     * Group by TrSupplierAudit.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrSupplierAuditGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TrSupplierAuditGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TrSupplierAuditGroupByArgs['orderBy'] }
+        : { orderBy?: TrSupplierAuditGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TrSupplierAuditGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTrSupplierAuditGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TrSupplierAudit model
+   */
+  readonly fields: TrSupplierAuditFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TrSupplierAudit.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TrSupplierAuditClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TrSupplierAudit model
+   */ 
+  interface TrSupplierAuditFieldRefs {
+    readonly id: FieldRef<"TrSupplierAudit", 'Int'>
+    readonly plan_type: FieldRef<"TrSupplierAudit", 'String'>
+    readonly plant: FieldRef<"TrSupplierAudit", 'String'>
+    readonly date_plan: FieldRef<"TrSupplierAudit", 'DateTime'>
+    readonly id_supplier: FieldRef<"TrSupplierAudit", 'Int'>
+    readonly code_supplier: FieldRef<"TrSupplierAudit", 'String'>
+    readonly city: FieldRef<"TrSupplierAudit", 'String'>
+    readonly id_material: FieldRef<"TrSupplierAudit", 'Int'>
+    readonly date_complete: FieldRef<"TrSupplierAudit", 'DateTime'>
+    readonly score: FieldRef<"TrSupplierAudit", 'Int'>
+    readonly status: FieldRef<"TrSupplierAudit", 'Int'>
+    readonly evidence: FieldRef<"TrSupplierAudit", 'String'>
+    readonly evidence_type: FieldRef<"TrSupplierAudit", 'String'>
+    readonly evidence_size: FieldRef<"TrSupplierAudit", 'Int'>
+    readonly evidence_widht: FieldRef<"TrSupplierAudit", 'Int'>
+    readonly evidence_height: FieldRef<"TrSupplierAudit", 'Int'>
+    readonly improvment: FieldRef<"TrSupplierAudit", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TrSupplierAudit findUnique
+   */
+  export type TrSupplierAuditFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrSupplierAudit
+     */
+    select?: TrSupplierAuditSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrSupplierAudit
+     */
+    omit?: TrSupplierAuditOmit<ExtArgs> | null
+    /**
+     * Filter, which TrSupplierAudit to fetch.
+     */
+    where: TrSupplierAuditWhereUniqueInput
+  }
+
+  /**
+   * TrSupplierAudit findUniqueOrThrow
+   */
+  export type TrSupplierAuditFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrSupplierAudit
+     */
+    select?: TrSupplierAuditSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrSupplierAudit
+     */
+    omit?: TrSupplierAuditOmit<ExtArgs> | null
+    /**
+     * Filter, which TrSupplierAudit to fetch.
+     */
+    where: TrSupplierAuditWhereUniqueInput
+  }
+
+  /**
+   * TrSupplierAudit findFirst
+   */
+  export type TrSupplierAuditFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrSupplierAudit
+     */
+    select?: TrSupplierAuditSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrSupplierAudit
+     */
+    omit?: TrSupplierAuditOmit<ExtArgs> | null
+    /**
+     * Filter, which TrSupplierAudit to fetch.
+     */
+    where?: TrSupplierAuditWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrSupplierAudits to fetch.
+     */
+    orderBy?: TrSupplierAuditOrderByWithRelationInput | TrSupplierAuditOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TrSupplierAudits.
+     */
+    cursor?: TrSupplierAuditWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrSupplierAudits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrSupplierAudits.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TrSupplierAudits.
+     */
+    distinct?: TrSupplierAuditScalarFieldEnum | TrSupplierAuditScalarFieldEnum[]
+  }
+
+  /**
+   * TrSupplierAudit findFirstOrThrow
+   */
+  export type TrSupplierAuditFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrSupplierAudit
+     */
+    select?: TrSupplierAuditSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrSupplierAudit
+     */
+    omit?: TrSupplierAuditOmit<ExtArgs> | null
+    /**
+     * Filter, which TrSupplierAudit to fetch.
+     */
+    where?: TrSupplierAuditWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrSupplierAudits to fetch.
+     */
+    orderBy?: TrSupplierAuditOrderByWithRelationInput | TrSupplierAuditOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TrSupplierAudits.
+     */
+    cursor?: TrSupplierAuditWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrSupplierAudits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrSupplierAudits.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TrSupplierAudits.
+     */
+    distinct?: TrSupplierAuditScalarFieldEnum | TrSupplierAuditScalarFieldEnum[]
+  }
+
+  /**
+   * TrSupplierAudit findMany
+   */
+  export type TrSupplierAuditFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrSupplierAudit
+     */
+    select?: TrSupplierAuditSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrSupplierAudit
+     */
+    omit?: TrSupplierAuditOmit<ExtArgs> | null
+    /**
+     * Filter, which TrSupplierAudits to fetch.
+     */
+    where?: TrSupplierAuditWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrSupplierAudits to fetch.
+     */
+    orderBy?: TrSupplierAuditOrderByWithRelationInput | TrSupplierAuditOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TrSupplierAudits.
+     */
+    cursor?: TrSupplierAuditWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrSupplierAudits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrSupplierAudits.
+     */
+    skip?: number
+    distinct?: TrSupplierAuditScalarFieldEnum | TrSupplierAuditScalarFieldEnum[]
+  }
+
+  /**
+   * TrSupplierAudit create
+   */
+  export type TrSupplierAuditCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrSupplierAudit
+     */
+    select?: TrSupplierAuditSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrSupplierAudit
+     */
+    omit?: TrSupplierAuditOmit<ExtArgs> | null
+    /**
+     * The data needed to create a TrSupplierAudit.
+     */
+    data?: XOR<TrSupplierAuditCreateInput, TrSupplierAuditUncheckedCreateInput>
+  }
+
+  /**
+   * TrSupplierAudit createMany
+   */
+  export type TrSupplierAuditCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TrSupplierAudits.
+     */
+    data: TrSupplierAuditCreateManyInput | TrSupplierAuditCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TrSupplierAudit update
+   */
+  export type TrSupplierAuditUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrSupplierAudit
+     */
+    select?: TrSupplierAuditSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrSupplierAudit
+     */
+    omit?: TrSupplierAuditOmit<ExtArgs> | null
+    /**
+     * The data needed to update a TrSupplierAudit.
+     */
+    data: XOR<TrSupplierAuditUpdateInput, TrSupplierAuditUncheckedUpdateInput>
+    /**
+     * Choose, which TrSupplierAudit to update.
+     */
+    where: TrSupplierAuditWhereUniqueInput
+  }
+
+  /**
+   * TrSupplierAudit updateMany
+   */
+  export type TrSupplierAuditUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TrSupplierAudits.
+     */
+    data: XOR<TrSupplierAuditUpdateManyMutationInput, TrSupplierAuditUncheckedUpdateManyInput>
+    /**
+     * Filter which TrSupplierAudits to update
+     */
+    where?: TrSupplierAuditWhereInput
+    /**
+     * Limit how many TrSupplierAudits to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TrSupplierAudit upsert
+   */
+  export type TrSupplierAuditUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrSupplierAudit
+     */
+    select?: TrSupplierAuditSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrSupplierAudit
+     */
+    omit?: TrSupplierAuditOmit<ExtArgs> | null
+    /**
+     * The filter to search for the TrSupplierAudit to update in case it exists.
+     */
+    where: TrSupplierAuditWhereUniqueInput
+    /**
+     * In case the TrSupplierAudit found by the `where` argument doesn't exist, create a new TrSupplierAudit with this data.
+     */
+    create: XOR<TrSupplierAuditCreateInput, TrSupplierAuditUncheckedCreateInput>
+    /**
+     * In case the TrSupplierAudit was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TrSupplierAuditUpdateInput, TrSupplierAuditUncheckedUpdateInput>
+  }
+
+  /**
+   * TrSupplierAudit delete
+   */
+  export type TrSupplierAuditDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrSupplierAudit
+     */
+    select?: TrSupplierAuditSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrSupplierAudit
+     */
+    omit?: TrSupplierAuditOmit<ExtArgs> | null
+    /**
+     * Filter which TrSupplierAudit to delete.
+     */
+    where: TrSupplierAuditWhereUniqueInput
+  }
+
+  /**
+   * TrSupplierAudit deleteMany
+   */
+  export type TrSupplierAuditDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TrSupplierAudits to delete
+     */
+    where?: TrSupplierAuditWhereInput
+    /**
+     * Limit how many TrSupplierAudits to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TrSupplierAudit without action
+   */
+  export type TrSupplierAuditDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrSupplierAudit
+     */
+    select?: TrSupplierAuditSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrSupplierAudit
+     */
+    omit?: TrSupplierAuditOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -4039,6 +5198,29 @@ export namespace Prisma {
   export type ComplaintStatusScalarFieldEnum = (typeof ComplaintStatusScalarFieldEnum)[keyof typeof ComplaintStatusScalarFieldEnum]
 
 
+  export const TrSupplierAuditScalarFieldEnum: {
+    id: 'id',
+    plan_type: 'plan_type',
+    plant: 'plant',
+    date_plan: 'date_plan',
+    id_supplier: 'id_supplier',
+    code_supplier: 'code_supplier',
+    city: 'city',
+    id_material: 'id_material',
+    date_complete: 'date_complete',
+    score: 'score',
+    status: 'status',
+    evidence: 'evidence',
+    evidence_type: 'evidence_type',
+    evidence_size: 'evidence_size',
+    evidence_widht: 'evidence_widht',
+    evidence_height: 'evidence_height',
+    improvment: 'improvment'
+  };
+
+  export type TrSupplierAuditScalarFieldEnum = (typeof TrSupplierAuditScalarFieldEnum)[keyof typeof TrSupplierAuditScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -4086,6 +5268,19 @@ export namespace Prisma {
   };
 
   export type ComplaintStatusOrderByRelevanceFieldEnum = (typeof ComplaintStatusOrderByRelevanceFieldEnum)[keyof typeof ComplaintStatusOrderByRelevanceFieldEnum]
+
+
+  export const TrSupplierAuditOrderByRelevanceFieldEnum: {
+    plan_type: 'plan_type',
+    plant: 'plant',
+    code_supplier: 'code_supplier',
+    city: 'city',
+    evidence: 'evidence',
+    evidence_type: 'evidence_type',
+    improvment: 'improvment'
+  };
+
+  export type TrSupplierAuditOrderByRelevanceFieldEnum = (typeof TrSupplierAuditOrderByRelevanceFieldEnum)[keyof typeof TrSupplierAuditOrderByRelevanceFieldEnum]
 
 
   /**
@@ -4364,6 +5559,121 @@ export namespace Prisma {
     status?: StringNullableWithAggregatesFilter<"ComplaintStatus"> | string | null
   }
 
+  export type TrSupplierAuditWhereInput = {
+    AND?: TrSupplierAuditWhereInput | TrSupplierAuditWhereInput[]
+    OR?: TrSupplierAuditWhereInput[]
+    NOT?: TrSupplierAuditWhereInput | TrSupplierAuditWhereInput[]
+    id?: IntFilter<"TrSupplierAudit"> | number
+    plan_type?: StringNullableFilter<"TrSupplierAudit"> | string | null
+    plant?: StringNullableFilter<"TrSupplierAudit"> | string | null
+    date_plan?: DateTimeNullableFilter<"TrSupplierAudit"> | Date | string | null
+    id_supplier?: IntNullableFilter<"TrSupplierAudit"> | number | null
+    code_supplier?: StringNullableFilter<"TrSupplierAudit"> | string | null
+    city?: StringNullableFilter<"TrSupplierAudit"> | string | null
+    id_material?: IntNullableFilter<"TrSupplierAudit"> | number | null
+    date_complete?: DateTimeNullableFilter<"TrSupplierAudit"> | Date | string | null
+    score?: IntNullableFilter<"TrSupplierAudit"> | number | null
+    status?: IntNullableFilter<"TrSupplierAudit"> | number | null
+    evidence?: StringNullableFilter<"TrSupplierAudit"> | string | null
+    evidence_type?: StringNullableFilter<"TrSupplierAudit"> | string | null
+    evidence_size?: IntNullableFilter<"TrSupplierAudit"> | number | null
+    evidence_widht?: IntNullableFilter<"TrSupplierAudit"> | number | null
+    evidence_height?: IntNullableFilter<"TrSupplierAudit"> | number | null
+    improvment?: StringNullableFilter<"TrSupplierAudit"> | string | null
+  }
+
+  export type TrSupplierAuditOrderByWithRelationInput = {
+    id?: SortOrder
+    plan_type?: SortOrderInput | SortOrder
+    plant?: SortOrderInput | SortOrder
+    date_plan?: SortOrderInput | SortOrder
+    id_supplier?: SortOrderInput | SortOrder
+    code_supplier?: SortOrderInput | SortOrder
+    city?: SortOrderInput | SortOrder
+    id_material?: SortOrderInput | SortOrder
+    date_complete?: SortOrderInput | SortOrder
+    score?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
+    evidence?: SortOrderInput | SortOrder
+    evidence_type?: SortOrderInput | SortOrder
+    evidence_size?: SortOrderInput | SortOrder
+    evidence_widht?: SortOrderInput | SortOrder
+    evidence_height?: SortOrderInput | SortOrder
+    improvment?: SortOrderInput | SortOrder
+    _relevance?: TrSupplierAuditOrderByRelevanceInput
+  }
+
+  export type TrSupplierAuditWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: TrSupplierAuditWhereInput | TrSupplierAuditWhereInput[]
+    OR?: TrSupplierAuditWhereInput[]
+    NOT?: TrSupplierAuditWhereInput | TrSupplierAuditWhereInput[]
+    plan_type?: StringNullableFilter<"TrSupplierAudit"> | string | null
+    plant?: StringNullableFilter<"TrSupplierAudit"> | string | null
+    date_plan?: DateTimeNullableFilter<"TrSupplierAudit"> | Date | string | null
+    id_supplier?: IntNullableFilter<"TrSupplierAudit"> | number | null
+    code_supplier?: StringNullableFilter<"TrSupplierAudit"> | string | null
+    city?: StringNullableFilter<"TrSupplierAudit"> | string | null
+    id_material?: IntNullableFilter<"TrSupplierAudit"> | number | null
+    date_complete?: DateTimeNullableFilter<"TrSupplierAudit"> | Date | string | null
+    score?: IntNullableFilter<"TrSupplierAudit"> | number | null
+    status?: IntNullableFilter<"TrSupplierAudit"> | number | null
+    evidence?: StringNullableFilter<"TrSupplierAudit"> | string | null
+    evidence_type?: StringNullableFilter<"TrSupplierAudit"> | string | null
+    evidence_size?: IntNullableFilter<"TrSupplierAudit"> | number | null
+    evidence_widht?: IntNullableFilter<"TrSupplierAudit"> | number | null
+    evidence_height?: IntNullableFilter<"TrSupplierAudit"> | number | null
+    improvment?: StringNullableFilter<"TrSupplierAudit"> | string | null
+  }, "id">
+
+  export type TrSupplierAuditOrderByWithAggregationInput = {
+    id?: SortOrder
+    plan_type?: SortOrderInput | SortOrder
+    plant?: SortOrderInput | SortOrder
+    date_plan?: SortOrderInput | SortOrder
+    id_supplier?: SortOrderInput | SortOrder
+    code_supplier?: SortOrderInput | SortOrder
+    city?: SortOrderInput | SortOrder
+    id_material?: SortOrderInput | SortOrder
+    date_complete?: SortOrderInput | SortOrder
+    score?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
+    evidence?: SortOrderInput | SortOrder
+    evidence_type?: SortOrderInput | SortOrder
+    evidence_size?: SortOrderInput | SortOrder
+    evidence_widht?: SortOrderInput | SortOrder
+    evidence_height?: SortOrderInput | SortOrder
+    improvment?: SortOrderInput | SortOrder
+    _count?: TrSupplierAuditCountOrderByAggregateInput
+    _avg?: TrSupplierAuditAvgOrderByAggregateInput
+    _max?: TrSupplierAuditMaxOrderByAggregateInput
+    _min?: TrSupplierAuditMinOrderByAggregateInput
+    _sum?: TrSupplierAuditSumOrderByAggregateInput
+  }
+
+  export type TrSupplierAuditScalarWhereWithAggregatesInput = {
+    AND?: TrSupplierAuditScalarWhereWithAggregatesInput | TrSupplierAuditScalarWhereWithAggregatesInput[]
+    OR?: TrSupplierAuditScalarWhereWithAggregatesInput[]
+    NOT?: TrSupplierAuditScalarWhereWithAggregatesInput | TrSupplierAuditScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"TrSupplierAudit"> | number
+    plan_type?: StringNullableWithAggregatesFilter<"TrSupplierAudit"> | string | null
+    plant?: StringNullableWithAggregatesFilter<"TrSupplierAudit"> | string | null
+    date_plan?: DateTimeNullableWithAggregatesFilter<"TrSupplierAudit"> | Date | string | null
+    id_supplier?: IntNullableWithAggregatesFilter<"TrSupplierAudit"> | number | null
+    code_supplier?: StringNullableWithAggregatesFilter<"TrSupplierAudit"> | string | null
+    city?: StringNullableWithAggregatesFilter<"TrSupplierAudit"> | string | null
+    id_material?: IntNullableWithAggregatesFilter<"TrSupplierAudit"> | number | null
+    date_complete?: DateTimeNullableWithAggregatesFilter<"TrSupplierAudit"> | Date | string | null
+    score?: IntNullableWithAggregatesFilter<"TrSupplierAudit"> | number | null
+    status?: IntNullableWithAggregatesFilter<"TrSupplierAudit"> | number | null
+    evidence?: StringNullableWithAggregatesFilter<"TrSupplierAudit"> | string | null
+    evidence_type?: StringNullableWithAggregatesFilter<"TrSupplierAudit"> | string | null
+    evidence_size?: IntNullableWithAggregatesFilter<"TrSupplierAudit"> | number | null
+    evidence_widht?: IntNullableWithAggregatesFilter<"TrSupplierAudit"> | number | null
+    evidence_height?: IntNullableWithAggregatesFilter<"TrSupplierAudit"> | number | null
+    improvment?: StringNullableWithAggregatesFilter<"TrSupplierAudit"> | string | null
+  }
+
   export type MstMaterialCapaCreateInput = {
     kode_vendor?: string | null
     name_vendor?: string | null
@@ -4626,6 +5936,143 @@ export namespace Prisma {
     name_vendor?: NullableStringFieldUpdateOperationsInput | string | null
     tgl_complain?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TrSupplierAuditCreateInput = {
+    plan_type?: string | null
+    plant?: string | null
+    date_plan?: Date | string | null
+    id_supplier?: number | null
+    code_supplier?: string | null
+    city?: string | null
+    id_material?: number | null
+    date_complete?: Date | string | null
+    score?: number | null
+    status?: number | null
+    evidence?: string | null
+    evidence_type?: string | null
+    evidence_size?: number | null
+    evidence_widht?: number | null
+    evidence_height?: number | null
+    improvment?: string | null
+  }
+
+  export type TrSupplierAuditUncheckedCreateInput = {
+    id?: number
+    plan_type?: string | null
+    plant?: string | null
+    date_plan?: Date | string | null
+    id_supplier?: number | null
+    code_supplier?: string | null
+    city?: string | null
+    id_material?: number | null
+    date_complete?: Date | string | null
+    score?: number | null
+    status?: number | null
+    evidence?: string | null
+    evidence_type?: string | null
+    evidence_size?: number | null
+    evidence_widht?: number | null
+    evidence_height?: number | null
+    improvment?: string | null
+  }
+
+  export type TrSupplierAuditUpdateInput = {
+    plan_type?: NullableStringFieldUpdateOperationsInput | string | null
+    plant?: NullableStringFieldUpdateOperationsInput | string | null
+    date_plan?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    id_supplier?: NullableIntFieldUpdateOperationsInput | number | null
+    code_supplier?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    id_material?: NullableIntFieldUpdateOperationsInput | number | null
+    date_complete?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    score?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: NullableIntFieldUpdateOperationsInput | number | null
+    evidence?: NullableStringFieldUpdateOperationsInput | string | null
+    evidence_type?: NullableStringFieldUpdateOperationsInput | string | null
+    evidence_size?: NullableIntFieldUpdateOperationsInput | number | null
+    evidence_widht?: NullableIntFieldUpdateOperationsInput | number | null
+    evidence_height?: NullableIntFieldUpdateOperationsInput | number | null
+    improvment?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TrSupplierAuditUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    plan_type?: NullableStringFieldUpdateOperationsInput | string | null
+    plant?: NullableStringFieldUpdateOperationsInput | string | null
+    date_plan?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    id_supplier?: NullableIntFieldUpdateOperationsInput | number | null
+    code_supplier?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    id_material?: NullableIntFieldUpdateOperationsInput | number | null
+    date_complete?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    score?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: NullableIntFieldUpdateOperationsInput | number | null
+    evidence?: NullableStringFieldUpdateOperationsInput | string | null
+    evidence_type?: NullableStringFieldUpdateOperationsInput | string | null
+    evidence_size?: NullableIntFieldUpdateOperationsInput | number | null
+    evidence_widht?: NullableIntFieldUpdateOperationsInput | number | null
+    evidence_height?: NullableIntFieldUpdateOperationsInput | number | null
+    improvment?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TrSupplierAuditCreateManyInput = {
+    id?: number
+    plan_type?: string | null
+    plant?: string | null
+    date_plan?: Date | string | null
+    id_supplier?: number | null
+    code_supplier?: string | null
+    city?: string | null
+    id_material?: number | null
+    date_complete?: Date | string | null
+    score?: number | null
+    status?: number | null
+    evidence?: string | null
+    evidence_type?: string | null
+    evidence_size?: number | null
+    evidence_widht?: number | null
+    evidence_height?: number | null
+    improvment?: string | null
+  }
+
+  export type TrSupplierAuditUpdateManyMutationInput = {
+    plan_type?: NullableStringFieldUpdateOperationsInput | string | null
+    plant?: NullableStringFieldUpdateOperationsInput | string | null
+    date_plan?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    id_supplier?: NullableIntFieldUpdateOperationsInput | number | null
+    code_supplier?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    id_material?: NullableIntFieldUpdateOperationsInput | number | null
+    date_complete?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    score?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: NullableIntFieldUpdateOperationsInput | number | null
+    evidence?: NullableStringFieldUpdateOperationsInput | string | null
+    evidence_type?: NullableStringFieldUpdateOperationsInput | string | null
+    evidence_size?: NullableIntFieldUpdateOperationsInput | number | null
+    evidence_widht?: NullableIntFieldUpdateOperationsInput | number | null
+    evidence_height?: NullableIntFieldUpdateOperationsInput | number | null
+    improvment?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TrSupplierAuditUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    plan_type?: NullableStringFieldUpdateOperationsInput | string | null
+    plant?: NullableStringFieldUpdateOperationsInput | string | null
+    date_plan?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    id_supplier?: NullableIntFieldUpdateOperationsInput | number | null
+    code_supplier?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    id_material?: NullableIntFieldUpdateOperationsInput | number | null
+    date_complete?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    score?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: NullableIntFieldUpdateOperationsInput | number | null
+    evidence?: NullableStringFieldUpdateOperationsInput | string | null
+    evidence_type?: NullableStringFieldUpdateOperationsInput | string | null
+    evidence_size?: NullableIntFieldUpdateOperationsInput | number | null
+    evidence_widht?: NullableIntFieldUpdateOperationsInput | number | null
+    evidence_height?: NullableIntFieldUpdateOperationsInput | number | null
+    improvment?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -4982,6 +6429,94 @@ export namespace Prisma {
 
   export type ComplaintStatusSumOrderByAggregateInput = {
     id?: SortOrder
+  }
+
+  export type TrSupplierAuditOrderByRelevanceInput = {
+    fields: TrSupplierAuditOrderByRelevanceFieldEnum | TrSupplierAuditOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type TrSupplierAuditCountOrderByAggregateInput = {
+    id?: SortOrder
+    plan_type?: SortOrder
+    plant?: SortOrder
+    date_plan?: SortOrder
+    id_supplier?: SortOrder
+    code_supplier?: SortOrder
+    city?: SortOrder
+    id_material?: SortOrder
+    date_complete?: SortOrder
+    score?: SortOrder
+    status?: SortOrder
+    evidence?: SortOrder
+    evidence_type?: SortOrder
+    evidence_size?: SortOrder
+    evidence_widht?: SortOrder
+    evidence_height?: SortOrder
+    improvment?: SortOrder
+  }
+
+  export type TrSupplierAuditAvgOrderByAggregateInput = {
+    id?: SortOrder
+    id_supplier?: SortOrder
+    id_material?: SortOrder
+    score?: SortOrder
+    status?: SortOrder
+    evidence_size?: SortOrder
+    evidence_widht?: SortOrder
+    evidence_height?: SortOrder
+  }
+
+  export type TrSupplierAuditMaxOrderByAggregateInput = {
+    id?: SortOrder
+    plan_type?: SortOrder
+    plant?: SortOrder
+    date_plan?: SortOrder
+    id_supplier?: SortOrder
+    code_supplier?: SortOrder
+    city?: SortOrder
+    id_material?: SortOrder
+    date_complete?: SortOrder
+    score?: SortOrder
+    status?: SortOrder
+    evidence?: SortOrder
+    evidence_type?: SortOrder
+    evidence_size?: SortOrder
+    evidence_widht?: SortOrder
+    evidence_height?: SortOrder
+    improvment?: SortOrder
+  }
+
+  export type TrSupplierAuditMinOrderByAggregateInput = {
+    id?: SortOrder
+    plan_type?: SortOrder
+    plant?: SortOrder
+    date_plan?: SortOrder
+    id_supplier?: SortOrder
+    code_supplier?: SortOrder
+    city?: SortOrder
+    id_material?: SortOrder
+    date_complete?: SortOrder
+    score?: SortOrder
+    status?: SortOrder
+    evidence?: SortOrder
+    evidence_type?: SortOrder
+    evidence_size?: SortOrder
+    evidence_widht?: SortOrder
+    evidence_height?: SortOrder
+    improvment?: SortOrder
+  }
+
+  export type TrSupplierAuditSumOrderByAggregateInput = {
+    id?: SortOrder
+    id_supplier?: SortOrder
+    id_material?: SortOrder
+    score?: SortOrder
+    status?: SortOrder
+    evidence_size?: SortOrder
+    evidence_widht?: SortOrder
+    evidence_height?: SortOrder
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
