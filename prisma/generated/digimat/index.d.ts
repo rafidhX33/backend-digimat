@@ -18,6 +18,11 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  * 
  */
 export type mst_doc = $Result.DefaultSelection<Prisma.$mst_docPayload>
+/**
+ * Model tr_supplier_info
+ * 
+ */
+export type tr_supplier_info = $Result.DefaultSelection<Prisma.$tr_supplier_infoPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -153,6 +158,16 @@ export class PrismaClient<
     * ```
     */
   get mst_doc(): Prisma.mst_docDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.tr_supplier_info`: Exposes CRUD operations for the **tr_supplier_info** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Tr_supplier_infos
+    * const tr_supplier_infos = await prisma.tr_supplier_info.findMany()
+    * ```
+    */
+  get tr_supplier_info(): Prisma.tr_supplier_infoDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -593,7 +608,8 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    mst_doc: 'mst_doc'
+    mst_doc: 'mst_doc',
+    tr_supplier_info: 'tr_supplier_info'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -609,7 +625,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "mst_doc"
+      modelProps: "mst_doc" | "tr_supplier_info"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -676,6 +692,72 @@ export namespace Prisma {
           count: {
             args: Prisma.mst_docCountArgs<ExtArgs>
             result: $Utils.Optional<Mst_docCountAggregateOutputType> | number
+          }
+        }
+      }
+      tr_supplier_info: {
+        payload: Prisma.$tr_supplier_infoPayload<ExtArgs>
+        fields: Prisma.tr_supplier_infoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.tr_supplier_infoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_supplier_infoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.tr_supplier_infoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_supplier_infoPayload>
+          }
+          findFirst: {
+            args: Prisma.tr_supplier_infoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_supplier_infoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.tr_supplier_infoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_supplier_infoPayload>
+          }
+          findMany: {
+            args: Prisma.tr_supplier_infoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_supplier_infoPayload>[]
+          }
+          create: {
+            args: Prisma.tr_supplier_infoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_supplier_infoPayload>
+          }
+          createMany: {
+            args: Prisma.tr_supplier_infoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.tr_supplier_infoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_supplier_infoPayload>
+          }
+          update: {
+            args: Prisma.tr_supplier_infoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_supplier_infoPayload>
+          }
+          deleteMany: {
+            args: Prisma.tr_supplier_infoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.tr_supplier_infoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.tr_supplier_infoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_supplier_infoPayload>
+          }
+          aggregate: {
+            args: Prisma.Tr_supplier_infoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTr_supplier_info>
+          }
+          groupBy: {
+            args: Prisma.tr_supplier_infoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Tr_supplier_infoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.tr_supplier_infoCountArgs<ExtArgs>
+            result: $Utils.Optional<Tr_supplier_infoCountAggregateOutputType> | number
           }
         }
       }
@@ -764,6 +846,7 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     mst_doc?: mst_docOmit
+    tr_supplier_info?: tr_supplier_infoOmit
   }
 
   /* Types for Logging */
@@ -1819,6 +1902,911 @@ export namespace Prisma {
 
 
   /**
+   * Model tr_supplier_info
+   */
+
+  export type AggregateTr_supplier_info = {
+    _count: Tr_supplier_infoCountAggregateOutputType | null
+    _avg: Tr_supplier_infoAvgAggregateOutputType | null
+    _sum: Tr_supplier_infoSumAggregateOutputType | null
+    _min: Tr_supplier_infoMinAggregateOutputType | null
+    _max: Tr_supplier_infoMaxAggregateOutputType | null
+  }
+
+  export type Tr_supplier_infoAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type Tr_supplier_infoSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type Tr_supplier_infoMinAggregateOutputType = {
+    id: number | null
+    kode_vendor: string | null
+    logo: string | null
+    status: string | null
+  }
+
+  export type Tr_supplier_infoMaxAggregateOutputType = {
+    id: number | null
+    kode_vendor: string | null
+    logo: string | null
+    status: string | null
+  }
+
+  export type Tr_supplier_infoCountAggregateOutputType = {
+    id: number
+    kode_vendor: number
+    logo: number
+    status: number
+    _all: number
+  }
+
+
+  export type Tr_supplier_infoAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type Tr_supplier_infoSumAggregateInputType = {
+    id?: true
+  }
+
+  export type Tr_supplier_infoMinAggregateInputType = {
+    id?: true
+    kode_vendor?: true
+    logo?: true
+    status?: true
+  }
+
+  export type Tr_supplier_infoMaxAggregateInputType = {
+    id?: true
+    kode_vendor?: true
+    logo?: true
+    status?: true
+  }
+
+  export type Tr_supplier_infoCountAggregateInputType = {
+    id?: true
+    kode_vendor?: true
+    logo?: true
+    status?: true
+    _all?: true
+  }
+
+  export type Tr_supplier_infoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which tr_supplier_info to aggregate.
+     */
+    where?: tr_supplier_infoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tr_supplier_infos to fetch.
+     */
+    orderBy?: tr_supplier_infoOrderByWithRelationInput | tr_supplier_infoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: tr_supplier_infoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tr_supplier_infos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tr_supplier_infos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned tr_supplier_infos
+    **/
+    _count?: true | Tr_supplier_infoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Tr_supplier_infoAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Tr_supplier_infoSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Tr_supplier_infoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Tr_supplier_infoMaxAggregateInputType
+  }
+
+  export type GetTr_supplier_infoAggregateType<T extends Tr_supplier_infoAggregateArgs> = {
+        [P in keyof T & keyof AggregateTr_supplier_info]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTr_supplier_info[P]>
+      : GetScalarType<T[P], AggregateTr_supplier_info[P]>
+  }
+
+
+
+
+  export type tr_supplier_infoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: tr_supplier_infoWhereInput
+    orderBy?: tr_supplier_infoOrderByWithAggregationInput | tr_supplier_infoOrderByWithAggregationInput[]
+    by: Tr_supplier_infoScalarFieldEnum[] | Tr_supplier_infoScalarFieldEnum
+    having?: tr_supplier_infoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Tr_supplier_infoCountAggregateInputType | true
+    _avg?: Tr_supplier_infoAvgAggregateInputType
+    _sum?: Tr_supplier_infoSumAggregateInputType
+    _min?: Tr_supplier_infoMinAggregateInputType
+    _max?: Tr_supplier_infoMaxAggregateInputType
+  }
+
+  export type Tr_supplier_infoGroupByOutputType = {
+    id: number
+    kode_vendor: string
+    logo: string | null
+    status: string | null
+    _count: Tr_supplier_infoCountAggregateOutputType | null
+    _avg: Tr_supplier_infoAvgAggregateOutputType | null
+    _sum: Tr_supplier_infoSumAggregateOutputType | null
+    _min: Tr_supplier_infoMinAggregateOutputType | null
+    _max: Tr_supplier_infoMaxAggregateOutputType | null
+  }
+
+  type GetTr_supplier_infoGroupByPayload<T extends tr_supplier_infoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Tr_supplier_infoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Tr_supplier_infoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Tr_supplier_infoGroupByOutputType[P]>
+            : GetScalarType<T[P], Tr_supplier_infoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type tr_supplier_infoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    kode_vendor?: boolean
+    logo?: boolean
+    status?: boolean
+  }, ExtArgs["result"]["tr_supplier_info"]>
+
+
+
+  export type tr_supplier_infoSelectScalar = {
+    id?: boolean
+    kode_vendor?: boolean
+    logo?: boolean
+    status?: boolean
+  }
+
+  export type tr_supplier_infoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "kode_vendor" | "logo" | "status", ExtArgs["result"]["tr_supplier_info"]>
+
+  export type $tr_supplier_infoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "tr_supplier_info"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      kode_vendor: string
+      logo: string | null
+      status: string | null
+    }, ExtArgs["result"]["tr_supplier_info"]>
+    composites: {}
+  }
+
+  type tr_supplier_infoGetPayload<S extends boolean | null | undefined | tr_supplier_infoDefaultArgs> = $Result.GetResult<Prisma.$tr_supplier_infoPayload, S>
+
+  type tr_supplier_infoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<tr_supplier_infoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Tr_supplier_infoCountAggregateInputType | true
+    }
+
+  export interface tr_supplier_infoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['tr_supplier_info'], meta: { name: 'tr_supplier_info' } }
+    /**
+     * Find zero or one Tr_supplier_info that matches the filter.
+     * @param {tr_supplier_infoFindUniqueArgs} args - Arguments to find a Tr_supplier_info
+     * @example
+     * // Get one Tr_supplier_info
+     * const tr_supplier_info = await prisma.tr_supplier_info.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends tr_supplier_infoFindUniqueArgs>(args: SelectSubset<T, tr_supplier_infoFindUniqueArgs<ExtArgs>>): Prisma__tr_supplier_infoClient<$Result.GetResult<Prisma.$tr_supplier_infoPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find one Tr_supplier_info that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {tr_supplier_infoFindUniqueOrThrowArgs} args - Arguments to find a Tr_supplier_info
+     * @example
+     * // Get one Tr_supplier_info
+     * const tr_supplier_info = await prisma.tr_supplier_info.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends tr_supplier_infoFindUniqueOrThrowArgs>(args: SelectSubset<T, tr_supplier_infoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__tr_supplier_infoClient<$Result.GetResult<Prisma.$tr_supplier_infoPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Tr_supplier_info that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tr_supplier_infoFindFirstArgs} args - Arguments to find a Tr_supplier_info
+     * @example
+     * // Get one Tr_supplier_info
+     * const tr_supplier_info = await prisma.tr_supplier_info.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends tr_supplier_infoFindFirstArgs>(args?: SelectSubset<T, tr_supplier_infoFindFirstArgs<ExtArgs>>): Prisma__tr_supplier_infoClient<$Result.GetResult<Prisma.$tr_supplier_infoPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Tr_supplier_info that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tr_supplier_infoFindFirstOrThrowArgs} args - Arguments to find a Tr_supplier_info
+     * @example
+     * // Get one Tr_supplier_info
+     * const tr_supplier_info = await prisma.tr_supplier_info.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends tr_supplier_infoFindFirstOrThrowArgs>(args?: SelectSubset<T, tr_supplier_infoFindFirstOrThrowArgs<ExtArgs>>): Prisma__tr_supplier_infoClient<$Result.GetResult<Prisma.$tr_supplier_infoPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find zero or more Tr_supplier_infos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tr_supplier_infoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Tr_supplier_infos
+     * const tr_supplier_infos = await prisma.tr_supplier_info.findMany()
+     * 
+     * // Get first 10 Tr_supplier_infos
+     * const tr_supplier_infos = await prisma.tr_supplier_info.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const tr_supplier_infoWithIdOnly = await prisma.tr_supplier_info.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends tr_supplier_infoFindManyArgs>(args?: SelectSubset<T, tr_supplier_infoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_supplier_infoPayload<ExtArgs>, T, "findMany", ClientOptions>>
+
+    /**
+     * Create a Tr_supplier_info.
+     * @param {tr_supplier_infoCreateArgs} args - Arguments to create a Tr_supplier_info.
+     * @example
+     * // Create one Tr_supplier_info
+     * const Tr_supplier_info = await prisma.tr_supplier_info.create({
+     *   data: {
+     *     // ... data to create a Tr_supplier_info
+     *   }
+     * })
+     * 
+     */
+    create<T extends tr_supplier_infoCreateArgs>(args: SelectSubset<T, tr_supplier_infoCreateArgs<ExtArgs>>): Prisma__tr_supplier_infoClient<$Result.GetResult<Prisma.$tr_supplier_infoPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Create many Tr_supplier_infos.
+     * @param {tr_supplier_infoCreateManyArgs} args - Arguments to create many Tr_supplier_infos.
+     * @example
+     * // Create many Tr_supplier_infos
+     * const tr_supplier_info = await prisma.tr_supplier_info.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends tr_supplier_infoCreateManyArgs>(args?: SelectSubset<T, tr_supplier_infoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Tr_supplier_info.
+     * @param {tr_supplier_infoDeleteArgs} args - Arguments to delete one Tr_supplier_info.
+     * @example
+     * // Delete one Tr_supplier_info
+     * const Tr_supplier_info = await prisma.tr_supplier_info.delete({
+     *   where: {
+     *     // ... filter to delete one Tr_supplier_info
+     *   }
+     * })
+     * 
+     */
+    delete<T extends tr_supplier_infoDeleteArgs>(args: SelectSubset<T, tr_supplier_infoDeleteArgs<ExtArgs>>): Prisma__tr_supplier_infoClient<$Result.GetResult<Prisma.$tr_supplier_infoPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Update one Tr_supplier_info.
+     * @param {tr_supplier_infoUpdateArgs} args - Arguments to update one Tr_supplier_info.
+     * @example
+     * // Update one Tr_supplier_info
+     * const tr_supplier_info = await prisma.tr_supplier_info.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends tr_supplier_infoUpdateArgs>(args: SelectSubset<T, tr_supplier_infoUpdateArgs<ExtArgs>>): Prisma__tr_supplier_infoClient<$Result.GetResult<Prisma.$tr_supplier_infoPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Delete zero or more Tr_supplier_infos.
+     * @param {tr_supplier_infoDeleteManyArgs} args - Arguments to filter Tr_supplier_infos to delete.
+     * @example
+     * // Delete a few Tr_supplier_infos
+     * const { count } = await prisma.tr_supplier_info.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends tr_supplier_infoDeleteManyArgs>(args?: SelectSubset<T, tr_supplier_infoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Tr_supplier_infos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tr_supplier_infoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Tr_supplier_infos
+     * const tr_supplier_info = await prisma.tr_supplier_info.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends tr_supplier_infoUpdateManyArgs>(args: SelectSubset<T, tr_supplier_infoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Tr_supplier_info.
+     * @param {tr_supplier_infoUpsertArgs} args - Arguments to update or create a Tr_supplier_info.
+     * @example
+     * // Update or create a Tr_supplier_info
+     * const tr_supplier_info = await prisma.tr_supplier_info.upsert({
+     *   create: {
+     *     // ... data to create a Tr_supplier_info
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Tr_supplier_info we want to update
+     *   }
+     * })
+     */
+    upsert<T extends tr_supplier_infoUpsertArgs>(args: SelectSubset<T, tr_supplier_infoUpsertArgs<ExtArgs>>): Prisma__tr_supplier_infoClient<$Result.GetResult<Prisma.$tr_supplier_infoPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+
+
+    /**
+     * Count the number of Tr_supplier_infos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tr_supplier_infoCountArgs} args - Arguments to filter Tr_supplier_infos to count.
+     * @example
+     * // Count the number of Tr_supplier_infos
+     * const count = await prisma.tr_supplier_info.count({
+     *   where: {
+     *     // ... the filter for the Tr_supplier_infos we want to count
+     *   }
+     * })
+    **/
+    count<T extends tr_supplier_infoCountArgs>(
+      args?: Subset<T, tr_supplier_infoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Tr_supplier_infoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Tr_supplier_info.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Tr_supplier_infoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Tr_supplier_infoAggregateArgs>(args: Subset<T, Tr_supplier_infoAggregateArgs>): Prisma.PrismaPromise<GetTr_supplier_infoAggregateType<T>>
+
+    /**
+     * Group by Tr_supplier_info.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tr_supplier_infoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends tr_supplier_infoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: tr_supplier_infoGroupByArgs['orderBy'] }
+        : { orderBy?: tr_supplier_infoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, tr_supplier_infoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTr_supplier_infoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the tr_supplier_info model
+   */
+  readonly fields: tr_supplier_infoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for tr_supplier_info.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__tr_supplier_infoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the tr_supplier_info model
+   */ 
+  interface tr_supplier_infoFieldRefs {
+    readonly id: FieldRef<"tr_supplier_info", 'Int'>
+    readonly kode_vendor: FieldRef<"tr_supplier_info", 'String'>
+    readonly logo: FieldRef<"tr_supplier_info", 'String'>
+    readonly status: FieldRef<"tr_supplier_info", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * tr_supplier_info findUnique
+   */
+  export type tr_supplier_infoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_supplier_info
+     */
+    select?: tr_supplier_infoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_supplier_info
+     */
+    omit?: tr_supplier_infoOmit<ExtArgs> | null
+    /**
+     * Filter, which tr_supplier_info to fetch.
+     */
+    where: tr_supplier_infoWhereUniqueInput
+  }
+
+  /**
+   * tr_supplier_info findUniqueOrThrow
+   */
+  export type tr_supplier_infoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_supplier_info
+     */
+    select?: tr_supplier_infoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_supplier_info
+     */
+    omit?: tr_supplier_infoOmit<ExtArgs> | null
+    /**
+     * Filter, which tr_supplier_info to fetch.
+     */
+    where: tr_supplier_infoWhereUniqueInput
+  }
+
+  /**
+   * tr_supplier_info findFirst
+   */
+  export type tr_supplier_infoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_supplier_info
+     */
+    select?: tr_supplier_infoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_supplier_info
+     */
+    omit?: tr_supplier_infoOmit<ExtArgs> | null
+    /**
+     * Filter, which tr_supplier_info to fetch.
+     */
+    where?: tr_supplier_infoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tr_supplier_infos to fetch.
+     */
+    orderBy?: tr_supplier_infoOrderByWithRelationInput | tr_supplier_infoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for tr_supplier_infos.
+     */
+    cursor?: tr_supplier_infoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tr_supplier_infos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tr_supplier_infos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of tr_supplier_infos.
+     */
+    distinct?: Tr_supplier_infoScalarFieldEnum | Tr_supplier_infoScalarFieldEnum[]
+  }
+
+  /**
+   * tr_supplier_info findFirstOrThrow
+   */
+  export type tr_supplier_infoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_supplier_info
+     */
+    select?: tr_supplier_infoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_supplier_info
+     */
+    omit?: tr_supplier_infoOmit<ExtArgs> | null
+    /**
+     * Filter, which tr_supplier_info to fetch.
+     */
+    where?: tr_supplier_infoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tr_supplier_infos to fetch.
+     */
+    orderBy?: tr_supplier_infoOrderByWithRelationInput | tr_supplier_infoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for tr_supplier_infos.
+     */
+    cursor?: tr_supplier_infoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tr_supplier_infos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tr_supplier_infos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of tr_supplier_infos.
+     */
+    distinct?: Tr_supplier_infoScalarFieldEnum | Tr_supplier_infoScalarFieldEnum[]
+  }
+
+  /**
+   * tr_supplier_info findMany
+   */
+  export type tr_supplier_infoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_supplier_info
+     */
+    select?: tr_supplier_infoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_supplier_info
+     */
+    omit?: tr_supplier_infoOmit<ExtArgs> | null
+    /**
+     * Filter, which tr_supplier_infos to fetch.
+     */
+    where?: tr_supplier_infoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tr_supplier_infos to fetch.
+     */
+    orderBy?: tr_supplier_infoOrderByWithRelationInput | tr_supplier_infoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing tr_supplier_infos.
+     */
+    cursor?: tr_supplier_infoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tr_supplier_infos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tr_supplier_infos.
+     */
+    skip?: number
+    distinct?: Tr_supplier_infoScalarFieldEnum | Tr_supplier_infoScalarFieldEnum[]
+  }
+
+  /**
+   * tr_supplier_info create
+   */
+  export type tr_supplier_infoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_supplier_info
+     */
+    select?: tr_supplier_infoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_supplier_info
+     */
+    omit?: tr_supplier_infoOmit<ExtArgs> | null
+    /**
+     * The data needed to create a tr_supplier_info.
+     */
+    data: XOR<tr_supplier_infoCreateInput, tr_supplier_infoUncheckedCreateInput>
+  }
+
+  /**
+   * tr_supplier_info createMany
+   */
+  export type tr_supplier_infoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many tr_supplier_infos.
+     */
+    data: tr_supplier_infoCreateManyInput | tr_supplier_infoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * tr_supplier_info update
+   */
+  export type tr_supplier_infoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_supplier_info
+     */
+    select?: tr_supplier_infoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_supplier_info
+     */
+    omit?: tr_supplier_infoOmit<ExtArgs> | null
+    /**
+     * The data needed to update a tr_supplier_info.
+     */
+    data: XOR<tr_supplier_infoUpdateInput, tr_supplier_infoUncheckedUpdateInput>
+    /**
+     * Choose, which tr_supplier_info to update.
+     */
+    where: tr_supplier_infoWhereUniqueInput
+  }
+
+  /**
+   * tr_supplier_info updateMany
+   */
+  export type tr_supplier_infoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update tr_supplier_infos.
+     */
+    data: XOR<tr_supplier_infoUpdateManyMutationInput, tr_supplier_infoUncheckedUpdateManyInput>
+    /**
+     * Filter which tr_supplier_infos to update
+     */
+    where?: tr_supplier_infoWhereInput
+    /**
+     * Limit how many tr_supplier_infos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * tr_supplier_info upsert
+   */
+  export type tr_supplier_infoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_supplier_info
+     */
+    select?: tr_supplier_infoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_supplier_info
+     */
+    omit?: tr_supplier_infoOmit<ExtArgs> | null
+    /**
+     * The filter to search for the tr_supplier_info to update in case it exists.
+     */
+    where: tr_supplier_infoWhereUniqueInput
+    /**
+     * In case the tr_supplier_info found by the `where` argument doesn't exist, create a new tr_supplier_info with this data.
+     */
+    create: XOR<tr_supplier_infoCreateInput, tr_supplier_infoUncheckedCreateInput>
+    /**
+     * In case the tr_supplier_info was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<tr_supplier_infoUpdateInput, tr_supplier_infoUncheckedUpdateInput>
+  }
+
+  /**
+   * tr_supplier_info delete
+   */
+  export type tr_supplier_infoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_supplier_info
+     */
+    select?: tr_supplier_infoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_supplier_info
+     */
+    omit?: tr_supplier_infoOmit<ExtArgs> | null
+    /**
+     * Filter which tr_supplier_info to delete.
+     */
+    where: tr_supplier_infoWhereUniqueInput
+  }
+
+  /**
+   * tr_supplier_info deleteMany
+   */
+  export type tr_supplier_infoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which tr_supplier_infos to delete
+     */
+    where?: tr_supplier_infoWhereInput
+    /**
+     * Limit how many tr_supplier_infos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * tr_supplier_info without action
+   */
+  export type tr_supplier_infoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_supplier_info
+     */
+    select?: tr_supplier_infoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_supplier_info
+     */
+    omit?: tr_supplier_infoOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -1845,6 +2833,16 @@ export namespace Prisma {
   };
 
   export type Mst_docScalarFieldEnum = (typeof Mst_docScalarFieldEnum)[keyof typeof Mst_docScalarFieldEnum]
+
+
+  export const Tr_supplier_infoScalarFieldEnum: {
+    id: 'id',
+    kode_vendor: 'kode_vendor',
+    logo: 'logo',
+    status: 'status'
+  };
+
+  export type Tr_supplier_infoScalarFieldEnum = (typeof Tr_supplier_infoScalarFieldEnum)[keyof typeof Tr_supplier_infoScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -1875,6 +2873,15 @@ export namespace Prisma {
   };
 
   export type mst_docOrderByRelevanceFieldEnum = (typeof mst_docOrderByRelevanceFieldEnum)[keyof typeof mst_docOrderByRelevanceFieldEnum]
+
+
+  export const tr_supplier_infoOrderByRelevanceFieldEnum: {
+    kode_vendor: 'kode_vendor',
+    logo: 'logo',
+    status: 'status'
+  };
+
+  export type tr_supplier_infoOrderByRelevanceFieldEnum = (typeof tr_supplier_infoOrderByRelevanceFieldEnum)[keyof typeof tr_supplier_infoOrderByRelevanceFieldEnum]
 
 
   /**
@@ -1981,6 +2988,56 @@ export namespace Prisma {
     doc_url_aios?: StringNullableWithAggregatesFilter<"mst_doc"> | string | null
   }
 
+  export type tr_supplier_infoWhereInput = {
+    AND?: tr_supplier_infoWhereInput | tr_supplier_infoWhereInput[]
+    OR?: tr_supplier_infoWhereInput[]
+    NOT?: tr_supplier_infoWhereInput | tr_supplier_infoWhereInput[]
+    id?: IntFilter<"tr_supplier_info"> | number
+    kode_vendor?: StringFilter<"tr_supplier_info"> | string
+    logo?: StringNullableFilter<"tr_supplier_info"> | string | null
+    status?: StringNullableFilter<"tr_supplier_info"> | string | null
+  }
+
+  export type tr_supplier_infoOrderByWithRelationInput = {
+    id?: SortOrder
+    kode_vendor?: SortOrder
+    logo?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
+    _relevance?: tr_supplier_infoOrderByRelevanceInput
+  }
+
+  export type tr_supplier_infoWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    kode_vendor?: string
+    AND?: tr_supplier_infoWhereInput | tr_supplier_infoWhereInput[]
+    OR?: tr_supplier_infoWhereInput[]
+    NOT?: tr_supplier_infoWhereInput | tr_supplier_infoWhereInput[]
+    logo?: StringNullableFilter<"tr_supplier_info"> | string | null
+    status?: StringNullableFilter<"tr_supplier_info"> | string | null
+  }, "id" | "kode_vendor">
+
+  export type tr_supplier_infoOrderByWithAggregationInput = {
+    id?: SortOrder
+    kode_vendor?: SortOrder
+    logo?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
+    _count?: tr_supplier_infoCountOrderByAggregateInput
+    _avg?: tr_supplier_infoAvgOrderByAggregateInput
+    _max?: tr_supplier_infoMaxOrderByAggregateInput
+    _min?: tr_supplier_infoMinOrderByAggregateInput
+    _sum?: tr_supplier_infoSumOrderByAggregateInput
+  }
+
+  export type tr_supplier_infoScalarWhereWithAggregatesInput = {
+    AND?: tr_supplier_infoScalarWhereWithAggregatesInput | tr_supplier_infoScalarWhereWithAggregatesInput[]
+    OR?: tr_supplier_infoScalarWhereWithAggregatesInput[]
+    NOT?: tr_supplier_infoScalarWhereWithAggregatesInput | tr_supplier_infoScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"tr_supplier_info"> | number
+    kode_vendor?: StringWithAggregatesFilter<"tr_supplier_info"> | string
+    logo?: StringNullableWithAggregatesFilter<"tr_supplier_info"> | string | null
+    status?: StringNullableWithAggregatesFilter<"tr_supplier_info"> | string | null
+  }
+
   export type mst_docCreateInput = {
     kode_vendor?: string | null
     material_code?: string | null
@@ -2060,6 +3117,52 @@ export namespace Prisma {
     doc_url_ss?: NullableStringFieldUpdateOperationsInput | string | null
     doc_name_aios?: NullableStringFieldUpdateOperationsInput | string | null
     doc_url_aios?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type tr_supplier_infoCreateInput = {
+    kode_vendor: string
+    logo?: string | null
+    status?: string | null
+  }
+
+  export type tr_supplier_infoUncheckedCreateInput = {
+    id?: number
+    kode_vendor: string
+    logo?: string | null
+    status?: string | null
+  }
+
+  export type tr_supplier_infoUpdateInput = {
+    kode_vendor?: StringFieldUpdateOperationsInput | string
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type tr_supplier_infoUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    kode_vendor?: StringFieldUpdateOperationsInput | string
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type tr_supplier_infoCreateManyInput = {
+    id?: number
+    kode_vendor: string
+    logo?: string | null
+    status?: string | null
+  }
+
+  export type tr_supplier_infoUpdateManyMutationInput = {
+    kode_vendor?: StringFieldUpdateOperationsInput | string
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type tr_supplier_infoUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    kode_vendor?: StringFieldUpdateOperationsInput | string
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -2177,6 +3280,74 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type StringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type tr_supplier_infoOrderByRelevanceInput = {
+    fields: tr_supplier_infoOrderByRelevanceFieldEnum | tr_supplier_infoOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type tr_supplier_infoCountOrderByAggregateInput = {
+    id?: SortOrder
+    kode_vendor?: SortOrder
+    logo?: SortOrder
+    status?: SortOrder
+  }
+
+  export type tr_supplier_infoAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type tr_supplier_infoMaxOrderByAggregateInput = {
+    id?: SortOrder
+    kode_vendor?: SortOrder
+    logo?: SortOrder
+    status?: SortOrder
+  }
+
+  export type tr_supplier_infoMinOrderByAggregateInput = {
+    id?: SortOrder
+    kode_vendor?: SortOrder
+    logo?: SortOrder
+    status?: SortOrder
+  }
+
+  export type tr_supplier_infoSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
   }
@@ -2187,6 +3358,10 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type StringFieldUpdateOperationsInput = {
+    set?: string
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -2269,6 +3444,39 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedStringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
   }
 
 

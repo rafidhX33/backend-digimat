@@ -21,3 +21,13 @@ model mst_doc {
 
   @@map("mst_doc")
 }
+
+model tr_supplier_info {
+  id          Int     @id @default(autoincrement())
+  kode_vendor String  @digimat.VarChar(50)
+  logo        String? @digimat.VarChar(255)
+  status      String? @digimat.VarChar(50)
+
+  @@unique([kode_vendor])
+  @@map("tr_supplier_info")
+}

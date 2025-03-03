@@ -129,6 +129,13 @@ exports.Prisma.Mst_docScalarFieldEnum = {
   doc_url_aios: 'doc_url_aios'
 };
 
+exports.Prisma.Tr_supplier_infoScalarFieldEnum = {
+  id: 'id',
+  kode_vendor: 'kode_vendor',
+  logo: 'logo',
+  status: 'status'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -150,9 +157,16 @@ exports.Prisma.mst_docOrderByRelevanceFieldEnum = {
   doc_url_aios: 'doc_url_aios'
 };
 
+exports.Prisma.tr_supplier_infoOrderByRelevanceFieldEnum = {
+  kode_vendor: 'kode_vendor',
+  logo: 'logo',
+  status: 'status'
+};
+
 
 exports.Prisma.ModelName = {
-  mst_doc: 'mst_doc'
+  mst_doc: 'mst_doc',
+  tr_supplier_info: 'tr_supplier_info'
 };
 
 /**
