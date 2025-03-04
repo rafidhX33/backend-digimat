@@ -33,6 +33,13 @@ export type ComplaintStatus = $Result.DefaultSelection<Prisma.$ComplaintStatusPa
  * 
  */
 export type TrSupplierAudit = $Result.DefaultSelection<Prisma.$TrSupplierAuditPayload>
+/**
+ * Model AbnormalityHistorical
+ * *
+ *  * Model untuk VIEW v_abnormality_historical
+ *  * Pastikan view ini sudah dibuat di MySQL sebelum generate Prisma Client
+ */
+export type AbnormalityHistorical = $Result.DefaultSelection<Prisma.$AbnormalityHistoricalPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -198,6 +205,16 @@ export class PrismaClient<
     * ```
     */
   get trSupplierAudit(): Prisma.TrSupplierAuditDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.abnormalityHistorical`: Exposes CRUD operations for the **AbnormalityHistorical** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more AbnormalityHistoricals
+    * const abnormalityHistoricals = await prisma.abnormalityHistorical.findMany()
+    * ```
+    */
+  get abnormalityHistorical(): Prisma.AbnormalityHistoricalDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -641,7 +658,8 @@ export namespace Prisma {
     MstMaterialCapa: 'MstMaterialCapa',
     SupplierScore: 'SupplierScore',
     ComplaintStatus: 'ComplaintStatus',
-    TrSupplierAudit: 'TrSupplierAudit'
+    TrSupplierAudit: 'TrSupplierAudit',
+    AbnormalityHistorical: 'AbnormalityHistorical'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -657,7 +675,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "mstMaterialCapa" | "supplierScore" | "complaintStatus" | "trSupplierAudit"
+      modelProps: "mstMaterialCapa" | "supplierScore" | "complaintStatus" | "trSupplierAudit" | "abnormalityHistorical"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -925,6 +943,72 @@ export namespace Prisma {
           }
         }
       }
+      AbnormalityHistorical: {
+        payload: Prisma.$AbnormalityHistoricalPayload<ExtArgs>
+        fields: Prisma.AbnormalityHistoricalFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AbnormalityHistoricalFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AbnormalityHistoricalPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AbnormalityHistoricalFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AbnormalityHistoricalPayload>
+          }
+          findFirst: {
+            args: Prisma.AbnormalityHistoricalFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AbnormalityHistoricalPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AbnormalityHistoricalFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AbnormalityHistoricalPayload>
+          }
+          findMany: {
+            args: Prisma.AbnormalityHistoricalFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AbnormalityHistoricalPayload>[]
+          }
+          create: {
+            args: Prisma.AbnormalityHistoricalCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AbnormalityHistoricalPayload>
+          }
+          createMany: {
+            args: Prisma.AbnormalityHistoricalCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.AbnormalityHistoricalDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AbnormalityHistoricalPayload>
+          }
+          update: {
+            args: Prisma.AbnormalityHistoricalUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AbnormalityHistoricalPayload>
+          }
+          deleteMany: {
+            args: Prisma.AbnormalityHistoricalDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AbnormalityHistoricalUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.AbnormalityHistoricalUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AbnormalityHistoricalPayload>
+          }
+          aggregate: {
+            args: Prisma.AbnormalityHistoricalAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAbnormalityHistorical>
+          }
+          groupBy: {
+            args: Prisma.AbnormalityHistoricalGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AbnormalityHistoricalGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AbnormalityHistoricalCountArgs<ExtArgs>
+            result: $Utils.Optional<AbnormalityHistoricalCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1013,6 +1097,7 @@ export namespace Prisma {
     supplierScore?: SupplierScoreOmit
     complaintStatus?: ComplaintStatusOmit
     trSupplierAudit?: TrSupplierAuditOmit
+    abnormalityHistorical?: AbnormalityHistoricalOmit
   }
 
   /* Types for Logging */
@@ -5137,6 +5222,900 @@ export namespace Prisma {
 
 
   /**
+   * Model AbnormalityHistorical
+   */
+
+  export type AggregateAbnormalityHistorical = {
+    _count: AbnormalityHistoricalCountAggregateOutputType | null
+    _avg: AbnormalityHistoricalAvgAggregateOutputType | null
+    _sum: AbnormalityHistoricalSumAggregateOutputType | null
+    _min: AbnormalityHistoricalMinAggregateOutputType | null
+    _max: AbnormalityHistoricalMaxAggregateOutputType | null
+  }
+
+  export type AbnormalityHistoricalAvgAggregateOutputType = {
+    total_case: number | null
+  }
+
+  export type AbnormalityHistoricalSumAggregateOutputType = {
+    total_case: number | null
+  }
+
+  export type AbnormalityHistoricalMinAggregateOutputType = {
+    kode_vendor: string | null
+    abnormal: string | null
+    total_case: number | null
+  }
+
+  export type AbnormalityHistoricalMaxAggregateOutputType = {
+    kode_vendor: string | null
+    abnormal: string | null
+    total_case: number | null
+  }
+
+  export type AbnormalityHistoricalCountAggregateOutputType = {
+    kode_vendor: number
+    abnormal: number
+    total_case: number
+    _all: number
+  }
+
+
+  export type AbnormalityHistoricalAvgAggregateInputType = {
+    total_case?: true
+  }
+
+  export type AbnormalityHistoricalSumAggregateInputType = {
+    total_case?: true
+  }
+
+  export type AbnormalityHistoricalMinAggregateInputType = {
+    kode_vendor?: true
+    abnormal?: true
+    total_case?: true
+  }
+
+  export type AbnormalityHistoricalMaxAggregateInputType = {
+    kode_vendor?: true
+    abnormal?: true
+    total_case?: true
+  }
+
+  export type AbnormalityHistoricalCountAggregateInputType = {
+    kode_vendor?: true
+    abnormal?: true
+    total_case?: true
+    _all?: true
+  }
+
+  export type AbnormalityHistoricalAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AbnormalityHistorical to aggregate.
+     */
+    where?: AbnormalityHistoricalWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AbnormalityHistoricals to fetch.
+     */
+    orderBy?: AbnormalityHistoricalOrderByWithRelationInput | AbnormalityHistoricalOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AbnormalityHistoricalWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AbnormalityHistoricals from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AbnormalityHistoricals.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned AbnormalityHistoricals
+    **/
+    _count?: true | AbnormalityHistoricalCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AbnormalityHistoricalAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AbnormalityHistoricalSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AbnormalityHistoricalMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AbnormalityHistoricalMaxAggregateInputType
+  }
+
+  export type GetAbnormalityHistoricalAggregateType<T extends AbnormalityHistoricalAggregateArgs> = {
+        [P in keyof T & keyof AggregateAbnormalityHistorical]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAbnormalityHistorical[P]>
+      : GetScalarType<T[P], AggregateAbnormalityHistorical[P]>
+  }
+
+
+
+
+  export type AbnormalityHistoricalGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AbnormalityHistoricalWhereInput
+    orderBy?: AbnormalityHistoricalOrderByWithAggregationInput | AbnormalityHistoricalOrderByWithAggregationInput[]
+    by: AbnormalityHistoricalScalarFieldEnum[] | AbnormalityHistoricalScalarFieldEnum
+    having?: AbnormalityHistoricalScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AbnormalityHistoricalCountAggregateInputType | true
+    _avg?: AbnormalityHistoricalAvgAggregateInputType
+    _sum?: AbnormalityHistoricalSumAggregateInputType
+    _min?: AbnormalityHistoricalMinAggregateInputType
+    _max?: AbnormalityHistoricalMaxAggregateInputType
+  }
+
+  export type AbnormalityHistoricalGroupByOutputType = {
+    kode_vendor: string
+    abnormal: string
+    total_case: number | null
+    _count: AbnormalityHistoricalCountAggregateOutputType | null
+    _avg: AbnormalityHistoricalAvgAggregateOutputType | null
+    _sum: AbnormalityHistoricalSumAggregateOutputType | null
+    _min: AbnormalityHistoricalMinAggregateOutputType | null
+    _max: AbnormalityHistoricalMaxAggregateOutputType | null
+  }
+
+  type GetAbnormalityHistoricalGroupByPayload<T extends AbnormalityHistoricalGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AbnormalityHistoricalGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AbnormalityHistoricalGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AbnormalityHistoricalGroupByOutputType[P]>
+            : GetScalarType<T[P], AbnormalityHistoricalGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AbnormalityHistoricalSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    kode_vendor?: boolean
+    abnormal?: boolean
+    total_case?: boolean
+  }, ExtArgs["result"]["abnormalityHistorical"]>
+
+
+
+  export type AbnormalityHistoricalSelectScalar = {
+    kode_vendor?: boolean
+    abnormal?: boolean
+    total_case?: boolean
+  }
+
+  export type AbnormalityHistoricalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"kode_vendor" | "abnormal" | "total_case", ExtArgs["result"]["abnormalityHistorical"]>
+
+  export type $AbnormalityHistoricalPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "AbnormalityHistorical"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      kode_vendor: string
+      abnormal: string
+      total_case: number | null
+    }, ExtArgs["result"]["abnormalityHistorical"]>
+    composites: {}
+  }
+
+  type AbnormalityHistoricalGetPayload<S extends boolean | null | undefined | AbnormalityHistoricalDefaultArgs> = $Result.GetResult<Prisma.$AbnormalityHistoricalPayload, S>
+
+  type AbnormalityHistoricalCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AbnormalityHistoricalFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AbnormalityHistoricalCountAggregateInputType | true
+    }
+
+  export interface AbnormalityHistoricalDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AbnormalityHistorical'], meta: { name: 'AbnormalityHistorical' } }
+    /**
+     * Find zero or one AbnormalityHistorical that matches the filter.
+     * @param {AbnormalityHistoricalFindUniqueArgs} args - Arguments to find a AbnormalityHistorical
+     * @example
+     * // Get one AbnormalityHistorical
+     * const abnormalityHistorical = await prisma.abnormalityHistorical.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AbnormalityHistoricalFindUniqueArgs>(args: SelectSubset<T, AbnormalityHistoricalFindUniqueArgs<ExtArgs>>): Prisma__AbnormalityHistoricalClient<$Result.GetResult<Prisma.$AbnormalityHistoricalPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find one AbnormalityHistorical that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AbnormalityHistoricalFindUniqueOrThrowArgs} args - Arguments to find a AbnormalityHistorical
+     * @example
+     * // Get one AbnormalityHistorical
+     * const abnormalityHistorical = await prisma.abnormalityHistorical.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AbnormalityHistoricalFindUniqueOrThrowArgs>(args: SelectSubset<T, AbnormalityHistoricalFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AbnormalityHistoricalClient<$Result.GetResult<Prisma.$AbnormalityHistoricalPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first AbnormalityHistorical that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AbnormalityHistoricalFindFirstArgs} args - Arguments to find a AbnormalityHistorical
+     * @example
+     * // Get one AbnormalityHistorical
+     * const abnormalityHistorical = await prisma.abnormalityHistorical.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AbnormalityHistoricalFindFirstArgs>(args?: SelectSubset<T, AbnormalityHistoricalFindFirstArgs<ExtArgs>>): Prisma__AbnormalityHistoricalClient<$Result.GetResult<Prisma.$AbnormalityHistoricalPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first AbnormalityHistorical that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AbnormalityHistoricalFindFirstOrThrowArgs} args - Arguments to find a AbnormalityHistorical
+     * @example
+     * // Get one AbnormalityHistorical
+     * const abnormalityHistorical = await prisma.abnormalityHistorical.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AbnormalityHistoricalFindFirstOrThrowArgs>(args?: SelectSubset<T, AbnormalityHistoricalFindFirstOrThrowArgs<ExtArgs>>): Prisma__AbnormalityHistoricalClient<$Result.GetResult<Prisma.$AbnormalityHistoricalPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find zero or more AbnormalityHistoricals that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AbnormalityHistoricalFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all AbnormalityHistoricals
+     * const abnormalityHistoricals = await prisma.abnormalityHistorical.findMany()
+     * 
+     * // Get first 10 AbnormalityHistoricals
+     * const abnormalityHistoricals = await prisma.abnormalityHistorical.findMany({ take: 10 })
+     * 
+     * // Only select the `kode_vendor`
+     * const abnormalityHistoricalWithKode_vendorOnly = await prisma.abnormalityHistorical.findMany({ select: { kode_vendor: true } })
+     * 
+     */
+    findMany<T extends AbnormalityHistoricalFindManyArgs>(args?: SelectSubset<T, AbnormalityHistoricalFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AbnormalityHistoricalPayload<ExtArgs>, T, "findMany", ClientOptions>>
+
+    /**
+     * Create a AbnormalityHistorical.
+     * @param {AbnormalityHistoricalCreateArgs} args - Arguments to create a AbnormalityHistorical.
+     * @example
+     * // Create one AbnormalityHistorical
+     * const AbnormalityHistorical = await prisma.abnormalityHistorical.create({
+     *   data: {
+     *     // ... data to create a AbnormalityHistorical
+     *   }
+     * })
+     * 
+     */
+    create<T extends AbnormalityHistoricalCreateArgs>(args: SelectSubset<T, AbnormalityHistoricalCreateArgs<ExtArgs>>): Prisma__AbnormalityHistoricalClient<$Result.GetResult<Prisma.$AbnormalityHistoricalPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Create many AbnormalityHistoricals.
+     * @param {AbnormalityHistoricalCreateManyArgs} args - Arguments to create many AbnormalityHistoricals.
+     * @example
+     * // Create many AbnormalityHistoricals
+     * const abnormalityHistorical = await prisma.abnormalityHistorical.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AbnormalityHistoricalCreateManyArgs>(args?: SelectSubset<T, AbnormalityHistoricalCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a AbnormalityHistorical.
+     * @param {AbnormalityHistoricalDeleteArgs} args - Arguments to delete one AbnormalityHistorical.
+     * @example
+     * // Delete one AbnormalityHistorical
+     * const AbnormalityHistorical = await prisma.abnormalityHistorical.delete({
+     *   where: {
+     *     // ... filter to delete one AbnormalityHistorical
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AbnormalityHistoricalDeleteArgs>(args: SelectSubset<T, AbnormalityHistoricalDeleteArgs<ExtArgs>>): Prisma__AbnormalityHistoricalClient<$Result.GetResult<Prisma.$AbnormalityHistoricalPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Update one AbnormalityHistorical.
+     * @param {AbnormalityHistoricalUpdateArgs} args - Arguments to update one AbnormalityHistorical.
+     * @example
+     * // Update one AbnormalityHistorical
+     * const abnormalityHistorical = await prisma.abnormalityHistorical.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AbnormalityHistoricalUpdateArgs>(args: SelectSubset<T, AbnormalityHistoricalUpdateArgs<ExtArgs>>): Prisma__AbnormalityHistoricalClient<$Result.GetResult<Prisma.$AbnormalityHistoricalPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Delete zero or more AbnormalityHistoricals.
+     * @param {AbnormalityHistoricalDeleteManyArgs} args - Arguments to filter AbnormalityHistoricals to delete.
+     * @example
+     * // Delete a few AbnormalityHistoricals
+     * const { count } = await prisma.abnormalityHistorical.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AbnormalityHistoricalDeleteManyArgs>(args?: SelectSubset<T, AbnormalityHistoricalDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AbnormalityHistoricals.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AbnormalityHistoricalUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many AbnormalityHistoricals
+     * const abnormalityHistorical = await prisma.abnormalityHistorical.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AbnormalityHistoricalUpdateManyArgs>(args: SelectSubset<T, AbnormalityHistoricalUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one AbnormalityHistorical.
+     * @param {AbnormalityHistoricalUpsertArgs} args - Arguments to update or create a AbnormalityHistorical.
+     * @example
+     * // Update or create a AbnormalityHistorical
+     * const abnormalityHistorical = await prisma.abnormalityHistorical.upsert({
+     *   create: {
+     *     // ... data to create a AbnormalityHistorical
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the AbnormalityHistorical we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AbnormalityHistoricalUpsertArgs>(args: SelectSubset<T, AbnormalityHistoricalUpsertArgs<ExtArgs>>): Prisma__AbnormalityHistoricalClient<$Result.GetResult<Prisma.$AbnormalityHistoricalPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+
+
+    /**
+     * Count the number of AbnormalityHistoricals.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AbnormalityHistoricalCountArgs} args - Arguments to filter AbnormalityHistoricals to count.
+     * @example
+     * // Count the number of AbnormalityHistoricals
+     * const count = await prisma.abnormalityHistorical.count({
+     *   where: {
+     *     // ... the filter for the AbnormalityHistoricals we want to count
+     *   }
+     * })
+    **/
+    count<T extends AbnormalityHistoricalCountArgs>(
+      args?: Subset<T, AbnormalityHistoricalCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AbnormalityHistoricalCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a AbnormalityHistorical.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AbnormalityHistoricalAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AbnormalityHistoricalAggregateArgs>(args: Subset<T, AbnormalityHistoricalAggregateArgs>): Prisma.PrismaPromise<GetAbnormalityHistoricalAggregateType<T>>
+
+    /**
+     * Group by AbnormalityHistorical.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AbnormalityHistoricalGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AbnormalityHistoricalGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AbnormalityHistoricalGroupByArgs['orderBy'] }
+        : { orderBy?: AbnormalityHistoricalGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AbnormalityHistoricalGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAbnormalityHistoricalGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the AbnormalityHistorical model
+   */
+  readonly fields: AbnormalityHistoricalFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for AbnormalityHistorical.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AbnormalityHistoricalClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the AbnormalityHistorical model
+   */ 
+  interface AbnormalityHistoricalFieldRefs {
+    readonly kode_vendor: FieldRef<"AbnormalityHistorical", 'String'>
+    readonly abnormal: FieldRef<"AbnormalityHistorical", 'String'>
+    readonly total_case: FieldRef<"AbnormalityHistorical", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * AbnormalityHistorical findUnique
+   */
+  export type AbnormalityHistoricalFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbnormalityHistorical
+     */
+    select?: AbnormalityHistoricalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbnormalityHistorical
+     */
+    omit?: AbnormalityHistoricalOmit<ExtArgs> | null
+    /**
+     * Filter, which AbnormalityHistorical to fetch.
+     */
+    where: AbnormalityHistoricalWhereUniqueInput
+  }
+
+  /**
+   * AbnormalityHistorical findUniqueOrThrow
+   */
+  export type AbnormalityHistoricalFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbnormalityHistorical
+     */
+    select?: AbnormalityHistoricalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbnormalityHistorical
+     */
+    omit?: AbnormalityHistoricalOmit<ExtArgs> | null
+    /**
+     * Filter, which AbnormalityHistorical to fetch.
+     */
+    where: AbnormalityHistoricalWhereUniqueInput
+  }
+
+  /**
+   * AbnormalityHistorical findFirst
+   */
+  export type AbnormalityHistoricalFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbnormalityHistorical
+     */
+    select?: AbnormalityHistoricalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbnormalityHistorical
+     */
+    omit?: AbnormalityHistoricalOmit<ExtArgs> | null
+    /**
+     * Filter, which AbnormalityHistorical to fetch.
+     */
+    where?: AbnormalityHistoricalWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AbnormalityHistoricals to fetch.
+     */
+    orderBy?: AbnormalityHistoricalOrderByWithRelationInput | AbnormalityHistoricalOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AbnormalityHistoricals.
+     */
+    cursor?: AbnormalityHistoricalWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AbnormalityHistoricals from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AbnormalityHistoricals.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AbnormalityHistoricals.
+     */
+    distinct?: AbnormalityHistoricalScalarFieldEnum | AbnormalityHistoricalScalarFieldEnum[]
+  }
+
+  /**
+   * AbnormalityHistorical findFirstOrThrow
+   */
+  export type AbnormalityHistoricalFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbnormalityHistorical
+     */
+    select?: AbnormalityHistoricalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbnormalityHistorical
+     */
+    omit?: AbnormalityHistoricalOmit<ExtArgs> | null
+    /**
+     * Filter, which AbnormalityHistorical to fetch.
+     */
+    where?: AbnormalityHistoricalWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AbnormalityHistoricals to fetch.
+     */
+    orderBy?: AbnormalityHistoricalOrderByWithRelationInput | AbnormalityHistoricalOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AbnormalityHistoricals.
+     */
+    cursor?: AbnormalityHistoricalWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AbnormalityHistoricals from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AbnormalityHistoricals.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AbnormalityHistoricals.
+     */
+    distinct?: AbnormalityHistoricalScalarFieldEnum | AbnormalityHistoricalScalarFieldEnum[]
+  }
+
+  /**
+   * AbnormalityHistorical findMany
+   */
+  export type AbnormalityHistoricalFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbnormalityHistorical
+     */
+    select?: AbnormalityHistoricalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbnormalityHistorical
+     */
+    omit?: AbnormalityHistoricalOmit<ExtArgs> | null
+    /**
+     * Filter, which AbnormalityHistoricals to fetch.
+     */
+    where?: AbnormalityHistoricalWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AbnormalityHistoricals to fetch.
+     */
+    orderBy?: AbnormalityHistoricalOrderByWithRelationInput | AbnormalityHistoricalOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing AbnormalityHistoricals.
+     */
+    cursor?: AbnormalityHistoricalWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AbnormalityHistoricals from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AbnormalityHistoricals.
+     */
+    skip?: number
+    distinct?: AbnormalityHistoricalScalarFieldEnum | AbnormalityHistoricalScalarFieldEnum[]
+  }
+
+  /**
+   * AbnormalityHistorical create
+   */
+  export type AbnormalityHistoricalCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbnormalityHistorical
+     */
+    select?: AbnormalityHistoricalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbnormalityHistorical
+     */
+    omit?: AbnormalityHistoricalOmit<ExtArgs> | null
+    /**
+     * The data needed to create a AbnormalityHistorical.
+     */
+    data: XOR<AbnormalityHistoricalCreateInput, AbnormalityHistoricalUncheckedCreateInput>
+  }
+
+  /**
+   * AbnormalityHistorical createMany
+   */
+  export type AbnormalityHistoricalCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many AbnormalityHistoricals.
+     */
+    data: AbnormalityHistoricalCreateManyInput | AbnormalityHistoricalCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * AbnormalityHistorical update
+   */
+  export type AbnormalityHistoricalUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbnormalityHistorical
+     */
+    select?: AbnormalityHistoricalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbnormalityHistorical
+     */
+    omit?: AbnormalityHistoricalOmit<ExtArgs> | null
+    /**
+     * The data needed to update a AbnormalityHistorical.
+     */
+    data: XOR<AbnormalityHistoricalUpdateInput, AbnormalityHistoricalUncheckedUpdateInput>
+    /**
+     * Choose, which AbnormalityHistorical to update.
+     */
+    where: AbnormalityHistoricalWhereUniqueInput
+  }
+
+  /**
+   * AbnormalityHistorical updateMany
+   */
+  export type AbnormalityHistoricalUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update AbnormalityHistoricals.
+     */
+    data: XOR<AbnormalityHistoricalUpdateManyMutationInput, AbnormalityHistoricalUncheckedUpdateManyInput>
+    /**
+     * Filter which AbnormalityHistoricals to update
+     */
+    where?: AbnormalityHistoricalWhereInput
+    /**
+     * Limit how many AbnormalityHistoricals to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * AbnormalityHistorical upsert
+   */
+  export type AbnormalityHistoricalUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbnormalityHistorical
+     */
+    select?: AbnormalityHistoricalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbnormalityHistorical
+     */
+    omit?: AbnormalityHistoricalOmit<ExtArgs> | null
+    /**
+     * The filter to search for the AbnormalityHistorical to update in case it exists.
+     */
+    where: AbnormalityHistoricalWhereUniqueInput
+    /**
+     * In case the AbnormalityHistorical found by the `where` argument doesn't exist, create a new AbnormalityHistorical with this data.
+     */
+    create: XOR<AbnormalityHistoricalCreateInput, AbnormalityHistoricalUncheckedCreateInput>
+    /**
+     * In case the AbnormalityHistorical was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AbnormalityHistoricalUpdateInput, AbnormalityHistoricalUncheckedUpdateInput>
+  }
+
+  /**
+   * AbnormalityHistorical delete
+   */
+  export type AbnormalityHistoricalDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbnormalityHistorical
+     */
+    select?: AbnormalityHistoricalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbnormalityHistorical
+     */
+    omit?: AbnormalityHistoricalOmit<ExtArgs> | null
+    /**
+     * Filter which AbnormalityHistorical to delete.
+     */
+    where: AbnormalityHistoricalWhereUniqueInput
+  }
+
+  /**
+   * AbnormalityHistorical deleteMany
+   */
+  export type AbnormalityHistoricalDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AbnormalityHistoricals to delete
+     */
+    where?: AbnormalityHistoricalWhereInput
+    /**
+     * Limit how many AbnormalityHistoricals to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * AbnormalityHistorical without action
+   */
+  export type AbnormalityHistoricalDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbnormalityHistorical
+     */
+    select?: AbnormalityHistoricalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbnormalityHistorical
+     */
+    omit?: AbnormalityHistoricalOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -5221,6 +6200,15 @@ export namespace Prisma {
   export type TrSupplierAuditScalarFieldEnum = (typeof TrSupplierAuditScalarFieldEnum)[keyof typeof TrSupplierAuditScalarFieldEnum]
 
 
+  export const AbnormalityHistoricalScalarFieldEnum: {
+    kode_vendor: 'kode_vendor',
+    abnormal: 'abnormal',
+    total_case: 'total_case'
+  };
+
+  export type AbnormalityHistoricalScalarFieldEnum = (typeof AbnormalityHistoricalScalarFieldEnum)[keyof typeof AbnormalityHistoricalScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -5281,6 +6269,14 @@ export namespace Prisma {
   };
 
   export type TrSupplierAuditOrderByRelevanceFieldEnum = (typeof TrSupplierAuditOrderByRelevanceFieldEnum)[keyof typeof TrSupplierAuditOrderByRelevanceFieldEnum]
+
+
+  export const AbnormalityHistoricalOrderByRelevanceFieldEnum: {
+    kode_vendor: 'kode_vendor',
+    abnormal: 'abnormal'
+  };
+
+  export type AbnormalityHistoricalOrderByRelevanceFieldEnum = (typeof AbnormalityHistoricalOrderByRelevanceFieldEnum)[keyof typeof AbnormalityHistoricalOrderByRelevanceFieldEnum]
 
 
   /**
@@ -5672,6 +6668,52 @@ export namespace Prisma {
     evidence_widht?: IntNullableWithAggregatesFilter<"TrSupplierAudit"> | number | null
     evidence_height?: IntNullableWithAggregatesFilter<"TrSupplierAudit"> | number | null
     improvment?: StringNullableWithAggregatesFilter<"TrSupplierAudit"> | string | null
+  }
+
+  export type AbnormalityHistoricalWhereInput = {
+    AND?: AbnormalityHistoricalWhereInput | AbnormalityHistoricalWhereInput[]
+    OR?: AbnormalityHistoricalWhereInput[]
+    NOT?: AbnormalityHistoricalWhereInput | AbnormalityHistoricalWhereInput[]
+    kode_vendor?: StringFilter<"AbnormalityHistorical"> | string
+    abnormal?: StringFilter<"AbnormalityHistorical"> | string
+    total_case?: IntNullableFilter<"AbnormalityHistorical"> | number | null
+  }
+
+  export type AbnormalityHistoricalOrderByWithRelationInput = {
+    kode_vendor?: SortOrder
+    abnormal?: SortOrder
+    total_case?: SortOrderInput | SortOrder
+    _relevance?: AbnormalityHistoricalOrderByRelevanceInput
+  }
+
+  export type AbnormalityHistoricalWhereUniqueInput = Prisma.AtLeast<{
+    kode_vendor_abnormal?: AbnormalityHistoricalKode_vendorAbnormalCompoundUniqueInput
+    AND?: AbnormalityHistoricalWhereInput | AbnormalityHistoricalWhereInput[]
+    OR?: AbnormalityHistoricalWhereInput[]
+    NOT?: AbnormalityHistoricalWhereInput | AbnormalityHistoricalWhereInput[]
+    kode_vendor?: StringFilter<"AbnormalityHistorical"> | string
+    abnormal?: StringFilter<"AbnormalityHistorical"> | string
+    total_case?: IntNullableFilter<"AbnormalityHistorical"> | number | null
+  }, "kode_vendor_abnormal">
+
+  export type AbnormalityHistoricalOrderByWithAggregationInput = {
+    kode_vendor?: SortOrder
+    abnormal?: SortOrder
+    total_case?: SortOrderInput | SortOrder
+    _count?: AbnormalityHistoricalCountOrderByAggregateInput
+    _avg?: AbnormalityHistoricalAvgOrderByAggregateInput
+    _max?: AbnormalityHistoricalMaxOrderByAggregateInput
+    _min?: AbnormalityHistoricalMinOrderByAggregateInput
+    _sum?: AbnormalityHistoricalSumOrderByAggregateInput
+  }
+
+  export type AbnormalityHistoricalScalarWhereWithAggregatesInput = {
+    AND?: AbnormalityHistoricalScalarWhereWithAggregatesInput | AbnormalityHistoricalScalarWhereWithAggregatesInput[]
+    OR?: AbnormalityHistoricalScalarWhereWithAggregatesInput[]
+    NOT?: AbnormalityHistoricalScalarWhereWithAggregatesInput | AbnormalityHistoricalScalarWhereWithAggregatesInput[]
+    kode_vendor?: StringWithAggregatesFilter<"AbnormalityHistorical"> | string
+    abnormal?: StringWithAggregatesFilter<"AbnormalityHistorical"> | string
+    total_case?: IntNullableWithAggregatesFilter<"AbnormalityHistorical"> | number | null
   }
 
   export type MstMaterialCapaCreateInput = {
@@ -6073,6 +7115,48 @@ export namespace Prisma {
     evidence_widht?: NullableIntFieldUpdateOperationsInput | number | null
     evidence_height?: NullableIntFieldUpdateOperationsInput | number | null
     improvment?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type AbnormalityHistoricalCreateInput = {
+    kode_vendor: string
+    abnormal: string
+    total_case?: number | null
+  }
+
+  export type AbnormalityHistoricalUncheckedCreateInput = {
+    kode_vendor: string
+    abnormal: string
+    total_case?: number | null
+  }
+
+  export type AbnormalityHistoricalUpdateInput = {
+    kode_vendor?: StringFieldUpdateOperationsInput | string
+    abnormal?: StringFieldUpdateOperationsInput | string
+    total_case?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type AbnormalityHistoricalUncheckedUpdateInput = {
+    kode_vendor?: StringFieldUpdateOperationsInput | string
+    abnormal?: StringFieldUpdateOperationsInput | string
+    total_case?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type AbnormalityHistoricalCreateManyInput = {
+    kode_vendor: string
+    abnormal: string
+    total_case?: number | null
+  }
+
+  export type AbnormalityHistoricalUpdateManyMutationInput = {
+    kode_vendor?: StringFieldUpdateOperationsInput | string
+    abnormal?: StringFieldUpdateOperationsInput | string
+    total_case?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type AbnormalityHistoricalUncheckedUpdateManyInput = {
+    kode_vendor?: StringFieldUpdateOperationsInput | string
+    abnormal?: StringFieldUpdateOperationsInput | string
+    total_case?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -6517,6 +7601,43 @@ export namespace Prisma {
     evidence_size?: SortOrder
     evidence_widht?: SortOrder
     evidence_height?: SortOrder
+  }
+
+  export type AbnormalityHistoricalOrderByRelevanceInput = {
+    fields: AbnormalityHistoricalOrderByRelevanceFieldEnum | AbnormalityHistoricalOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type AbnormalityHistoricalKode_vendorAbnormalCompoundUniqueInput = {
+    kode_vendor: string
+    abnormal: string
+  }
+
+  export type AbnormalityHistoricalCountOrderByAggregateInput = {
+    kode_vendor?: SortOrder
+    abnormal?: SortOrder
+    total_case?: SortOrder
+  }
+
+  export type AbnormalityHistoricalAvgOrderByAggregateInput = {
+    total_case?: SortOrder
+  }
+
+  export type AbnormalityHistoricalMaxOrderByAggregateInput = {
+    kode_vendor?: SortOrder
+    abnormal?: SortOrder
+    total_case?: SortOrder
+  }
+
+  export type AbnormalityHistoricalMinOrderByAggregateInput = {
+    kode_vendor?: SortOrder
+    abnormal?: SortOrder
+    total_case?: SortOrder
+  }
+
+  export type AbnormalityHistoricalSumOrderByAggregateInput = {
+    total_case?: SortOrder
   }
 
   export type NullableStringFieldUpdateOperationsInput = {

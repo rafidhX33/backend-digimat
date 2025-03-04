@@ -176,6 +176,12 @@ exports.Prisma.TrSupplierAuditScalarFieldEnum = {
   improvment: 'improvment'
 };
 
+exports.Prisma.AbnormalityHistoricalScalarFieldEnum = {
+  kode_vendor: 'kode_vendor',
+  abnormal: 'abnormal',
+  total_case: 'total_case'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -220,12 +226,18 @@ exports.Prisma.TrSupplierAuditOrderByRelevanceFieldEnum = {
   improvment: 'improvment'
 };
 
+exports.Prisma.AbnormalityHistoricalOrderByRelevanceFieldEnum = {
+  kode_vendor: 'kode_vendor',
+  abnormal: 'abnormal'
+};
+
 
 exports.Prisma.ModelName = {
   MstMaterialCapa: 'MstMaterialCapa',
   SupplierScore: 'SupplierScore',
   ComplaintStatus: 'ComplaintStatus',
-  TrSupplierAudit: 'TrSupplierAudit'
+  TrSupplierAudit: 'TrSupplierAudit',
+  AbnormalityHistorical: 'AbnormalityHistorical'
 };
 
 /**

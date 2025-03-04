@@ -74,3 +74,17 @@ model TrSupplierAudit {
 
   @@map("tr_supplier_audit")
 }
+
+/**
+ * Model untuk VIEW v_abnormality_historical
+ * Pastikan view ini sudah dibuat di MySQL sebelum generate Prisma Client
+ */
+model AbnormalityHistorical {
+  kode_vendor String @db.VarChar(50)
+  abnormal    String @db.VarChar(200)
+  total_case  Int?
+
+  // Menandai (kode_vendor, abnormal) sebagai composite key semu
+  @@id([kode_vendor, abnormal])
+  @@map("v_abnormality_historical")
+}
