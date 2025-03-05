@@ -9,6 +9,7 @@ import docRoutes from "./routes/doc.routes";
 import supplierAuditRoutes from "./routes/supplierAudit.routes";
 import supplierInfoRoutes from "./routes/supplierInfo.routes";
 import abnormalityRoutes from "./routes/abnormality.routes"; // Tambahkan ini
+import supplierKedatanganRoutes from "./routes/supplierKedatangan.routes";
 
 const app = express();
 
@@ -31,5 +32,6 @@ app.use("/api/doc", docRoutes);
 app.use("/api/supplier-audit", supplierAuditRoutes);
 app.use("/api/supplier-info", supplierInfoRoutes);
 app.use("/api/abnormalities", abnormalityRoutes); // Mount abnormality routes
+app.use("/api/kedatangan", supplierKedatanganRoutes);
 
 export default app;

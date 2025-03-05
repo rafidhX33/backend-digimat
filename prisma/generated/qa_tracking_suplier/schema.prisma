@@ -88,3 +88,25 @@ model AbnormalityHistorical {
   @@id([kode_vendor, abnormal])
   @@map("v_abnormality_historical")
 }
+
+model KedatanganSapNew {
+  inspection_lot  String    @db.VarChar(50)
+  plan            String    @db.VarChar(50)
+  OBJNR           String?   @db.VarChar(50)
+  OBTYP           String?   @db.VarChar(50)
+  tahun           String?   @db.VarChar(4)
+  bulan           String?   @db.VarChar(20)
+  kuartal         Int? // Ubah tipe dari String? menjadi Int? jika nilai kuartal adalah angka
+  insp_start_date DateTime?
+  insp_end_date   DateTime?
+  vendor          String?   @db.VarChar(50)
+  material        String?   @db.VarChar(50)
+  lotno           String?   @db.VarChar(50)
+  ket             String?   @db.VarChar(255)
+  insp_quantity   Float?
+  satuan          String?   @db.VarChar(50)
+  jenis           String?   @db.VarChar(50)
+
+  @@id([inspection_lot, plan])
+  @@map("v_kedatangan_sap_new")
+}

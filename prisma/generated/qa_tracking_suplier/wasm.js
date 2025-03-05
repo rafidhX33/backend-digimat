@@ -182,6 +182,25 @@ exports.Prisma.AbnormalityHistoricalScalarFieldEnum = {
   total_case: 'total_case'
 };
 
+exports.Prisma.KedatanganSapNewScalarFieldEnum = {
+  inspection_lot: 'inspection_lot',
+  plan: 'plan',
+  OBJNR: 'OBJNR',
+  OBTYP: 'OBTYP',
+  tahun: 'tahun',
+  bulan: 'bulan',
+  kuartal: 'kuartal',
+  insp_start_date: 'insp_start_date',
+  insp_end_date: 'insp_end_date',
+  vendor: 'vendor',
+  material: 'material',
+  lotno: 'lotno',
+  ket: 'ket',
+  insp_quantity: 'insp_quantity',
+  satuan: 'satuan',
+  jenis: 'jenis'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -231,13 +250,29 @@ exports.Prisma.AbnormalityHistoricalOrderByRelevanceFieldEnum = {
   abnormal: 'abnormal'
 };
 
+exports.Prisma.KedatanganSapNewOrderByRelevanceFieldEnum = {
+  inspection_lot: 'inspection_lot',
+  plan: 'plan',
+  OBJNR: 'OBJNR',
+  OBTYP: 'OBTYP',
+  tahun: 'tahun',
+  bulan: 'bulan',
+  vendor: 'vendor',
+  material: 'material',
+  lotno: 'lotno',
+  ket: 'ket',
+  satuan: 'satuan',
+  jenis: 'jenis'
+};
+
 
 exports.Prisma.ModelName = {
   MstMaterialCapa: 'MstMaterialCapa',
   SupplierScore: 'SupplierScore',
   ComplaintStatus: 'ComplaintStatus',
   TrSupplierAudit: 'TrSupplierAudit',
-  AbnormalityHistorical: 'AbnormalityHistorical'
+  AbnormalityHistorical: 'AbnormalityHistorical',
+  KedatanganSapNew: 'KedatanganSapNew'
 };
 
 /**

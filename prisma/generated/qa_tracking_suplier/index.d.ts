@@ -40,6 +40,11 @@ export type TrSupplierAudit = $Result.DefaultSelection<Prisma.$TrSupplierAuditPa
  *  * Pastikan view ini sudah dibuat di MySQL sebelum generate Prisma Client
  */
 export type AbnormalityHistorical = $Result.DefaultSelection<Prisma.$AbnormalityHistoricalPayload>
+/**
+ * Model KedatanganSapNew
+ * 
+ */
+export type KedatanganSapNew = $Result.DefaultSelection<Prisma.$KedatanganSapNewPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -215,6 +220,16 @@ export class PrismaClient<
     * ```
     */
   get abnormalityHistorical(): Prisma.AbnormalityHistoricalDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.kedatanganSapNew`: Exposes CRUD operations for the **KedatanganSapNew** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more KedatanganSapNews
+    * const kedatanganSapNews = await prisma.kedatanganSapNew.findMany()
+    * ```
+    */
+  get kedatanganSapNew(): Prisma.KedatanganSapNewDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -659,7 +674,8 @@ export namespace Prisma {
     SupplierScore: 'SupplierScore',
     ComplaintStatus: 'ComplaintStatus',
     TrSupplierAudit: 'TrSupplierAudit',
-    AbnormalityHistorical: 'AbnormalityHistorical'
+    AbnormalityHistorical: 'AbnormalityHistorical',
+    KedatanganSapNew: 'KedatanganSapNew'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -675,7 +691,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "mstMaterialCapa" | "supplierScore" | "complaintStatus" | "trSupplierAudit" | "abnormalityHistorical"
+      modelProps: "mstMaterialCapa" | "supplierScore" | "complaintStatus" | "trSupplierAudit" | "abnormalityHistorical" | "kedatanganSapNew"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1009,6 +1025,72 @@ export namespace Prisma {
           }
         }
       }
+      KedatanganSapNew: {
+        payload: Prisma.$KedatanganSapNewPayload<ExtArgs>
+        fields: Prisma.KedatanganSapNewFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.KedatanganSapNewFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KedatanganSapNewPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.KedatanganSapNewFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KedatanganSapNewPayload>
+          }
+          findFirst: {
+            args: Prisma.KedatanganSapNewFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KedatanganSapNewPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.KedatanganSapNewFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KedatanganSapNewPayload>
+          }
+          findMany: {
+            args: Prisma.KedatanganSapNewFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KedatanganSapNewPayload>[]
+          }
+          create: {
+            args: Prisma.KedatanganSapNewCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KedatanganSapNewPayload>
+          }
+          createMany: {
+            args: Prisma.KedatanganSapNewCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.KedatanganSapNewDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KedatanganSapNewPayload>
+          }
+          update: {
+            args: Prisma.KedatanganSapNewUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KedatanganSapNewPayload>
+          }
+          deleteMany: {
+            args: Prisma.KedatanganSapNewDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.KedatanganSapNewUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.KedatanganSapNewUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KedatanganSapNewPayload>
+          }
+          aggregate: {
+            args: Prisma.KedatanganSapNewAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateKedatanganSapNew>
+          }
+          groupBy: {
+            args: Prisma.KedatanganSapNewGroupByArgs<ExtArgs>
+            result: $Utils.Optional<KedatanganSapNewGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.KedatanganSapNewCountArgs<ExtArgs>
+            result: $Utils.Optional<KedatanganSapNewCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1098,6 +1180,7 @@ export namespace Prisma {
     complaintStatus?: ComplaintStatusOmit
     trSupplierAudit?: TrSupplierAuditOmit
     abnormalityHistorical?: AbnormalityHistoricalOmit
+    kedatanganSapNew?: KedatanganSapNewOmit
   }
 
   /* Types for Logging */
@@ -6116,6 +6199,1047 @@ export namespace Prisma {
 
 
   /**
+   * Model KedatanganSapNew
+   */
+
+  export type AggregateKedatanganSapNew = {
+    _count: KedatanganSapNewCountAggregateOutputType | null
+    _avg: KedatanganSapNewAvgAggregateOutputType | null
+    _sum: KedatanganSapNewSumAggregateOutputType | null
+    _min: KedatanganSapNewMinAggregateOutputType | null
+    _max: KedatanganSapNewMaxAggregateOutputType | null
+  }
+
+  export type KedatanganSapNewAvgAggregateOutputType = {
+    kuartal: number | null
+    insp_quantity: number | null
+  }
+
+  export type KedatanganSapNewSumAggregateOutputType = {
+    kuartal: number | null
+    insp_quantity: number | null
+  }
+
+  export type KedatanganSapNewMinAggregateOutputType = {
+    inspection_lot: string | null
+    plan: string | null
+    OBJNR: string | null
+    OBTYP: string | null
+    tahun: string | null
+    bulan: string | null
+    kuartal: number | null
+    insp_start_date: Date | null
+    insp_end_date: Date | null
+    vendor: string | null
+    material: string | null
+    lotno: string | null
+    ket: string | null
+    insp_quantity: number | null
+    satuan: string | null
+    jenis: string | null
+  }
+
+  export type KedatanganSapNewMaxAggregateOutputType = {
+    inspection_lot: string | null
+    plan: string | null
+    OBJNR: string | null
+    OBTYP: string | null
+    tahun: string | null
+    bulan: string | null
+    kuartal: number | null
+    insp_start_date: Date | null
+    insp_end_date: Date | null
+    vendor: string | null
+    material: string | null
+    lotno: string | null
+    ket: string | null
+    insp_quantity: number | null
+    satuan: string | null
+    jenis: string | null
+  }
+
+  export type KedatanganSapNewCountAggregateOutputType = {
+    inspection_lot: number
+    plan: number
+    OBJNR: number
+    OBTYP: number
+    tahun: number
+    bulan: number
+    kuartal: number
+    insp_start_date: number
+    insp_end_date: number
+    vendor: number
+    material: number
+    lotno: number
+    ket: number
+    insp_quantity: number
+    satuan: number
+    jenis: number
+    _all: number
+  }
+
+
+  export type KedatanganSapNewAvgAggregateInputType = {
+    kuartal?: true
+    insp_quantity?: true
+  }
+
+  export type KedatanganSapNewSumAggregateInputType = {
+    kuartal?: true
+    insp_quantity?: true
+  }
+
+  export type KedatanganSapNewMinAggregateInputType = {
+    inspection_lot?: true
+    plan?: true
+    OBJNR?: true
+    OBTYP?: true
+    tahun?: true
+    bulan?: true
+    kuartal?: true
+    insp_start_date?: true
+    insp_end_date?: true
+    vendor?: true
+    material?: true
+    lotno?: true
+    ket?: true
+    insp_quantity?: true
+    satuan?: true
+    jenis?: true
+  }
+
+  export type KedatanganSapNewMaxAggregateInputType = {
+    inspection_lot?: true
+    plan?: true
+    OBJNR?: true
+    OBTYP?: true
+    tahun?: true
+    bulan?: true
+    kuartal?: true
+    insp_start_date?: true
+    insp_end_date?: true
+    vendor?: true
+    material?: true
+    lotno?: true
+    ket?: true
+    insp_quantity?: true
+    satuan?: true
+    jenis?: true
+  }
+
+  export type KedatanganSapNewCountAggregateInputType = {
+    inspection_lot?: true
+    plan?: true
+    OBJNR?: true
+    OBTYP?: true
+    tahun?: true
+    bulan?: true
+    kuartal?: true
+    insp_start_date?: true
+    insp_end_date?: true
+    vendor?: true
+    material?: true
+    lotno?: true
+    ket?: true
+    insp_quantity?: true
+    satuan?: true
+    jenis?: true
+    _all?: true
+  }
+
+  export type KedatanganSapNewAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which KedatanganSapNew to aggregate.
+     */
+    where?: KedatanganSapNewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of KedatanganSapNews to fetch.
+     */
+    orderBy?: KedatanganSapNewOrderByWithRelationInput | KedatanganSapNewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: KedatanganSapNewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` KedatanganSapNews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` KedatanganSapNews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned KedatanganSapNews
+    **/
+    _count?: true | KedatanganSapNewCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: KedatanganSapNewAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: KedatanganSapNewSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: KedatanganSapNewMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: KedatanganSapNewMaxAggregateInputType
+  }
+
+  export type GetKedatanganSapNewAggregateType<T extends KedatanganSapNewAggregateArgs> = {
+        [P in keyof T & keyof AggregateKedatanganSapNew]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateKedatanganSapNew[P]>
+      : GetScalarType<T[P], AggregateKedatanganSapNew[P]>
+  }
+
+
+
+
+  export type KedatanganSapNewGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: KedatanganSapNewWhereInput
+    orderBy?: KedatanganSapNewOrderByWithAggregationInput | KedatanganSapNewOrderByWithAggregationInput[]
+    by: KedatanganSapNewScalarFieldEnum[] | KedatanganSapNewScalarFieldEnum
+    having?: KedatanganSapNewScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: KedatanganSapNewCountAggregateInputType | true
+    _avg?: KedatanganSapNewAvgAggregateInputType
+    _sum?: KedatanganSapNewSumAggregateInputType
+    _min?: KedatanganSapNewMinAggregateInputType
+    _max?: KedatanganSapNewMaxAggregateInputType
+  }
+
+  export type KedatanganSapNewGroupByOutputType = {
+    inspection_lot: string
+    plan: string
+    OBJNR: string | null
+    OBTYP: string | null
+    tahun: string | null
+    bulan: string | null
+    kuartal: number | null
+    insp_start_date: Date | null
+    insp_end_date: Date | null
+    vendor: string | null
+    material: string | null
+    lotno: string | null
+    ket: string | null
+    insp_quantity: number | null
+    satuan: string | null
+    jenis: string | null
+    _count: KedatanganSapNewCountAggregateOutputType | null
+    _avg: KedatanganSapNewAvgAggregateOutputType | null
+    _sum: KedatanganSapNewSumAggregateOutputType | null
+    _min: KedatanganSapNewMinAggregateOutputType | null
+    _max: KedatanganSapNewMaxAggregateOutputType | null
+  }
+
+  type GetKedatanganSapNewGroupByPayload<T extends KedatanganSapNewGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<KedatanganSapNewGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof KedatanganSapNewGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], KedatanganSapNewGroupByOutputType[P]>
+            : GetScalarType<T[P], KedatanganSapNewGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type KedatanganSapNewSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    inspection_lot?: boolean
+    plan?: boolean
+    OBJNR?: boolean
+    OBTYP?: boolean
+    tahun?: boolean
+    bulan?: boolean
+    kuartal?: boolean
+    insp_start_date?: boolean
+    insp_end_date?: boolean
+    vendor?: boolean
+    material?: boolean
+    lotno?: boolean
+    ket?: boolean
+    insp_quantity?: boolean
+    satuan?: boolean
+    jenis?: boolean
+  }, ExtArgs["result"]["kedatanganSapNew"]>
+
+
+
+  export type KedatanganSapNewSelectScalar = {
+    inspection_lot?: boolean
+    plan?: boolean
+    OBJNR?: boolean
+    OBTYP?: boolean
+    tahun?: boolean
+    bulan?: boolean
+    kuartal?: boolean
+    insp_start_date?: boolean
+    insp_end_date?: boolean
+    vendor?: boolean
+    material?: boolean
+    lotno?: boolean
+    ket?: boolean
+    insp_quantity?: boolean
+    satuan?: boolean
+    jenis?: boolean
+  }
+
+  export type KedatanganSapNewOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"inspection_lot" | "plan" | "OBJNR" | "OBTYP" | "tahun" | "bulan" | "kuartal" | "insp_start_date" | "insp_end_date" | "vendor" | "material" | "lotno" | "ket" | "insp_quantity" | "satuan" | "jenis", ExtArgs["result"]["kedatanganSapNew"]>
+
+  export type $KedatanganSapNewPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "KedatanganSapNew"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      inspection_lot: string
+      plan: string
+      OBJNR: string | null
+      OBTYP: string | null
+      tahun: string | null
+      bulan: string | null
+      kuartal: number | null
+      insp_start_date: Date | null
+      insp_end_date: Date | null
+      vendor: string | null
+      material: string | null
+      lotno: string | null
+      ket: string | null
+      insp_quantity: number | null
+      satuan: string | null
+      jenis: string | null
+    }, ExtArgs["result"]["kedatanganSapNew"]>
+    composites: {}
+  }
+
+  type KedatanganSapNewGetPayload<S extends boolean | null | undefined | KedatanganSapNewDefaultArgs> = $Result.GetResult<Prisma.$KedatanganSapNewPayload, S>
+
+  type KedatanganSapNewCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<KedatanganSapNewFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: KedatanganSapNewCountAggregateInputType | true
+    }
+
+  export interface KedatanganSapNewDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['KedatanganSapNew'], meta: { name: 'KedatanganSapNew' } }
+    /**
+     * Find zero or one KedatanganSapNew that matches the filter.
+     * @param {KedatanganSapNewFindUniqueArgs} args - Arguments to find a KedatanganSapNew
+     * @example
+     * // Get one KedatanganSapNew
+     * const kedatanganSapNew = await prisma.kedatanganSapNew.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends KedatanganSapNewFindUniqueArgs>(args: SelectSubset<T, KedatanganSapNewFindUniqueArgs<ExtArgs>>): Prisma__KedatanganSapNewClient<$Result.GetResult<Prisma.$KedatanganSapNewPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find one KedatanganSapNew that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {KedatanganSapNewFindUniqueOrThrowArgs} args - Arguments to find a KedatanganSapNew
+     * @example
+     * // Get one KedatanganSapNew
+     * const kedatanganSapNew = await prisma.kedatanganSapNew.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends KedatanganSapNewFindUniqueOrThrowArgs>(args: SelectSubset<T, KedatanganSapNewFindUniqueOrThrowArgs<ExtArgs>>): Prisma__KedatanganSapNewClient<$Result.GetResult<Prisma.$KedatanganSapNewPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first KedatanganSapNew that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KedatanganSapNewFindFirstArgs} args - Arguments to find a KedatanganSapNew
+     * @example
+     * // Get one KedatanganSapNew
+     * const kedatanganSapNew = await prisma.kedatanganSapNew.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends KedatanganSapNewFindFirstArgs>(args?: SelectSubset<T, KedatanganSapNewFindFirstArgs<ExtArgs>>): Prisma__KedatanganSapNewClient<$Result.GetResult<Prisma.$KedatanganSapNewPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first KedatanganSapNew that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KedatanganSapNewFindFirstOrThrowArgs} args - Arguments to find a KedatanganSapNew
+     * @example
+     * // Get one KedatanganSapNew
+     * const kedatanganSapNew = await prisma.kedatanganSapNew.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends KedatanganSapNewFindFirstOrThrowArgs>(args?: SelectSubset<T, KedatanganSapNewFindFirstOrThrowArgs<ExtArgs>>): Prisma__KedatanganSapNewClient<$Result.GetResult<Prisma.$KedatanganSapNewPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find zero or more KedatanganSapNews that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KedatanganSapNewFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all KedatanganSapNews
+     * const kedatanganSapNews = await prisma.kedatanganSapNew.findMany()
+     * 
+     * // Get first 10 KedatanganSapNews
+     * const kedatanganSapNews = await prisma.kedatanganSapNew.findMany({ take: 10 })
+     * 
+     * // Only select the `inspection_lot`
+     * const kedatanganSapNewWithInspection_lotOnly = await prisma.kedatanganSapNew.findMany({ select: { inspection_lot: true } })
+     * 
+     */
+    findMany<T extends KedatanganSapNewFindManyArgs>(args?: SelectSubset<T, KedatanganSapNewFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$KedatanganSapNewPayload<ExtArgs>, T, "findMany", ClientOptions>>
+
+    /**
+     * Create a KedatanganSapNew.
+     * @param {KedatanganSapNewCreateArgs} args - Arguments to create a KedatanganSapNew.
+     * @example
+     * // Create one KedatanganSapNew
+     * const KedatanganSapNew = await prisma.kedatanganSapNew.create({
+     *   data: {
+     *     // ... data to create a KedatanganSapNew
+     *   }
+     * })
+     * 
+     */
+    create<T extends KedatanganSapNewCreateArgs>(args: SelectSubset<T, KedatanganSapNewCreateArgs<ExtArgs>>): Prisma__KedatanganSapNewClient<$Result.GetResult<Prisma.$KedatanganSapNewPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Create many KedatanganSapNews.
+     * @param {KedatanganSapNewCreateManyArgs} args - Arguments to create many KedatanganSapNews.
+     * @example
+     * // Create many KedatanganSapNews
+     * const kedatanganSapNew = await prisma.kedatanganSapNew.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends KedatanganSapNewCreateManyArgs>(args?: SelectSubset<T, KedatanganSapNewCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a KedatanganSapNew.
+     * @param {KedatanganSapNewDeleteArgs} args - Arguments to delete one KedatanganSapNew.
+     * @example
+     * // Delete one KedatanganSapNew
+     * const KedatanganSapNew = await prisma.kedatanganSapNew.delete({
+     *   where: {
+     *     // ... filter to delete one KedatanganSapNew
+     *   }
+     * })
+     * 
+     */
+    delete<T extends KedatanganSapNewDeleteArgs>(args: SelectSubset<T, KedatanganSapNewDeleteArgs<ExtArgs>>): Prisma__KedatanganSapNewClient<$Result.GetResult<Prisma.$KedatanganSapNewPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Update one KedatanganSapNew.
+     * @param {KedatanganSapNewUpdateArgs} args - Arguments to update one KedatanganSapNew.
+     * @example
+     * // Update one KedatanganSapNew
+     * const kedatanganSapNew = await prisma.kedatanganSapNew.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends KedatanganSapNewUpdateArgs>(args: SelectSubset<T, KedatanganSapNewUpdateArgs<ExtArgs>>): Prisma__KedatanganSapNewClient<$Result.GetResult<Prisma.$KedatanganSapNewPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Delete zero or more KedatanganSapNews.
+     * @param {KedatanganSapNewDeleteManyArgs} args - Arguments to filter KedatanganSapNews to delete.
+     * @example
+     * // Delete a few KedatanganSapNews
+     * const { count } = await prisma.kedatanganSapNew.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends KedatanganSapNewDeleteManyArgs>(args?: SelectSubset<T, KedatanganSapNewDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more KedatanganSapNews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KedatanganSapNewUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many KedatanganSapNews
+     * const kedatanganSapNew = await prisma.kedatanganSapNew.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends KedatanganSapNewUpdateManyArgs>(args: SelectSubset<T, KedatanganSapNewUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one KedatanganSapNew.
+     * @param {KedatanganSapNewUpsertArgs} args - Arguments to update or create a KedatanganSapNew.
+     * @example
+     * // Update or create a KedatanganSapNew
+     * const kedatanganSapNew = await prisma.kedatanganSapNew.upsert({
+     *   create: {
+     *     // ... data to create a KedatanganSapNew
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the KedatanganSapNew we want to update
+     *   }
+     * })
+     */
+    upsert<T extends KedatanganSapNewUpsertArgs>(args: SelectSubset<T, KedatanganSapNewUpsertArgs<ExtArgs>>): Prisma__KedatanganSapNewClient<$Result.GetResult<Prisma.$KedatanganSapNewPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+
+
+    /**
+     * Count the number of KedatanganSapNews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KedatanganSapNewCountArgs} args - Arguments to filter KedatanganSapNews to count.
+     * @example
+     * // Count the number of KedatanganSapNews
+     * const count = await prisma.kedatanganSapNew.count({
+     *   where: {
+     *     // ... the filter for the KedatanganSapNews we want to count
+     *   }
+     * })
+    **/
+    count<T extends KedatanganSapNewCountArgs>(
+      args?: Subset<T, KedatanganSapNewCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], KedatanganSapNewCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a KedatanganSapNew.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KedatanganSapNewAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends KedatanganSapNewAggregateArgs>(args: Subset<T, KedatanganSapNewAggregateArgs>): Prisma.PrismaPromise<GetKedatanganSapNewAggregateType<T>>
+
+    /**
+     * Group by KedatanganSapNew.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KedatanganSapNewGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends KedatanganSapNewGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: KedatanganSapNewGroupByArgs['orderBy'] }
+        : { orderBy?: KedatanganSapNewGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, KedatanganSapNewGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetKedatanganSapNewGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the KedatanganSapNew model
+   */
+  readonly fields: KedatanganSapNewFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for KedatanganSapNew.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__KedatanganSapNewClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the KedatanganSapNew model
+   */ 
+  interface KedatanganSapNewFieldRefs {
+    readonly inspection_lot: FieldRef<"KedatanganSapNew", 'String'>
+    readonly plan: FieldRef<"KedatanganSapNew", 'String'>
+    readonly OBJNR: FieldRef<"KedatanganSapNew", 'String'>
+    readonly OBTYP: FieldRef<"KedatanganSapNew", 'String'>
+    readonly tahun: FieldRef<"KedatanganSapNew", 'String'>
+    readonly bulan: FieldRef<"KedatanganSapNew", 'String'>
+    readonly kuartal: FieldRef<"KedatanganSapNew", 'Int'>
+    readonly insp_start_date: FieldRef<"KedatanganSapNew", 'DateTime'>
+    readonly insp_end_date: FieldRef<"KedatanganSapNew", 'DateTime'>
+    readonly vendor: FieldRef<"KedatanganSapNew", 'String'>
+    readonly material: FieldRef<"KedatanganSapNew", 'String'>
+    readonly lotno: FieldRef<"KedatanganSapNew", 'String'>
+    readonly ket: FieldRef<"KedatanganSapNew", 'String'>
+    readonly insp_quantity: FieldRef<"KedatanganSapNew", 'Float'>
+    readonly satuan: FieldRef<"KedatanganSapNew", 'String'>
+    readonly jenis: FieldRef<"KedatanganSapNew", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * KedatanganSapNew findUnique
+   */
+  export type KedatanganSapNewFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KedatanganSapNew
+     */
+    select?: KedatanganSapNewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the KedatanganSapNew
+     */
+    omit?: KedatanganSapNewOmit<ExtArgs> | null
+    /**
+     * Filter, which KedatanganSapNew to fetch.
+     */
+    where: KedatanganSapNewWhereUniqueInput
+  }
+
+  /**
+   * KedatanganSapNew findUniqueOrThrow
+   */
+  export type KedatanganSapNewFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KedatanganSapNew
+     */
+    select?: KedatanganSapNewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the KedatanganSapNew
+     */
+    omit?: KedatanganSapNewOmit<ExtArgs> | null
+    /**
+     * Filter, which KedatanganSapNew to fetch.
+     */
+    where: KedatanganSapNewWhereUniqueInput
+  }
+
+  /**
+   * KedatanganSapNew findFirst
+   */
+  export type KedatanganSapNewFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KedatanganSapNew
+     */
+    select?: KedatanganSapNewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the KedatanganSapNew
+     */
+    omit?: KedatanganSapNewOmit<ExtArgs> | null
+    /**
+     * Filter, which KedatanganSapNew to fetch.
+     */
+    where?: KedatanganSapNewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of KedatanganSapNews to fetch.
+     */
+    orderBy?: KedatanganSapNewOrderByWithRelationInput | KedatanganSapNewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for KedatanganSapNews.
+     */
+    cursor?: KedatanganSapNewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` KedatanganSapNews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` KedatanganSapNews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of KedatanganSapNews.
+     */
+    distinct?: KedatanganSapNewScalarFieldEnum | KedatanganSapNewScalarFieldEnum[]
+  }
+
+  /**
+   * KedatanganSapNew findFirstOrThrow
+   */
+  export type KedatanganSapNewFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KedatanganSapNew
+     */
+    select?: KedatanganSapNewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the KedatanganSapNew
+     */
+    omit?: KedatanganSapNewOmit<ExtArgs> | null
+    /**
+     * Filter, which KedatanganSapNew to fetch.
+     */
+    where?: KedatanganSapNewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of KedatanganSapNews to fetch.
+     */
+    orderBy?: KedatanganSapNewOrderByWithRelationInput | KedatanganSapNewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for KedatanganSapNews.
+     */
+    cursor?: KedatanganSapNewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` KedatanganSapNews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` KedatanganSapNews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of KedatanganSapNews.
+     */
+    distinct?: KedatanganSapNewScalarFieldEnum | KedatanganSapNewScalarFieldEnum[]
+  }
+
+  /**
+   * KedatanganSapNew findMany
+   */
+  export type KedatanganSapNewFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KedatanganSapNew
+     */
+    select?: KedatanganSapNewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the KedatanganSapNew
+     */
+    omit?: KedatanganSapNewOmit<ExtArgs> | null
+    /**
+     * Filter, which KedatanganSapNews to fetch.
+     */
+    where?: KedatanganSapNewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of KedatanganSapNews to fetch.
+     */
+    orderBy?: KedatanganSapNewOrderByWithRelationInput | KedatanganSapNewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing KedatanganSapNews.
+     */
+    cursor?: KedatanganSapNewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` KedatanganSapNews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` KedatanganSapNews.
+     */
+    skip?: number
+    distinct?: KedatanganSapNewScalarFieldEnum | KedatanganSapNewScalarFieldEnum[]
+  }
+
+  /**
+   * KedatanganSapNew create
+   */
+  export type KedatanganSapNewCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KedatanganSapNew
+     */
+    select?: KedatanganSapNewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the KedatanganSapNew
+     */
+    omit?: KedatanganSapNewOmit<ExtArgs> | null
+    /**
+     * The data needed to create a KedatanganSapNew.
+     */
+    data: XOR<KedatanganSapNewCreateInput, KedatanganSapNewUncheckedCreateInput>
+  }
+
+  /**
+   * KedatanganSapNew createMany
+   */
+  export type KedatanganSapNewCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many KedatanganSapNews.
+     */
+    data: KedatanganSapNewCreateManyInput | KedatanganSapNewCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * KedatanganSapNew update
+   */
+  export type KedatanganSapNewUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KedatanganSapNew
+     */
+    select?: KedatanganSapNewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the KedatanganSapNew
+     */
+    omit?: KedatanganSapNewOmit<ExtArgs> | null
+    /**
+     * The data needed to update a KedatanganSapNew.
+     */
+    data: XOR<KedatanganSapNewUpdateInput, KedatanganSapNewUncheckedUpdateInput>
+    /**
+     * Choose, which KedatanganSapNew to update.
+     */
+    where: KedatanganSapNewWhereUniqueInput
+  }
+
+  /**
+   * KedatanganSapNew updateMany
+   */
+  export type KedatanganSapNewUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update KedatanganSapNews.
+     */
+    data: XOR<KedatanganSapNewUpdateManyMutationInput, KedatanganSapNewUncheckedUpdateManyInput>
+    /**
+     * Filter which KedatanganSapNews to update
+     */
+    where?: KedatanganSapNewWhereInput
+    /**
+     * Limit how many KedatanganSapNews to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * KedatanganSapNew upsert
+   */
+  export type KedatanganSapNewUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KedatanganSapNew
+     */
+    select?: KedatanganSapNewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the KedatanganSapNew
+     */
+    omit?: KedatanganSapNewOmit<ExtArgs> | null
+    /**
+     * The filter to search for the KedatanganSapNew to update in case it exists.
+     */
+    where: KedatanganSapNewWhereUniqueInput
+    /**
+     * In case the KedatanganSapNew found by the `where` argument doesn't exist, create a new KedatanganSapNew with this data.
+     */
+    create: XOR<KedatanganSapNewCreateInput, KedatanganSapNewUncheckedCreateInput>
+    /**
+     * In case the KedatanganSapNew was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<KedatanganSapNewUpdateInput, KedatanganSapNewUncheckedUpdateInput>
+  }
+
+  /**
+   * KedatanganSapNew delete
+   */
+  export type KedatanganSapNewDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KedatanganSapNew
+     */
+    select?: KedatanganSapNewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the KedatanganSapNew
+     */
+    omit?: KedatanganSapNewOmit<ExtArgs> | null
+    /**
+     * Filter which KedatanganSapNew to delete.
+     */
+    where: KedatanganSapNewWhereUniqueInput
+  }
+
+  /**
+   * KedatanganSapNew deleteMany
+   */
+  export type KedatanganSapNewDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which KedatanganSapNews to delete
+     */
+    where?: KedatanganSapNewWhereInput
+    /**
+     * Limit how many KedatanganSapNews to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * KedatanganSapNew without action
+   */
+  export type KedatanganSapNewDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KedatanganSapNew
+     */
+    select?: KedatanganSapNewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the KedatanganSapNew
+     */
+    omit?: KedatanganSapNewOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -6209,6 +7333,28 @@ export namespace Prisma {
   export type AbnormalityHistoricalScalarFieldEnum = (typeof AbnormalityHistoricalScalarFieldEnum)[keyof typeof AbnormalityHistoricalScalarFieldEnum]
 
 
+  export const KedatanganSapNewScalarFieldEnum: {
+    inspection_lot: 'inspection_lot',
+    plan: 'plan',
+    OBJNR: 'OBJNR',
+    OBTYP: 'OBTYP',
+    tahun: 'tahun',
+    bulan: 'bulan',
+    kuartal: 'kuartal',
+    insp_start_date: 'insp_start_date',
+    insp_end_date: 'insp_end_date',
+    vendor: 'vendor',
+    material: 'material',
+    lotno: 'lotno',
+    ket: 'ket',
+    insp_quantity: 'insp_quantity',
+    satuan: 'satuan',
+    jenis: 'jenis'
+  };
+
+  export type KedatanganSapNewScalarFieldEnum = (typeof KedatanganSapNewScalarFieldEnum)[keyof typeof KedatanganSapNewScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -6277,6 +7423,24 @@ export namespace Prisma {
   };
 
   export type AbnormalityHistoricalOrderByRelevanceFieldEnum = (typeof AbnormalityHistoricalOrderByRelevanceFieldEnum)[keyof typeof AbnormalityHistoricalOrderByRelevanceFieldEnum]
+
+
+  export const KedatanganSapNewOrderByRelevanceFieldEnum: {
+    inspection_lot: 'inspection_lot',
+    plan: 'plan',
+    OBJNR: 'OBJNR',
+    OBTYP: 'OBTYP',
+    tahun: 'tahun',
+    bulan: 'bulan',
+    vendor: 'vendor',
+    material: 'material',
+    lotno: 'lotno',
+    ket: 'ket',
+    satuan: 'satuan',
+    jenis: 'jenis'
+  };
+
+  export type KedatanganSapNewOrderByRelevanceFieldEnum = (typeof KedatanganSapNewOrderByRelevanceFieldEnum)[keyof typeof KedatanganSapNewOrderByRelevanceFieldEnum]
 
 
   /**
@@ -6714,6 +7878,117 @@ export namespace Prisma {
     kode_vendor?: StringWithAggregatesFilter<"AbnormalityHistorical"> | string
     abnormal?: StringWithAggregatesFilter<"AbnormalityHistorical"> | string
     total_case?: IntNullableWithAggregatesFilter<"AbnormalityHistorical"> | number | null
+  }
+
+  export type KedatanganSapNewWhereInput = {
+    AND?: KedatanganSapNewWhereInput | KedatanganSapNewWhereInput[]
+    OR?: KedatanganSapNewWhereInput[]
+    NOT?: KedatanganSapNewWhereInput | KedatanganSapNewWhereInput[]
+    inspection_lot?: StringFilter<"KedatanganSapNew"> | string
+    plan?: StringFilter<"KedatanganSapNew"> | string
+    OBJNR?: StringNullableFilter<"KedatanganSapNew"> | string | null
+    OBTYP?: StringNullableFilter<"KedatanganSapNew"> | string | null
+    tahun?: StringNullableFilter<"KedatanganSapNew"> | string | null
+    bulan?: StringNullableFilter<"KedatanganSapNew"> | string | null
+    kuartal?: IntNullableFilter<"KedatanganSapNew"> | number | null
+    insp_start_date?: DateTimeNullableFilter<"KedatanganSapNew"> | Date | string | null
+    insp_end_date?: DateTimeNullableFilter<"KedatanganSapNew"> | Date | string | null
+    vendor?: StringNullableFilter<"KedatanganSapNew"> | string | null
+    material?: StringNullableFilter<"KedatanganSapNew"> | string | null
+    lotno?: StringNullableFilter<"KedatanganSapNew"> | string | null
+    ket?: StringNullableFilter<"KedatanganSapNew"> | string | null
+    insp_quantity?: FloatNullableFilter<"KedatanganSapNew"> | number | null
+    satuan?: StringNullableFilter<"KedatanganSapNew"> | string | null
+    jenis?: StringNullableFilter<"KedatanganSapNew"> | string | null
+  }
+
+  export type KedatanganSapNewOrderByWithRelationInput = {
+    inspection_lot?: SortOrder
+    plan?: SortOrder
+    OBJNR?: SortOrderInput | SortOrder
+    OBTYP?: SortOrderInput | SortOrder
+    tahun?: SortOrderInput | SortOrder
+    bulan?: SortOrderInput | SortOrder
+    kuartal?: SortOrderInput | SortOrder
+    insp_start_date?: SortOrderInput | SortOrder
+    insp_end_date?: SortOrderInput | SortOrder
+    vendor?: SortOrderInput | SortOrder
+    material?: SortOrderInput | SortOrder
+    lotno?: SortOrderInput | SortOrder
+    ket?: SortOrderInput | SortOrder
+    insp_quantity?: SortOrderInput | SortOrder
+    satuan?: SortOrderInput | SortOrder
+    jenis?: SortOrderInput | SortOrder
+    _relevance?: KedatanganSapNewOrderByRelevanceInput
+  }
+
+  export type KedatanganSapNewWhereUniqueInput = Prisma.AtLeast<{
+    inspection_lot_plan?: KedatanganSapNewInspection_lotPlanCompoundUniqueInput
+    AND?: KedatanganSapNewWhereInput | KedatanganSapNewWhereInput[]
+    OR?: KedatanganSapNewWhereInput[]
+    NOT?: KedatanganSapNewWhereInput | KedatanganSapNewWhereInput[]
+    inspection_lot?: StringFilter<"KedatanganSapNew"> | string
+    plan?: StringFilter<"KedatanganSapNew"> | string
+    OBJNR?: StringNullableFilter<"KedatanganSapNew"> | string | null
+    OBTYP?: StringNullableFilter<"KedatanganSapNew"> | string | null
+    tahun?: StringNullableFilter<"KedatanganSapNew"> | string | null
+    bulan?: StringNullableFilter<"KedatanganSapNew"> | string | null
+    kuartal?: IntNullableFilter<"KedatanganSapNew"> | number | null
+    insp_start_date?: DateTimeNullableFilter<"KedatanganSapNew"> | Date | string | null
+    insp_end_date?: DateTimeNullableFilter<"KedatanganSapNew"> | Date | string | null
+    vendor?: StringNullableFilter<"KedatanganSapNew"> | string | null
+    material?: StringNullableFilter<"KedatanganSapNew"> | string | null
+    lotno?: StringNullableFilter<"KedatanganSapNew"> | string | null
+    ket?: StringNullableFilter<"KedatanganSapNew"> | string | null
+    insp_quantity?: FloatNullableFilter<"KedatanganSapNew"> | number | null
+    satuan?: StringNullableFilter<"KedatanganSapNew"> | string | null
+    jenis?: StringNullableFilter<"KedatanganSapNew"> | string | null
+  }, "inspection_lot_plan">
+
+  export type KedatanganSapNewOrderByWithAggregationInput = {
+    inspection_lot?: SortOrder
+    plan?: SortOrder
+    OBJNR?: SortOrderInput | SortOrder
+    OBTYP?: SortOrderInput | SortOrder
+    tahun?: SortOrderInput | SortOrder
+    bulan?: SortOrderInput | SortOrder
+    kuartal?: SortOrderInput | SortOrder
+    insp_start_date?: SortOrderInput | SortOrder
+    insp_end_date?: SortOrderInput | SortOrder
+    vendor?: SortOrderInput | SortOrder
+    material?: SortOrderInput | SortOrder
+    lotno?: SortOrderInput | SortOrder
+    ket?: SortOrderInput | SortOrder
+    insp_quantity?: SortOrderInput | SortOrder
+    satuan?: SortOrderInput | SortOrder
+    jenis?: SortOrderInput | SortOrder
+    _count?: KedatanganSapNewCountOrderByAggregateInput
+    _avg?: KedatanganSapNewAvgOrderByAggregateInput
+    _max?: KedatanganSapNewMaxOrderByAggregateInput
+    _min?: KedatanganSapNewMinOrderByAggregateInput
+    _sum?: KedatanganSapNewSumOrderByAggregateInput
+  }
+
+  export type KedatanganSapNewScalarWhereWithAggregatesInput = {
+    AND?: KedatanganSapNewScalarWhereWithAggregatesInput | KedatanganSapNewScalarWhereWithAggregatesInput[]
+    OR?: KedatanganSapNewScalarWhereWithAggregatesInput[]
+    NOT?: KedatanganSapNewScalarWhereWithAggregatesInput | KedatanganSapNewScalarWhereWithAggregatesInput[]
+    inspection_lot?: StringWithAggregatesFilter<"KedatanganSapNew"> | string
+    plan?: StringWithAggregatesFilter<"KedatanganSapNew"> | string
+    OBJNR?: StringNullableWithAggregatesFilter<"KedatanganSapNew"> | string | null
+    OBTYP?: StringNullableWithAggregatesFilter<"KedatanganSapNew"> | string | null
+    tahun?: StringNullableWithAggregatesFilter<"KedatanganSapNew"> | string | null
+    bulan?: StringNullableWithAggregatesFilter<"KedatanganSapNew"> | string | null
+    kuartal?: IntNullableWithAggregatesFilter<"KedatanganSapNew"> | number | null
+    insp_start_date?: DateTimeNullableWithAggregatesFilter<"KedatanganSapNew"> | Date | string | null
+    insp_end_date?: DateTimeNullableWithAggregatesFilter<"KedatanganSapNew"> | Date | string | null
+    vendor?: StringNullableWithAggregatesFilter<"KedatanganSapNew"> | string | null
+    material?: StringNullableWithAggregatesFilter<"KedatanganSapNew"> | string | null
+    lotno?: StringNullableWithAggregatesFilter<"KedatanganSapNew"> | string | null
+    ket?: StringNullableWithAggregatesFilter<"KedatanganSapNew"> | string | null
+    insp_quantity?: FloatNullableWithAggregatesFilter<"KedatanganSapNew"> | number | null
+    satuan?: StringNullableWithAggregatesFilter<"KedatanganSapNew"> | string | null
+    jenis?: StringNullableWithAggregatesFilter<"KedatanganSapNew"> | string | null
   }
 
   export type MstMaterialCapaCreateInput = {
@@ -7157,6 +8432,139 @@ export namespace Prisma {
     kode_vendor?: StringFieldUpdateOperationsInput | string
     abnormal?: StringFieldUpdateOperationsInput | string
     total_case?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type KedatanganSapNewCreateInput = {
+    inspection_lot: string
+    plan: string
+    OBJNR?: string | null
+    OBTYP?: string | null
+    tahun?: string | null
+    bulan?: string | null
+    kuartal?: number | null
+    insp_start_date?: Date | string | null
+    insp_end_date?: Date | string | null
+    vendor?: string | null
+    material?: string | null
+    lotno?: string | null
+    ket?: string | null
+    insp_quantity?: number | null
+    satuan?: string | null
+    jenis?: string | null
+  }
+
+  export type KedatanganSapNewUncheckedCreateInput = {
+    inspection_lot: string
+    plan: string
+    OBJNR?: string | null
+    OBTYP?: string | null
+    tahun?: string | null
+    bulan?: string | null
+    kuartal?: number | null
+    insp_start_date?: Date | string | null
+    insp_end_date?: Date | string | null
+    vendor?: string | null
+    material?: string | null
+    lotno?: string | null
+    ket?: string | null
+    insp_quantity?: number | null
+    satuan?: string | null
+    jenis?: string | null
+  }
+
+  export type KedatanganSapNewUpdateInput = {
+    inspection_lot?: StringFieldUpdateOperationsInput | string
+    plan?: StringFieldUpdateOperationsInput | string
+    OBJNR?: NullableStringFieldUpdateOperationsInput | string | null
+    OBTYP?: NullableStringFieldUpdateOperationsInput | string | null
+    tahun?: NullableStringFieldUpdateOperationsInput | string | null
+    bulan?: NullableStringFieldUpdateOperationsInput | string | null
+    kuartal?: NullableIntFieldUpdateOperationsInput | number | null
+    insp_start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    insp_end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    vendor?: NullableStringFieldUpdateOperationsInput | string | null
+    material?: NullableStringFieldUpdateOperationsInput | string | null
+    lotno?: NullableStringFieldUpdateOperationsInput | string | null
+    ket?: NullableStringFieldUpdateOperationsInput | string | null
+    insp_quantity?: NullableFloatFieldUpdateOperationsInput | number | null
+    satuan?: NullableStringFieldUpdateOperationsInput | string | null
+    jenis?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type KedatanganSapNewUncheckedUpdateInput = {
+    inspection_lot?: StringFieldUpdateOperationsInput | string
+    plan?: StringFieldUpdateOperationsInput | string
+    OBJNR?: NullableStringFieldUpdateOperationsInput | string | null
+    OBTYP?: NullableStringFieldUpdateOperationsInput | string | null
+    tahun?: NullableStringFieldUpdateOperationsInput | string | null
+    bulan?: NullableStringFieldUpdateOperationsInput | string | null
+    kuartal?: NullableIntFieldUpdateOperationsInput | number | null
+    insp_start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    insp_end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    vendor?: NullableStringFieldUpdateOperationsInput | string | null
+    material?: NullableStringFieldUpdateOperationsInput | string | null
+    lotno?: NullableStringFieldUpdateOperationsInput | string | null
+    ket?: NullableStringFieldUpdateOperationsInput | string | null
+    insp_quantity?: NullableFloatFieldUpdateOperationsInput | number | null
+    satuan?: NullableStringFieldUpdateOperationsInput | string | null
+    jenis?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type KedatanganSapNewCreateManyInput = {
+    inspection_lot: string
+    plan: string
+    OBJNR?: string | null
+    OBTYP?: string | null
+    tahun?: string | null
+    bulan?: string | null
+    kuartal?: number | null
+    insp_start_date?: Date | string | null
+    insp_end_date?: Date | string | null
+    vendor?: string | null
+    material?: string | null
+    lotno?: string | null
+    ket?: string | null
+    insp_quantity?: number | null
+    satuan?: string | null
+    jenis?: string | null
+  }
+
+  export type KedatanganSapNewUpdateManyMutationInput = {
+    inspection_lot?: StringFieldUpdateOperationsInput | string
+    plan?: StringFieldUpdateOperationsInput | string
+    OBJNR?: NullableStringFieldUpdateOperationsInput | string | null
+    OBTYP?: NullableStringFieldUpdateOperationsInput | string | null
+    tahun?: NullableStringFieldUpdateOperationsInput | string | null
+    bulan?: NullableStringFieldUpdateOperationsInput | string | null
+    kuartal?: NullableIntFieldUpdateOperationsInput | number | null
+    insp_start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    insp_end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    vendor?: NullableStringFieldUpdateOperationsInput | string | null
+    material?: NullableStringFieldUpdateOperationsInput | string | null
+    lotno?: NullableStringFieldUpdateOperationsInput | string | null
+    ket?: NullableStringFieldUpdateOperationsInput | string | null
+    insp_quantity?: NullableFloatFieldUpdateOperationsInput | number | null
+    satuan?: NullableStringFieldUpdateOperationsInput | string | null
+    jenis?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type KedatanganSapNewUncheckedUpdateManyInput = {
+    inspection_lot?: StringFieldUpdateOperationsInput | string
+    plan?: StringFieldUpdateOperationsInput | string
+    OBJNR?: NullableStringFieldUpdateOperationsInput | string | null
+    OBTYP?: NullableStringFieldUpdateOperationsInput | string | null
+    tahun?: NullableStringFieldUpdateOperationsInput | string | null
+    bulan?: NullableStringFieldUpdateOperationsInput | string | null
+    kuartal?: NullableIntFieldUpdateOperationsInput | number | null
+    insp_start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    insp_end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    vendor?: NullableStringFieldUpdateOperationsInput | string | null
+    material?: NullableStringFieldUpdateOperationsInput | string | null
+    lotno?: NullableStringFieldUpdateOperationsInput | string | null
+    ket?: NullableStringFieldUpdateOperationsInput | string | null
+    insp_quantity?: NullableFloatFieldUpdateOperationsInput | number | null
+    satuan?: NullableStringFieldUpdateOperationsInput | string | null
+    jenis?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -7638,6 +9046,84 @@ export namespace Prisma {
 
   export type AbnormalityHistoricalSumOrderByAggregateInput = {
     total_case?: SortOrder
+  }
+
+  export type KedatanganSapNewOrderByRelevanceInput = {
+    fields: KedatanganSapNewOrderByRelevanceFieldEnum | KedatanganSapNewOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type KedatanganSapNewInspection_lotPlanCompoundUniqueInput = {
+    inspection_lot: string
+    plan: string
+  }
+
+  export type KedatanganSapNewCountOrderByAggregateInput = {
+    inspection_lot?: SortOrder
+    plan?: SortOrder
+    OBJNR?: SortOrder
+    OBTYP?: SortOrder
+    tahun?: SortOrder
+    bulan?: SortOrder
+    kuartal?: SortOrder
+    insp_start_date?: SortOrder
+    insp_end_date?: SortOrder
+    vendor?: SortOrder
+    material?: SortOrder
+    lotno?: SortOrder
+    ket?: SortOrder
+    insp_quantity?: SortOrder
+    satuan?: SortOrder
+    jenis?: SortOrder
+  }
+
+  export type KedatanganSapNewAvgOrderByAggregateInput = {
+    kuartal?: SortOrder
+    insp_quantity?: SortOrder
+  }
+
+  export type KedatanganSapNewMaxOrderByAggregateInput = {
+    inspection_lot?: SortOrder
+    plan?: SortOrder
+    OBJNR?: SortOrder
+    OBTYP?: SortOrder
+    tahun?: SortOrder
+    bulan?: SortOrder
+    kuartal?: SortOrder
+    insp_start_date?: SortOrder
+    insp_end_date?: SortOrder
+    vendor?: SortOrder
+    material?: SortOrder
+    lotno?: SortOrder
+    ket?: SortOrder
+    insp_quantity?: SortOrder
+    satuan?: SortOrder
+    jenis?: SortOrder
+  }
+
+  export type KedatanganSapNewMinOrderByAggregateInput = {
+    inspection_lot?: SortOrder
+    plan?: SortOrder
+    OBJNR?: SortOrder
+    OBTYP?: SortOrder
+    tahun?: SortOrder
+    bulan?: SortOrder
+    kuartal?: SortOrder
+    insp_start_date?: SortOrder
+    insp_end_date?: SortOrder
+    vendor?: SortOrder
+    material?: SortOrder
+    lotno?: SortOrder
+    ket?: SortOrder
+    insp_quantity?: SortOrder
+    satuan?: SortOrder
+    jenis?: SortOrder
+  }
+
+  export type KedatanganSapNewSumOrderByAggregateInput = {
+    kuartal?: SortOrder
+    insp_quantity?: SortOrder
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
