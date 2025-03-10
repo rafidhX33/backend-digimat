@@ -1,5 +1,6 @@
 import express from "express";
-import { getMaterials, getMaterialsBySupplier, addMaterial } from "../controllers/material.controller";
+import { getMaterials, getMaterialsBySupplier, addMaterial, getMaterialsByCategory,  } from "../controllers/material.controller";
+
 
 const router = express.Router();
 
@@ -12,4 +13,5 @@ router.get("/:kode_vendor", getMaterialsBySupplier);
 // POST /api/materials - Add a new material
 router.post("/", addMaterial);
 
+router.get("/category/:area", getMaterialsByCategory);
 export default router;

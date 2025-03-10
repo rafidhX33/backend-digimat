@@ -18,6 +18,17 @@ model MstMaterialCapa {
   @@map("mst_material_capa")
 }
 
+model SupplierMaterialView {
+  id            Int     @id @default(autoincrement()) // ID dari tabel utama
+  kode_vendor   String? @db.VarChar(50)
+  name_vendor   String? @db.VarChar(100)
+  material_code String? @db.VarChar(50)
+  nama_material String? @db.VarChar(100)
+  area          String? @db.VarChar(7) // Ambil area dari mst_supplier
+
+  @@map("v_supplier_material") // Sesuaikan dengan nama view
+}
+
 model SupplierScore {
   id                     Int       @id @default(autoincrement())
   tahun                  String?   @db.VarChar(4)

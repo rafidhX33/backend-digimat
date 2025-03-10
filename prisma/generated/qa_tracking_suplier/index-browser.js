@@ -125,6 +125,15 @@ exports.Prisma.MstMaterialCapaScalarFieldEnum = {
   nama_material: 'nama_material'
 };
 
+exports.Prisma.SupplierMaterialViewScalarFieldEnum = {
+  id: 'id',
+  kode_vendor: 'kode_vendor',
+  name_vendor: 'name_vendor',
+  material_code: 'material_code',
+  nama_material: 'nama_material',
+  area: 'area'
+};
+
 exports.Prisma.SupplierScoreScalarFieldEnum = {
   id: 'id',
   tahun: 'tahun',
@@ -218,6 +227,14 @@ exports.Prisma.MstMaterialCapaOrderByRelevanceFieldEnum = {
   nama_material: 'nama_material'
 };
 
+exports.Prisma.SupplierMaterialViewOrderByRelevanceFieldEnum = {
+  kode_vendor: 'kode_vendor',
+  name_vendor: 'name_vendor',
+  material_code: 'material_code',
+  nama_material: 'nama_material',
+  area: 'area'
+};
+
 exports.Prisma.SupplierScoreOrderByRelevanceFieldEnum = {
   tahun: 'tahun',
   bulan: 'bulan',
@@ -268,6 +285,7 @@ exports.Prisma.KedatanganSapNewOrderByRelevanceFieldEnum = {
 
 exports.Prisma.ModelName = {
   MstMaterialCapa: 'MstMaterialCapa',
+  SupplierMaterialView: 'SupplierMaterialView',
   SupplierScore: 'SupplierScore',
   ComplaintStatus: 'ComplaintStatus',
   TrSupplierAudit: 'TrSupplierAudit',

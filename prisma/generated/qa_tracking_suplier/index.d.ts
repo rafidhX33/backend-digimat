@@ -19,6 +19,11 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  */
 export type MstMaterialCapa = $Result.DefaultSelection<Prisma.$MstMaterialCapaPayload>
 /**
+ * Model SupplierMaterialView
+ * 
+ */
+export type SupplierMaterialView = $Result.DefaultSelection<Prisma.$SupplierMaterialViewPayload>
+/**
  * Model SupplierScore
  * 
  */
@@ -180,6 +185,16 @@ export class PrismaClient<
     * ```
     */
   get mstMaterialCapa(): Prisma.MstMaterialCapaDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.supplierMaterialView`: Exposes CRUD operations for the **SupplierMaterialView** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more SupplierMaterialViews
+    * const supplierMaterialViews = await prisma.supplierMaterialView.findMany()
+    * ```
+    */
+  get supplierMaterialView(): Prisma.SupplierMaterialViewDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.supplierScore`: Exposes CRUD operations for the **SupplierScore** model.
@@ -671,6 +686,7 @@ export namespace Prisma {
 
   export const ModelName: {
     MstMaterialCapa: 'MstMaterialCapa',
+    SupplierMaterialView: 'SupplierMaterialView',
     SupplierScore: 'SupplierScore',
     ComplaintStatus: 'ComplaintStatus',
     TrSupplierAudit: 'TrSupplierAudit',
@@ -691,7 +707,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "mstMaterialCapa" | "supplierScore" | "complaintStatus" | "trSupplierAudit" | "abnormalityHistorical" | "kedatanganSapNew"
+      modelProps: "mstMaterialCapa" | "supplierMaterialView" | "supplierScore" | "complaintStatus" | "trSupplierAudit" | "abnormalityHistorical" | "kedatanganSapNew"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -758,6 +774,72 @@ export namespace Prisma {
           count: {
             args: Prisma.MstMaterialCapaCountArgs<ExtArgs>
             result: $Utils.Optional<MstMaterialCapaCountAggregateOutputType> | number
+          }
+        }
+      }
+      SupplierMaterialView: {
+        payload: Prisma.$SupplierMaterialViewPayload<ExtArgs>
+        fields: Prisma.SupplierMaterialViewFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SupplierMaterialViewFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SupplierMaterialViewPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SupplierMaterialViewFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SupplierMaterialViewPayload>
+          }
+          findFirst: {
+            args: Prisma.SupplierMaterialViewFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SupplierMaterialViewPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SupplierMaterialViewFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SupplierMaterialViewPayload>
+          }
+          findMany: {
+            args: Prisma.SupplierMaterialViewFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SupplierMaterialViewPayload>[]
+          }
+          create: {
+            args: Prisma.SupplierMaterialViewCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SupplierMaterialViewPayload>
+          }
+          createMany: {
+            args: Prisma.SupplierMaterialViewCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.SupplierMaterialViewDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SupplierMaterialViewPayload>
+          }
+          update: {
+            args: Prisma.SupplierMaterialViewUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SupplierMaterialViewPayload>
+          }
+          deleteMany: {
+            args: Prisma.SupplierMaterialViewDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SupplierMaterialViewUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.SupplierMaterialViewUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SupplierMaterialViewPayload>
+          }
+          aggregate: {
+            args: Prisma.SupplierMaterialViewAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSupplierMaterialView>
+          }
+          groupBy: {
+            args: Prisma.SupplierMaterialViewGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SupplierMaterialViewGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SupplierMaterialViewCountArgs<ExtArgs>
+            result: $Utils.Optional<SupplierMaterialViewCountAggregateOutputType> | number
           }
         }
       }
@@ -1176,6 +1258,7 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     mstMaterialCapa?: MstMaterialCapaOmit
+    supplierMaterialView?: SupplierMaterialViewOmit
     supplierScore?: SupplierScoreOmit
     complaintStatus?: ComplaintStatusOmit
     trSupplierAudit?: TrSupplierAuditOmit
@@ -2188,6 +2271,933 @@ export namespace Prisma {
      * Omit specific fields from the MstMaterialCapa
      */
     omit?: MstMaterialCapaOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model SupplierMaterialView
+   */
+
+  export type AggregateSupplierMaterialView = {
+    _count: SupplierMaterialViewCountAggregateOutputType | null
+    _avg: SupplierMaterialViewAvgAggregateOutputType | null
+    _sum: SupplierMaterialViewSumAggregateOutputType | null
+    _min: SupplierMaterialViewMinAggregateOutputType | null
+    _max: SupplierMaterialViewMaxAggregateOutputType | null
+  }
+
+  export type SupplierMaterialViewAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type SupplierMaterialViewSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type SupplierMaterialViewMinAggregateOutputType = {
+    id: number | null
+    kode_vendor: string | null
+    name_vendor: string | null
+    material_code: string | null
+    nama_material: string | null
+    area: string | null
+  }
+
+  export type SupplierMaterialViewMaxAggregateOutputType = {
+    id: number | null
+    kode_vendor: string | null
+    name_vendor: string | null
+    material_code: string | null
+    nama_material: string | null
+    area: string | null
+  }
+
+  export type SupplierMaterialViewCountAggregateOutputType = {
+    id: number
+    kode_vendor: number
+    name_vendor: number
+    material_code: number
+    nama_material: number
+    area: number
+    _all: number
+  }
+
+
+  export type SupplierMaterialViewAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type SupplierMaterialViewSumAggregateInputType = {
+    id?: true
+  }
+
+  export type SupplierMaterialViewMinAggregateInputType = {
+    id?: true
+    kode_vendor?: true
+    name_vendor?: true
+    material_code?: true
+    nama_material?: true
+    area?: true
+  }
+
+  export type SupplierMaterialViewMaxAggregateInputType = {
+    id?: true
+    kode_vendor?: true
+    name_vendor?: true
+    material_code?: true
+    nama_material?: true
+    area?: true
+  }
+
+  export type SupplierMaterialViewCountAggregateInputType = {
+    id?: true
+    kode_vendor?: true
+    name_vendor?: true
+    material_code?: true
+    nama_material?: true
+    area?: true
+    _all?: true
+  }
+
+  export type SupplierMaterialViewAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SupplierMaterialView to aggregate.
+     */
+    where?: SupplierMaterialViewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SupplierMaterialViews to fetch.
+     */
+    orderBy?: SupplierMaterialViewOrderByWithRelationInput | SupplierMaterialViewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SupplierMaterialViewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SupplierMaterialViews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SupplierMaterialViews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned SupplierMaterialViews
+    **/
+    _count?: true | SupplierMaterialViewCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: SupplierMaterialViewAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: SupplierMaterialViewSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SupplierMaterialViewMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SupplierMaterialViewMaxAggregateInputType
+  }
+
+  export type GetSupplierMaterialViewAggregateType<T extends SupplierMaterialViewAggregateArgs> = {
+        [P in keyof T & keyof AggregateSupplierMaterialView]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSupplierMaterialView[P]>
+      : GetScalarType<T[P], AggregateSupplierMaterialView[P]>
+  }
+
+
+
+
+  export type SupplierMaterialViewGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SupplierMaterialViewWhereInput
+    orderBy?: SupplierMaterialViewOrderByWithAggregationInput | SupplierMaterialViewOrderByWithAggregationInput[]
+    by: SupplierMaterialViewScalarFieldEnum[] | SupplierMaterialViewScalarFieldEnum
+    having?: SupplierMaterialViewScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SupplierMaterialViewCountAggregateInputType | true
+    _avg?: SupplierMaterialViewAvgAggregateInputType
+    _sum?: SupplierMaterialViewSumAggregateInputType
+    _min?: SupplierMaterialViewMinAggregateInputType
+    _max?: SupplierMaterialViewMaxAggregateInputType
+  }
+
+  export type SupplierMaterialViewGroupByOutputType = {
+    id: number
+    kode_vendor: string | null
+    name_vendor: string | null
+    material_code: string | null
+    nama_material: string | null
+    area: string | null
+    _count: SupplierMaterialViewCountAggregateOutputType | null
+    _avg: SupplierMaterialViewAvgAggregateOutputType | null
+    _sum: SupplierMaterialViewSumAggregateOutputType | null
+    _min: SupplierMaterialViewMinAggregateOutputType | null
+    _max: SupplierMaterialViewMaxAggregateOutputType | null
+  }
+
+  type GetSupplierMaterialViewGroupByPayload<T extends SupplierMaterialViewGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SupplierMaterialViewGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SupplierMaterialViewGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SupplierMaterialViewGroupByOutputType[P]>
+            : GetScalarType<T[P], SupplierMaterialViewGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SupplierMaterialViewSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    kode_vendor?: boolean
+    name_vendor?: boolean
+    material_code?: boolean
+    nama_material?: boolean
+    area?: boolean
+  }, ExtArgs["result"]["supplierMaterialView"]>
+
+
+
+  export type SupplierMaterialViewSelectScalar = {
+    id?: boolean
+    kode_vendor?: boolean
+    name_vendor?: boolean
+    material_code?: boolean
+    nama_material?: boolean
+    area?: boolean
+  }
+
+  export type SupplierMaterialViewOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "kode_vendor" | "name_vendor" | "material_code" | "nama_material" | "area", ExtArgs["result"]["supplierMaterialView"]>
+
+  export type $SupplierMaterialViewPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "SupplierMaterialView"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      kode_vendor: string | null
+      name_vendor: string | null
+      material_code: string | null
+      nama_material: string | null
+      area: string | null
+    }, ExtArgs["result"]["supplierMaterialView"]>
+    composites: {}
+  }
+
+  type SupplierMaterialViewGetPayload<S extends boolean | null | undefined | SupplierMaterialViewDefaultArgs> = $Result.GetResult<Prisma.$SupplierMaterialViewPayload, S>
+
+  type SupplierMaterialViewCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<SupplierMaterialViewFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: SupplierMaterialViewCountAggregateInputType | true
+    }
+
+  export interface SupplierMaterialViewDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SupplierMaterialView'], meta: { name: 'SupplierMaterialView' } }
+    /**
+     * Find zero or one SupplierMaterialView that matches the filter.
+     * @param {SupplierMaterialViewFindUniqueArgs} args - Arguments to find a SupplierMaterialView
+     * @example
+     * // Get one SupplierMaterialView
+     * const supplierMaterialView = await prisma.supplierMaterialView.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SupplierMaterialViewFindUniqueArgs>(args: SelectSubset<T, SupplierMaterialViewFindUniqueArgs<ExtArgs>>): Prisma__SupplierMaterialViewClient<$Result.GetResult<Prisma.$SupplierMaterialViewPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find one SupplierMaterialView that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {SupplierMaterialViewFindUniqueOrThrowArgs} args - Arguments to find a SupplierMaterialView
+     * @example
+     * // Get one SupplierMaterialView
+     * const supplierMaterialView = await prisma.supplierMaterialView.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SupplierMaterialViewFindUniqueOrThrowArgs>(args: SelectSubset<T, SupplierMaterialViewFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SupplierMaterialViewClient<$Result.GetResult<Prisma.$SupplierMaterialViewPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first SupplierMaterialView that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SupplierMaterialViewFindFirstArgs} args - Arguments to find a SupplierMaterialView
+     * @example
+     * // Get one SupplierMaterialView
+     * const supplierMaterialView = await prisma.supplierMaterialView.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SupplierMaterialViewFindFirstArgs>(args?: SelectSubset<T, SupplierMaterialViewFindFirstArgs<ExtArgs>>): Prisma__SupplierMaterialViewClient<$Result.GetResult<Prisma.$SupplierMaterialViewPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first SupplierMaterialView that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SupplierMaterialViewFindFirstOrThrowArgs} args - Arguments to find a SupplierMaterialView
+     * @example
+     * // Get one SupplierMaterialView
+     * const supplierMaterialView = await prisma.supplierMaterialView.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SupplierMaterialViewFindFirstOrThrowArgs>(args?: SelectSubset<T, SupplierMaterialViewFindFirstOrThrowArgs<ExtArgs>>): Prisma__SupplierMaterialViewClient<$Result.GetResult<Prisma.$SupplierMaterialViewPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find zero or more SupplierMaterialViews that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SupplierMaterialViewFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all SupplierMaterialViews
+     * const supplierMaterialViews = await prisma.supplierMaterialView.findMany()
+     * 
+     * // Get first 10 SupplierMaterialViews
+     * const supplierMaterialViews = await prisma.supplierMaterialView.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const supplierMaterialViewWithIdOnly = await prisma.supplierMaterialView.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends SupplierMaterialViewFindManyArgs>(args?: SelectSubset<T, SupplierMaterialViewFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SupplierMaterialViewPayload<ExtArgs>, T, "findMany", ClientOptions>>
+
+    /**
+     * Create a SupplierMaterialView.
+     * @param {SupplierMaterialViewCreateArgs} args - Arguments to create a SupplierMaterialView.
+     * @example
+     * // Create one SupplierMaterialView
+     * const SupplierMaterialView = await prisma.supplierMaterialView.create({
+     *   data: {
+     *     // ... data to create a SupplierMaterialView
+     *   }
+     * })
+     * 
+     */
+    create<T extends SupplierMaterialViewCreateArgs>(args: SelectSubset<T, SupplierMaterialViewCreateArgs<ExtArgs>>): Prisma__SupplierMaterialViewClient<$Result.GetResult<Prisma.$SupplierMaterialViewPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Create many SupplierMaterialViews.
+     * @param {SupplierMaterialViewCreateManyArgs} args - Arguments to create many SupplierMaterialViews.
+     * @example
+     * // Create many SupplierMaterialViews
+     * const supplierMaterialView = await prisma.supplierMaterialView.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends SupplierMaterialViewCreateManyArgs>(args?: SelectSubset<T, SupplierMaterialViewCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a SupplierMaterialView.
+     * @param {SupplierMaterialViewDeleteArgs} args - Arguments to delete one SupplierMaterialView.
+     * @example
+     * // Delete one SupplierMaterialView
+     * const SupplierMaterialView = await prisma.supplierMaterialView.delete({
+     *   where: {
+     *     // ... filter to delete one SupplierMaterialView
+     *   }
+     * })
+     * 
+     */
+    delete<T extends SupplierMaterialViewDeleteArgs>(args: SelectSubset<T, SupplierMaterialViewDeleteArgs<ExtArgs>>): Prisma__SupplierMaterialViewClient<$Result.GetResult<Prisma.$SupplierMaterialViewPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Update one SupplierMaterialView.
+     * @param {SupplierMaterialViewUpdateArgs} args - Arguments to update one SupplierMaterialView.
+     * @example
+     * // Update one SupplierMaterialView
+     * const supplierMaterialView = await prisma.supplierMaterialView.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends SupplierMaterialViewUpdateArgs>(args: SelectSubset<T, SupplierMaterialViewUpdateArgs<ExtArgs>>): Prisma__SupplierMaterialViewClient<$Result.GetResult<Prisma.$SupplierMaterialViewPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Delete zero or more SupplierMaterialViews.
+     * @param {SupplierMaterialViewDeleteManyArgs} args - Arguments to filter SupplierMaterialViews to delete.
+     * @example
+     * // Delete a few SupplierMaterialViews
+     * const { count } = await prisma.supplierMaterialView.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends SupplierMaterialViewDeleteManyArgs>(args?: SelectSubset<T, SupplierMaterialViewDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SupplierMaterialViews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SupplierMaterialViewUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many SupplierMaterialViews
+     * const supplierMaterialView = await prisma.supplierMaterialView.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends SupplierMaterialViewUpdateManyArgs>(args: SelectSubset<T, SupplierMaterialViewUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one SupplierMaterialView.
+     * @param {SupplierMaterialViewUpsertArgs} args - Arguments to update or create a SupplierMaterialView.
+     * @example
+     * // Update or create a SupplierMaterialView
+     * const supplierMaterialView = await prisma.supplierMaterialView.upsert({
+     *   create: {
+     *     // ... data to create a SupplierMaterialView
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the SupplierMaterialView we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SupplierMaterialViewUpsertArgs>(args: SelectSubset<T, SupplierMaterialViewUpsertArgs<ExtArgs>>): Prisma__SupplierMaterialViewClient<$Result.GetResult<Prisma.$SupplierMaterialViewPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+
+
+    /**
+     * Count the number of SupplierMaterialViews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SupplierMaterialViewCountArgs} args - Arguments to filter SupplierMaterialViews to count.
+     * @example
+     * // Count the number of SupplierMaterialViews
+     * const count = await prisma.supplierMaterialView.count({
+     *   where: {
+     *     // ... the filter for the SupplierMaterialViews we want to count
+     *   }
+     * })
+    **/
+    count<T extends SupplierMaterialViewCountArgs>(
+      args?: Subset<T, SupplierMaterialViewCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SupplierMaterialViewCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a SupplierMaterialView.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SupplierMaterialViewAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SupplierMaterialViewAggregateArgs>(args: Subset<T, SupplierMaterialViewAggregateArgs>): Prisma.PrismaPromise<GetSupplierMaterialViewAggregateType<T>>
+
+    /**
+     * Group by SupplierMaterialView.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SupplierMaterialViewGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SupplierMaterialViewGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SupplierMaterialViewGroupByArgs['orderBy'] }
+        : { orderBy?: SupplierMaterialViewGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SupplierMaterialViewGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSupplierMaterialViewGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the SupplierMaterialView model
+   */
+  readonly fields: SupplierMaterialViewFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for SupplierMaterialView.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SupplierMaterialViewClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the SupplierMaterialView model
+   */ 
+  interface SupplierMaterialViewFieldRefs {
+    readonly id: FieldRef<"SupplierMaterialView", 'Int'>
+    readonly kode_vendor: FieldRef<"SupplierMaterialView", 'String'>
+    readonly name_vendor: FieldRef<"SupplierMaterialView", 'String'>
+    readonly material_code: FieldRef<"SupplierMaterialView", 'String'>
+    readonly nama_material: FieldRef<"SupplierMaterialView", 'String'>
+    readonly area: FieldRef<"SupplierMaterialView", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * SupplierMaterialView findUnique
+   */
+  export type SupplierMaterialViewFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SupplierMaterialView
+     */
+    select?: SupplierMaterialViewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SupplierMaterialView
+     */
+    omit?: SupplierMaterialViewOmit<ExtArgs> | null
+    /**
+     * Filter, which SupplierMaterialView to fetch.
+     */
+    where: SupplierMaterialViewWhereUniqueInput
+  }
+
+  /**
+   * SupplierMaterialView findUniqueOrThrow
+   */
+  export type SupplierMaterialViewFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SupplierMaterialView
+     */
+    select?: SupplierMaterialViewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SupplierMaterialView
+     */
+    omit?: SupplierMaterialViewOmit<ExtArgs> | null
+    /**
+     * Filter, which SupplierMaterialView to fetch.
+     */
+    where: SupplierMaterialViewWhereUniqueInput
+  }
+
+  /**
+   * SupplierMaterialView findFirst
+   */
+  export type SupplierMaterialViewFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SupplierMaterialView
+     */
+    select?: SupplierMaterialViewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SupplierMaterialView
+     */
+    omit?: SupplierMaterialViewOmit<ExtArgs> | null
+    /**
+     * Filter, which SupplierMaterialView to fetch.
+     */
+    where?: SupplierMaterialViewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SupplierMaterialViews to fetch.
+     */
+    orderBy?: SupplierMaterialViewOrderByWithRelationInput | SupplierMaterialViewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SupplierMaterialViews.
+     */
+    cursor?: SupplierMaterialViewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SupplierMaterialViews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SupplierMaterialViews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SupplierMaterialViews.
+     */
+    distinct?: SupplierMaterialViewScalarFieldEnum | SupplierMaterialViewScalarFieldEnum[]
+  }
+
+  /**
+   * SupplierMaterialView findFirstOrThrow
+   */
+  export type SupplierMaterialViewFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SupplierMaterialView
+     */
+    select?: SupplierMaterialViewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SupplierMaterialView
+     */
+    omit?: SupplierMaterialViewOmit<ExtArgs> | null
+    /**
+     * Filter, which SupplierMaterialView to fetch.
+     */
+    where?: SupplierMaterialViewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SupplierMaterialViews to fetch.
+     */
+    orderBy?: SupplierMaterialViewOrderByWithRelationInput | SupplierMaterialViewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SupplierMaterialViews.
+     */
+    cursor?: SupplierMaterialViewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SupplierMaterialViews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SupplierMaterialViews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SupplierMaterialViews.
+     */
+    distinct?: SupplierMaterialViewScalarFieldEnum | SupplierMaterialViewScalarFieldEnum[]
+  }
+
+  /**
+   * SupplierMaterialView findMany
+   */
+  export type SupplierMaterialViewFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SupplierMaterialView
+     */
+    select?: SupplierMaterialViewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SupplierMaterialView
+     */
+    omit?: SupplierMaterialViewOmit<ExtArgs> | null
+    /**
+     * Filter, which SupplierMaterialViews to fetch.
+     */
+    where?: SupplierMaterialViewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SupplierMaterialViews to fetch.
+     */
+    orderBy?: SupplierMaterialViewOrderByWithRelationInput | SupplierMaterialViewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing SupplierMaterialViews.
+     */
+    cursor?: SupplierMaterialViewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SupplierMaterialViews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SupplierMaterialViews.
+     */
+    skip?: number
+    distinct?: SupplierMaterialViewScalarFieldEnum | SupplierMaterialViewScalarFieldEnum[]
+  }
+
+  /**
+   * SupplierMaterialView create
+   */
+  export type SupplierMaterialViewCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SupplierMaterialView
+     */
+    select?: SupplierMaterialViewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SupplierMaterialView
+     */
+    omit?: SupplierMaterialViewOmit<ExtArgs> | null
+    /**
+     * The data needed to create a SupplierMaterialView.
+     */
+    data?: XOR<SupplierMaterialViewCreateInput, SupplierMaterialViewUncheckedCreateInput>
+  }
+
+  /**
+   * SupplierMaterialView createMany
+   */
+  export type SupplierMaterialViewCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many SupplierMaterialViews.
+     */
+    data: SupplierMaterialViewCreateManyInput | SupplierMaterialViewCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * SupplierMaterialView update
+   */
+  export type SupplierMaterialViewUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SupplierMaterialView
+     */
+    select?: SupplierMaterialViewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SupplierMaterialView
+     */
+    omit?: SupplierMaterialViewOmit<ExtArgs> | null
+    /**
+     * The data needed to update a SupplierMaterialView.
+     */
+    data: XOR<SupplierMaterialViewUpdateInput, SupplierMaterialViewUncheckedUpdateInput>
+    /**
+     * Choose, which SupplierMaterialView to update.
+     */
+    where: SupplierMaterialViewWhereUniqueInput
+  }
+
+  /**
+   * SupplierMaterialView updateMany
+   */
+  export type SupplierMaterialViewUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update SupplierMaterialViews.
+     */
+    data: XOR<SupplierMaterialViewUpdateManyMutationInput, SupplierMaterialViewUncheckedUpdateManyInput>
+    /**
+     * Filter which SupplierMaterialViews to update
+     */
+    where?: SupplierMaterialViewWhereInput
+    /**
+     * Limit how many SupplierMaterialViews to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * SupplierMaterialView upsert
+   */
+  export type SupplierMaterialViewUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SupplierMaterialView
+     */
+    select?: SupplierMaterialViewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SupplierMaterialView
+     */
+    omit?: SupplierMaterialViewOmit<ExtArgs> | null
+    /**
+     * The filter to search for the SupplierMaterialView to update in case it exists.
+     */
+    where: SupplierMaterialViewWhereUniqueInput
+    /**
+     * In case the SupplierMaterialView found by the `where` argument doesn't exist, create a new SupplierMaterialView with this data.
+     */
+    create: XOR<SupplierMaterialViewCreateInput, SupplierMaterialViewUncheckedCreateInput>
+    /**
+     * In case the SupplierMaterialView was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SupplierMaterialViewUpdateInput, SupplierMaterialViewUncheckedUpdateInput>
+  }
+
+  /**
+   * SupplierMaterialView delete
+   */
+  export type SupplierMaterialViewDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SupplierMaterialView
+     */
+    select?: SupplierMaterialViewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SupplierMaterialView
+     */
+    omit?: SupplierMaterialViewOmit<ExtArgs> | null
+    /**
+     * Filter which SupplierMaterialView to delete.
+     */
+    where: SupplierMaterialViewWhereUniqueInput
+  }
+
+  /**
+   * SupplierMaterialView deleteMany
+   */
+  export type SupplierMaterialViewDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SupplierMaterialViews to delete
+     */
+    where?: SupplierMaterialViewWhereInput
+    /**
+     * Limit how many SupplierMaterialViews to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * SupplierMaterialView without action
+   */
+  export type SupplierMaterialViewDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SupplierMaterialView
+     */
+    select?: SupplierMaterialViewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SupplierMaterialView
+     */
+    omit?: SupplierMaterialViewOmit<ExtArgs> | null
   }
 
 
@@ -7264,6 +8274,18 @@ export namespace Prisma {
   export type MstMaterialCapaScalarFieldEnum = (typeof MstMaterialCapaScalarFieldEnum)[keyof typeof MstMaterialCapaScalarFieldEnum]
 
 
+  export const SupplierMaterialViewScalarFieldEnum: {
+    id: 'id',
+    kode_vendor: 'kode_vendor',
+    name_vendor: 'name_vendor',
+    material_code: 'material_code',
+    nama_material: 'nama_material',
+    area: 'area'
+  };
+
+  export type SupplierMaterialViewScalarFieldEnum = (typeof SupplierMaterialViewScalarFieldEnum)[keyof typeof SupplierMaterialViewScalarFieldEnum]
+
+
   export const SupplierScoreScalarFieldEnum: {
     id: 'id',
     tahun: 'tahun',
@@ -7379,6 +8401,17 @@ export namespace Prisma {
   };
 
   export type MstMaterialCapaOrderByRelevanceFieldEnum = (typeof MstMaterialCapaOrderByRelevanceFieldEnum)[keyof typeof MstMaterialCapaOrderByRelevanceFieldEnum]
+
+
+  export const SupplierMaterialViewOrderByRelevanceFieldEnum: {
+    kode_vendor: 'kode_vendor',
+    name_vendor: 'name_vendor',
+    material_code: 'material_code',
+    nama_material: 'nama_material',
+    area: 'area'
+  };
+
+  export type SupplierMaterialViewOrderByRelevanceFieldEnum = (typeof SupplierMaterialViewOrderByRelevanceFieldEnum)[keyof typeof SupplierMaterialViewOrderByRelevanceFieldEnum]
 
 
   export const SupplierScoreOrderByRelevanceFieldEnum: {
@@ -7532,6 +8565,66 @@ export namespace Prisma {
     name_vendor?: StringNullableWithAggregatesFilter<"MstMaterialCapa"> | string | null
     material_code?: StringNullableWithAggregatesFilter<"MstMaterialCapa"> | string | null
     nama_material?: StringNullableWithAggregatesFilter<"MstMaterialCapa"> | string | null
+  }
+
+  export type SupplierMaterialViewWhereInput = {
+    AND?: SupplierMaterialViewWhereInput | SupplierMaterialViewWhereInput[]
+    OR?: SupplierMaterialViewWhereInput[]
+    NOT?: SupplierMaterialViewWhereInput | SupplierMaterialViewWhereInput[]
+    id?: IntFilter<"SupplierMaterialView"> | number
+    kode_vendor?: StringNullableFilter<"SupplierMaterialView"> | string | null
+    name_vendor?: StringNullableFilter<"SupplierMaterialView"> | string | null
+    material_code?: StringNullableFilter<"SupplierMaterialView"> | string | null
+    nama_material?: StringNullableFilter<"SupplierMaterialView"> | string | null
+    area?: StringNullableFilter<"SupplierMaterialView"> | string | null
+  }
+
+  export type SupplierMaterialViewOrderByWithRelationInput = {
+    id?: SortOrder
+    kode_vendor?: SortOrderInput | SortOrder
+    name_vendor?: SortOrderInput | SortOrder
+    material_code?: SortOrderInput | SortOrder
+    nama_material?: SortOrderInput | SortOrder
+    area?: SortOrderInput | SortOrder
+    _relevance?: SupplierMaterialViewOrderByRelevanceInput
+  }
+
+  export type SupplierMaterialViewWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: SupplierMaterialViewWhereInput | SupplierMaterialViewWhereInput[]
+    OR?: SupplierMaterialViewWhereInput[]
+    NOT?: SupplierMaterialViewWhereInput | SupplierMaterialViewWhereInput[]
+    kode_vendor?: StringNullableFilter<"SupplierMaterialView"> | string | null
+    name_vendor?: StringNullableFilter<"SupplierMaterialView"> | string | null
+    material_code?: StringNullableFilter<"SupplierMaterialView"> | string | null
+    nama_material?: StringNullableFilter<"SupplierMaterialView"> | string | null
+    area?: StringNullableFilter<"SupplierMaterialView"> | string | null
+  }, "id">
+
+  export type SupplierMaterialViewOrderByWithAggregationInput = {
+    id?: SortOrder
+    kode_vendor?: SortOrderInput | SortOrder
+    name_vendor?: SortOrderInput | SortOrder
+    material_code?: SortOrderInput | SortOrder
+    nama_material?: SortOrderInput | SortOrder
+    area?: SortOrderInput | SortOrder
+    _count?: SupplierMaterialViewCountOrderByAggregateInput
+    _avg?: SupplierMaterialViewAvgOrderByAggregateInput
+    _max?: SupplierMaterialViewMaxOrderByAggregateInput
+    _min?: SupplierMaterialViewMinOrderByAggregateInput
+    _sum?: SupplierMaterialViewSumOrderByAggregateInput
+  }
+
+  export type SupplierMaterialViewScalarWhereWithAggregatesInput = {
+    AND?: SupplierMaterialViewScalarWhereWithAggregatesInput | SupplierMaterialViewScalarWhereWithAggregatesInput[]
+    OR?: SupplierMaterialViewScalarWhereWithAggregatesInput[]
+    NOT?: SupplierMaterialViewScalarWhereWithAggregatesInput | SupplierMaterialViewScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"SupplierMaterialView"> | number
+    kode_vendor?: StringNullableWithAggregatesFilter<"SupplierMaterialView"> | string | null
+    name_vendor?: StringNullableWithAggregatesFilter<"SupplierMaterialView"> | string | null
+    material_code?: StringNullableWithAggregatesFilter<"SupplierMaterialView"> | string | null
+    nama_material?: StringNullableWithAggregatesFilter<"SupplierMaterialView"> | string | null
+    area?: StringNullableWithAggregatesFilter<"SupplierMaterialView"> | string | null
   }
 
   export type SupplierScoreWhereInput = {
@@ -8042,6 +9135,66 @@ export namespace Prisma {
     name_vendor?: NullableStringFieldUpdateOperationsInput | string | null
     material_code?: NullableStringFieldUpdateOperationsInput | string | null
     nama_material?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type SupplierMaterialViewCreateInput = {
+    kode_vendor?: string | null
+    name_vendor?: string | null
+    material_code?: string | null
+    nama_material?: string | null
+    area?: string | null
+  }
+
+  export type SupplierMaterialViewUncheckedCreateInput = {
+    id?: number
+    kode_vendor?: string | null
+    name_vendor?: string | null
+    material_code?: string | null
+    nama_material?: string | null
+    area?: string | null
+  }
+
+  export type SupplierMaterialViewUpdateInput = {
+    kode_vendor?: NullableStringFieldUpdateOperationsInput | string | null
+    name_vendor?: NullableStringFieldUpdateOperationsInput | string | null
+    material_code?: NullableStringFieldUpdateOperationsInput | string | null
+    nama_material?: NullableStringFieldUpdateOperationsInput | string | null
+    area?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type SupplierMaterialViewUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    kode_vendor?: NullableStringFieldUpdateOperationsInput | string | null
+    name_vendor?: NullableStringFieldUpdateOperationsInput | string | null
+    material_code?: NullableStringFieldUpdateOperationsInput | string | null
+    nama_material?: NullableStringFieldUpdateOperationsInput | string | null
+    area?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type SupplierMaterialViewCreateManyInput = {
+    id?: number
+    kode_vendor?: string | null
+    name_vendor?: string | null
+    material_code?: string | null
+    nama_material?: string | null
+    area?: string | null
+  }
+
+  export type SupplierMaterialViewUpdateManyMutationInput = {
+    kode_vendor?: NullableStringFieldUpdateOperationsInput | string | null
+    name_vendor?: NullableStringFieldUpdateOperationsInput | string | null
+    material_code?: NullableStringFieldUpdateOperationsInput | string | null
+    nama_material?: NullableStringFieldUpdateOperationsInput | string | null
+    area?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type SupplierMaterialViewUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    kode_vendor?: NullableStringFieldUpdateOperationsInput | string | null
+    name_vendor?: NullableStringFieldUpdateOperationsInput | string | null
+    material_code?: NullableStringFieldUpdateOperationsInput | string | null
+    nama_material?: NullableStringFieldUpdateOperationsInput | string | null
+    area?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SupplierScoreCreateInput = {
@@ -8668,6 +9821,47 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type SupplierMaterialViewOrderByRelevanceInput = {
+    fields: SupplierMaterialViewOrderByRelevanceFieldEnum | SupplierMaterialViewOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type SupplierMaterialViewCountOrderByAggregateInput = {
+    id?: SortOrder
+    kode_vendor?: SortOrder
+    name_vendor?: SortOrder
+    material_code?: SortOrder
+    nama_material?: SortOrder
+    area?: SortOrder
+  }
+
+  export type SupplierMaterialViewAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type SupplierMaterialViewMaxOrderByAggregateInput = {
+    id?: SortOrder
+    kode_vendor?: SortOrder
+    name_vendor?: SortOrder
+    material_code?: SortOrder
+    nama_material?: SortOrder
+    area?: SortOrder
+  }
+
+  export type SupplierMaterialViewMinOrderByAggregateInput = {
+    id?: SortOrder
+    kode_vendor?: SortOrder
+    name_vendor?: SortOrder
+    material_code?: SortOrder
+    nama_material?: SortOrder
+    area?: SortOrder
+  }
+
+  export type SupplierMaterialViewSumOrderByAggregateInput = {
+    id?: SortOrder
   }
 
   export type DateTimeNullableFilter<$PrismaModel = never> = {
